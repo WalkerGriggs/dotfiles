@@ -1,0 +1,26 @@
+!# ---------------------------------------------------------------------
+!# file:	~/.Xresources
+!# author:  	WalkerGriggs	- www.walkergriggs.com
+!# date:    	03/27/2016
+!# ---------------------------------------------------------------------
+
+#define sysColor 		#218693
+
+!# Xterm Settings ------------------------------------------------------
+
+xterm*faceName:			DejaVu:size=12
+xterm*allowBoldFonts: 		false
+xterm*cursorColor: 		sysColor
+xterm*cursorBlink: 		true
+xterm*loginShell: 		true
+xterm*termName: 		xterm-256color
+xterm*scrollBar: 		false
+xterm*scrollKey: 		true
+xterm*toolBar: 			false
+
+!xterm*scrollTtyOutput: 	false
+!xterm*saveLines:		7500
+
+!# Color Schemes -------------------------------------------------------
+
+#include "/home/wpgriggs/.colors/smyck"

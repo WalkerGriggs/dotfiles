@@ -1,0 +1,29 @@
+# ----------------------------------------------------------------------
+# file:    	~/.newsbeuter/config
+# author:  	WalkerGriggs	- www.walkergriggs.com
+# date:    	03/26/2016
+# ----------------------------------------------------------------------
+
+browser lynx
+
+# Key Binds ------------------------------------------------------------
+
+unbind-key	R
+bind-key	^R	reload-all
+bind-key	"SPACE"	open
+
+# Hide Settings --------------------------------------------------------
+
+ignore-article "*" "title =~ \"Sponsor\""
+ignore-article "*" "title =~ \"Advertisement\""
+ignore-mode "display"
+ 	
+# General Settings -----------------------------------------------------
+
+show-read-feeds 		no
+always-display-description 	yes
+cleanup-on-quit			yes
+feed-sort-order 		date-dec
+notify-always			no
+notify-format			"Newsbeuter: %n unred articles within %f unread feeds"
+
