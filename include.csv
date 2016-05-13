@@ -1,7 +1,7 @@
 /home/wpgriggs/.bashrc,
 /home/wpgriggs/.Xresources,
-/home/wpgriggs/.watchDogs,
-/home/wpgriggs/.watchText,
+/home/wpgriggs/.watchDogs,watchDogs
+/home/wpgriggs/.watchText,watchDogs
 /home/wpgriggs/.atom/config.cson,.atom/
 /home/wpgriggs/.irssi/*.theme,.irssi/
 /home/wpgriggs/.irssi/scripts/,.irssi/
