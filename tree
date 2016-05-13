@@ -2,12 +2,16 @@
 ├── .atom
 │   └── config.cson
 ├── .colors
+│   ├── bare
 │   ├── blues
 │   └── smyck
 ├── .i3
 │   ├── conky
 │   │   ├── conkyrc
 │   │   └── conkyrc~
+│   ├── i3Styles
+│   │   ├── bareBones
+│   │   └── cleanRice
 │   └── config
 ├── .irssi
 │   ├── scripts
@@ -27,6 +31,8 @@
 ├── LICENSE
 ├── README.md
 ├── tree
+├── .watchDogs
+├── .watchText
 └── .Xresources
 
-8 directories, 21 files
+9 directories, 26 files
