@@ -1,0 +1,35 @@
+.
+├── .atom
+│   └── config.cson
+├── .colors
+│   ├── blues
+│   └── smyck
+├── .i3
+│   ├── conky
+│   │   ├── conkyrc
+│   │   └── conkyrc~
+│   └── config
+├── .irssi
+│   ├── scripts
+│   │   └── autorun
+│   │       ├── adv_windowlist.pl
+│   │       ├── nm.pl
+│   │       └── trackbar.pl
+│   ├── default.theme
+│   ├── miromiro.theme
+│   ├── pbrisbin.theme
+│   └── test.theme
+├── .newsbeuter
+│   ├── config
+│   └── urls
+├── .bashrc
+├── include.csv
+├── LICENSE
+├── README.md
+├── test2.txt
+├── test3.txt
+├── test4.txt
+├── test.txt
+└── .Xresources
+
+8 directories, 24 files

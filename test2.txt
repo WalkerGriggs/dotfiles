@@ -1,0 +1,30 @@
+.
+├── .atom
+│   └── config.cson
+├── .colors
+│   ├── blues
+│   └── smyck
+├── .i3
+│   ├── conky
+│   │   ├── conkyrc
+│   │   └── conkyrc~
+│   └── config
+├── .irssi
+│   ├── scripts
+│   │   └── autorun
+│   ├── default.theme
+│   ├── miromiro.theme
+│   ├── pbrisbin.theme
+│   └── test.theme
+├── .newsbeuter
+│   ├── config
+│   └── urls
+├── .bashrc
+├── include.csv
+├── LICENSE
+├── README.md
+├── test2.txt
+├── test.txt
+└── .Xresources
+
+8 directories, 19 files

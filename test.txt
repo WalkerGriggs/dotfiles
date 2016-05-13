@@ -1,0 +1,29 @@
+[01;34m.[00m
+├── [01;34m.atom[00m
+│   └── config.cson
+├── [01;34m.colors[00m
+│   ├── blues
+│   └── smyck
+├── [01;34m.i3[00m
+│   ├── [01;34mconky[00m
+│   │   ├── conkyrc
+│   │   └── conkyrc~
+│   └── config
+├── [01;34m.irssi[00m
+│   ├── [01;34mscripts[00m
+│   │   └── [01;34mautorun[00m
+│   ├── default.theme
+│   ├── miromiro.theme
+│   ├── pbrisbin.theme
+│   └── test.theme
+├── [01;34m.newsbeuter[00m
+│   ├── config
+│   └── urls
+├── .bashrc
+├── include.csv
+├── LICENSE
+├── README.md
+├── test.txt
+└── .Xresources
+
+8 directories, 18 files
