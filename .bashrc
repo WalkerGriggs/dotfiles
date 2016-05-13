@@ -10,6 +10,7 @@ set -o noclobber # don't overwrite files
 
 alias reload='xrdb ~/.Xresources & source ~/.bashrc'
 alias wifi='nmtui'
+alias news='newsbeuter -r'
 alias pingg='ping -c 3 www.google.com'
 
 alias ls='ls -h --color'
@@ -26,6 +27,18 @@ alias remove='sudo apt-get remove'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 
+# WatchDogs Term ------------------------------------------------------
+watchDogs=$(</home/wpgriggs/.watchDogs)
+if [ $watchDogs == true ]; then
+	sleep 2
+	IFS='%'
+	CYAN='\033[1;36m'
+	while read line; do
+		printf "${CYAN}$line\n"
+		sleep .04
+	done</home/wpgriggs/.watchText
+fi
+
 # General bashrc -------------------------------------------------------
 
 # If not running interactively, don't do anything
@@ -38,7 +51,7 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
+# append to the history file, don't overwrite
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
@@ -92,7 +105,11 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="┌─[\[\e[0;36m\]\u\[\e[0m@\e[0;32m\h \[\e[1;33m\]\w\[\e[0m\]]\n└─→ "
+    if [ $watchDogs == false ]; then
+    	PS1="┌─[\[\e[0;36m\]\u\[\e[0m@\e[0;32m\h \[\e[1;33m\]\w\[\e[0m\]]\n└─→ "
+    else
+    	PS1="\[\e[0;30m\]\[\e[106m\]_ctOS_\u\[\e[0m \[\e[1;30m\]\w \[\e[0m\]"
+    fi
     # Default prompt: PS1='\[\e]0\e[0;31m;\u\e[m@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     ;;
 *)
@@ -113,11 +130,6 @@ fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -182,4 +194,27 @@ dotfiles () {
     mkdir -p $foo/$yy 
     cp -rvu $xx $foo/$yy
   done < /home/wpgriggs/Documents/DotFiles/include.csv
+}
+
+loadFleshedi3() {
+  rm ~/.i3/config & rm -f ~/.Xresources
+  cat ~/.i3/i3Styles/cleanRice ~/.i3/baseFunctionality > ~/.i3/config
+  cat ~/.colors/smyck ~/.baseResources > ~/.Xresources
+  reload && i3 restart
+}
+loadBarei3() {
+  rm ~/.i3/config & rm -f ~/.Xresources
+  cat ~/.i3/i3Styles/bareBones ~/.i3/baseFunctionality > ~/.i3/config
+  cat ~/.colors/bare ~/.baseResources > ~/.Xresources
+  reload && i3 restart
+}
+watchDogs() {
+	if [ $watchDogs == false ]; then
+		rm /home/wpgriggs/.watchDogs
+		echo true > /home/wpgriggs/.watchDogs
+	else
+		rm /home/wpgriggs/.watchDogs
+		echo false > /home/wpgriggs/.watchDogs
+	fi
+	reload
 }

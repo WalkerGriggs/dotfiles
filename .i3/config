@@ -1,5 +1,6 @@
+new_window 1pixel
+exec_always feh --bg-scale ~/Pictures/black.jpg
 # ----------------------------------------------------------------------
-# file:		~/.i3/config
 # author: 	WalkerGriggs	- www.walkergriggs.com
 # date: 	03/26/2016
 # ----------------------------------------------------------------------
@@ -19,11 +20,6 @@ font pango:DejaVu 10
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
-
-# i3-Gaps --------------------------------------------------------------
-
-gaps inner 10
-new_window 1pixel
 
 # Peronal Binds --------------------------------------------------------
 
@@ -176,34 +172,4 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# Color Variables for i3-Bar and Conky ---------------------------------
-set $background #202013
-set $foreground #C75646 
-set $accent #C1D1E0
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command conky -c $HOME/.i3/conky/conkyrc
-	mode dock
-	position top
-	font pango: DajaVu 10
-
-colors {
-        background $background
-        statusline $foreground
-        separator $foreground
-      
-        focused_workspace  $background $background $foreground
-        active_workspace   $background $background $foreground
-        inactive_workspace $background $background $accent
-        urgent_workspace   $background $background $accent
-    }
-}
-
-# Execute on Start-Up --------------------------------------------------
-
-exec_always feh --bg-scale ~/Pictures/petrolicious/ferrari-250gto.jpg
-exec_always xrdb ~/.Xresources
-
+execute_always loadFleshedi3

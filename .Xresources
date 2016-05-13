@@ -1,3 +1,37 @@
+*background: #000000
+*foreground: #c5c5c5
+
+! Blacks
+*color0: #000000
+*color8: #414141
+
+! Reds
+*color1: #F2262A
+*color9: Ff44547
+
+! Greens
+*color2: #2AF226
+*color10: #47F445
+
+! Yellows
+*color3: #F2EF26
+*color11: #F4F145
+
+! Blues
+*color4: #262AF2
+*color12: #4547F4
+
+! Magentas
+*color5: #EF26F2
+*color13: #F145F4
+
+! Cyans
+*color6: #26F2EF
+*color14: #45F4F1
+
+! Whites
+*color7: #C5C5C5
+*color15: #FFFFFF
 !# ---------------------------------------------------------------------
 !# file:	~/.Xresources
 !# author:  	WalkerGriggs	- www.walkergriggs.com
@@ -20,7 +54,3 @@ xterm*toolBar: 			false
 
 !xterm*scrollTtyOutput: 	false
 !xterm*saveLines:		7500
-
-!# Color Schemes -------------------------------------------------------
-
-#include "/home/wpgriggs/.colors/smyck"
