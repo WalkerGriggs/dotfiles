@@ -10,41 +10,41 @@ I also wanted a easy way to swap i3 styling, so I seperated base functionality a
 # Current Tree:
 
 . <br/>
-├── .atom
-│   └── config.cson
-├── .colors
-│   ├── bare
-│   ├── blues
-│   └── smyck
-├── .i3
-│   ├── conky
-│   │   ├── conkyrc
-│   │   └── conkyrc~
-│   ├── i3Styles
-│   │   ├── bareBones
-│   │   └── cleanRice
-│   └── config
-├── .irssi
-│   ├── scripts
-│   │   └── autorun
-│   │       ├── adv_windowlist.pl
-│   │       ├── nm.pl
-│   │       └── trackbar.pl
-│   ├── default.theme
-│   ├── miromiro.theme
-│   ├── pbrisbin.theme
-│   └── test.theme
-├── .newsbeuter
-│   ├── config
-│   └── urls
-├── .bashrc
-├── include.csv
-├── LICENSE
-├── README.md
-├── tree
-├── .watchDogs
-├── .watchText
-└── .Xresources
+├── .atom <br/>
+│   └── config.cson <br/>
+├── .colors <br/>
+│   ├── bare <br/>
+│   ├── blues <br/>
+│   └── smyck <br/>
+├── .i3 <br/>
+│   ├── conky <br/>
+│   │   ├── conkyrc <br/>
+│   │   └── conkyrc~ <br/>
+│   ├── i3Styles <br/>
+│   │   ├── bareBones <br/>
+│   │   └── cleanRice <br/>
+│   └── config <br/>
+├── .irssi <br/>
+│   ├── scripts <br/>
+│   │   └── autorun <br/>
+│   │       ├── adv_windo <br/>wlist.pl
+│   │       ├── nm.pl <br/>
+│   │       └── trackbar.pl <br/>
+│   ├── default.theme <br/>
+│   ├── miromiro.theme <br/>
+│   ├── pbrisbin.theme <br/>
+│   └── test.theme <br/>
+├── .newsbeuter <br/>
+│   ├── config <br/>
+│   └── urls <br/>
+├── .bashrc <br/>
+├── include.csv <br/>
+├── LICENSE <br/>
+├── README.md <br/>
+├── tree <br/>
+├── .watchDogs <br/>
+├── .watchText <br/>
+└── .Xresources <br/>
 
 8 directories, 24 files  <br/>
 
