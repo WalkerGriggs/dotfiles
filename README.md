@@ -5,6 +5,9 @@ The include.csv file follows the format <Static System File Location>, <Relative
 # WatchDogs / i3 None-sense
 I saw an WatchDogs themed terminal, and wanted to stretch my bash legs implementing it. And when I say "stretch my bash legs", I mean, read in 2 easily overwritten files and print the string file if the boolean comes back true. I also added a 'watchDog' function to toggle between my standard bash config, and the ctOS config.
 
+![alt tag](https://github.com/WalkerGriggs/DotFiles/blob/master/output.gif)
+
+
 I also wanted a easy way to swap i3 styling, so I seperated base functionality and styling. Then, with one simple function I combined the base functionality with the styling of my choosing, and dropped it in place of the old i3 config file.
 
 # Current Tree:
