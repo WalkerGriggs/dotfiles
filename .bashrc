@@ -196,18 +196,6 @@ dotfiles () {
   done < /home/wpgriggs/Documents/DotFiles/include.csv
 }
 
-loadFleshedi3() {
-  rm ~/.i3/config & rm -f ~/.Xresources
-  cat ~/.i3/i3Styles/cleanRice ~/.i3/baseFunctionality > ~/.i3/config
-  cat ~/.colors/smyck ~/.baseResources > ~/.Xresources
-  reload && i3 restart
-}
-loadBarei3() {
-  rm ~/.i3/config & rm -f ~/.Xresources
-  cat ~/.i3/i3Styles/bareBones ~/.i3/baseFunctionality > ~/.i3/config
-  cat ~/.colors/bare ~/.baseResources > ~/.Xresources
-  reload && i3 restart
-}
 watchDogs() {
 	if [ $watchDogs == false ]; then
 		rm /home/wpgriggs/.watchDogs
