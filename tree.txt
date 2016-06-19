@@ -1,0 +1,189 @@
+.
+├── .colors
+│   ├── base16
+│   │   ├── base16-3024.dark.256.xresources
+│   │   ├── base16-3024.dark.xresources
+│   │   ├── base16-3024.light.256.xresources
+│   │   ├── base16-3024.light.xresources
+│   │   ├── base16-apathy.dark.256.xresources
+│   │   ├── base16-apathy.dark.xresources
+│   │   ├── base16-apathy.light.256.xresources
+│   │   ├── base16-apathy.light.xresources
+│   │   ├── base16-ashes.dark.256.xresources
+│   │   ├── base16-ashes.dark.xresources
+│   │   ├── base16-ashes.light.256.xresources
+│   │   ├── base16-ashes.light.xresources
+│   │   ├── base16-atelierdune.dark.256.xresources
+│   │   ├── base16-atelierdune.dark.xresources
+│   │   ├── base16-atelierdune.light.256.xresources
+│   │   ├── base16-atelierdune.light.xresources
+│   │   ├── base16-atelierforest.dark.256.xresources
+│   │   ├── base16-atelierforest.dark.xresources
+│   │   ├── base16-atelierforest.light.256.xresources
+│   │   ├── base16-atelierforest.light.xresources
+│   │   ├── base16-atelierheath.dark.256.xresources
+│   │   ├── base16-atelierheath.dark.xresources
+│   │   ├── base16-atelierheath.light.256.xresources
+│   │   ├── base16-atelierheath.light.xresources
+│   │   ├── base16-atelierlakeside.dark.256.xresources
+│   │   ├── base16-atelierlakeside.dark.xresources
+│   │   ├── base16-atelierlakeside.light.256.xresources
+│   │   ├── base16-atelierlakeside.light.xresources
+│   │   ├── base16-atelierseaside.dark.256.xresources
+│   │   ├── base16-atelierseaside.dark.xresources
+│   │   ├── base16-atelierseaside.light.256.xresources
+│   │   ├── base16-atelierseaside.light.xresources
+│   │   ├── base16-bespin.dark.256.xresources
+│   │   ├── base16-bespin.dark.xresources
+│   │   ├── base16-bespin.light.256.xresources
+│   │   ├── base16-bespin.light.xresources
+│   │   ├── base16-brewer.dark.256.xresources
+│   │   ├── base16-brewer.dark.xresources
+│   │   ├── base16-brewer.light.256.xresources
+│   │   ├── base16-brewer.light.xresources
+│   │   ├── base16-bright.dark.256.xresources
+│   │   ├── base16-bright.dark.xresources
+│   │   ├── base16-bright.light.256.xresources
+│   │   ├── base16-bright.light.xresources
+│   │   ├── base16-chalk.dark.256.xresources
+│   │   ├── base16-chalk.dark.xresources
+│   │   ├── base16-chalk.light.256.xresources
+│   │   ├── base16-chalk.light.xresources
+│   │   ├── base16-codeschool.dark.256.xresources
+│   │   ├── base16-codeschool.dark.xresources
+│   │   ├── base16-codeschool.light.256.xresources
+│   │   ├── base16-codeschool.light.xresources
+│   │   ├── base16-colors.dark.256.xresources
+│   │   ├── base16-colors.dark.xresources
+│   │   ├── base16-colors.light.256.xresources
+│   │   ├── base16-colors.light.xresources
+│   │   ├── base16-default.dark.256.xresources
+│   │   ├── base16-default.dark.xresources
+│   │   ├── base16-default.light.256.xresources
+│   │   ├── base16-default.light.xresources
+│   │   ├── base16-eighties.dark.256.xresources
+│   │   ├── base16-eighties.dark.xresources
+│   │   ├── base16-eighties.light.256.xresources
+│   │   ├── base16-eighties.light.xresources
+│   │   ├── base16-embers.dark.256.xresources
+│   │   ├── base16-embers.dark.xresources
+│   │   ├── base16-embers.light.256.xresources
+│   │   ├── base16-embers.light.xresources
+│   │   ├── base16-flat.dark.256.xresources
+│   │   ├── base16-flat.dark.xresources
+│   │   ├── base16-flat.light.256.xresources
+│   │   ├── base16-flat.light.xresources
+│   │   ├── base16-google.dark.256.xresources
+│   │   ├── base16-google.dark.xresources
+│   │   ├── base16-google.light.256.xresources
+│   │   ├── base16-google.light.xresources
+│   │   ├── base16-grayscale.dark.256.xresources
+│   │   ├── base16-grayscale.dark.xresources
+│   │   ├── base16-grayscale.light.256.xresources
+│   │   ├── base16-grayscale.light.xresources
+│   │   ├── base16-greenscreen.dark.256.xresources
+│   │   ├── base16-greenscreen.dark.xresources
+│   │   ├── base16-greenscreen.light.256.xresources
+│   │   ├── base16-greenscreen.light.xresources
+│   │   ├── base16-harmonic16.dark.256.xresources
+│   │   ├── base16-harmonic16.dark.xresources
+│   │   ├── base16-harmonic16.light.256.xresources
+│   │   ├── base16-harmonic16.light.xresources
+│   │   ├── base16-isotope.dark.256.xresources
+│   │   ├── base16-isotope.dark.xresources
+│   │   ├── base16-isotope.light.256.xresources
+│   │   ├── base16-isotope.light.xresources
+│   │   ├── base16-londontube.dark.256.xresources
+│   │   ├── base16-londontube.dark.xresources
+│   │   ├── base16-londontube.light.256.xresources
+│   │   ├── base16-londontube.light.xresources
+│   │   ├── base16-marrakesh.dark.256.xresources
+│   │   ├── base16-marrakesh.dark.xresources
+│   │   ├── base16-marrakesh.light.256.xresources
+│   │   ├── base16-marrakesh.light.xresources
+│   │   ├── base16-mocha.dark.256.xresources
+│   │   ├── base16-mocha.dark.xresources
+│   │   ├── base16-mocha.light.256.xresources
+│   │   ├── base16-mocha.light.xresources
+│   │   ├── base16-monokai.dark.256.xresources
+│   │   ├── base16-monokai.dark.xresources
+│   │   ├── base16-monokai.light.256.xresources
+│   │   ├── base16-monokai.light.xresources
+│   │   ├── base16-ocean.dark.256.xresources
+│   │   ├── base16-ocean.dark.xresources
+│   │   ├── base16-ocean.light.256.xresources
+│   │   ├── base16-ocean.light.xresources
+│   │   ├── base16-paraiso.dark.256.xresources
+│   │   ├── base16-paraiso.dark.xresources
+│   │   ├── base16-paraiso.light.256.xresources
+│   │   ├── base16-paraiso.light.xresources
+│   │   ├── base16-railscasts.dark.256.xresources
+│   │   ├── base16-railscasts.dark.xresources
+│   │   ├── base16-railscasts.light.256.xresources
+│   │   ├── base16-railscasts.light.xresources
+│   │   ├── base16-shapeshifter.dark.256.xresources
+│   │   ├── base16-shapeshifter.dark.xresources
+│   │   ├── base16-shapeshifter.light.256.xresources
+│   │   ├── base16-shapeshifter.light.xresources
+│   │   ├── base16-solarized.dark.256.xresources
+│   │   ├── base16-solarized.dark.xresources
+│   │   ├── base16-solarized.light.256.xresources
+│   │   ├── base16-solarized.light.xresources
+│   │   ├── base16-summerfruit.dark.256.xresources
+│   │   ├── base16-summerfruit.dark.xresources
+│   │   ├── base16-summerfruit.light.256.xresources
+│   │   ├── base16-summerfruit.light.xresources
+│   │   ├── base16-tomorrow.dark.256.xresources
+│   │   ├── base16-tomorrow.dark.xresources
+│   │   ├── base16-tomorrow.light.256.xresources
+│   │   ├── base16-tomorrow.light.xresources
+│   │   ├── base16-twilight.dark.256.xresources
+│   │   ├── base16-twilight.dark.xresources
+│   │   ├── base16-twilight.light.256.xresources
+│   │   ├── base16-twilight.light.xresources
+│   │   └── README.md
+│   ├── blues
+│   ├── blues~
+│   ├── darktooth
+│   ├── dedsec
+│   ├── dedsec~
+│   ├── smyck
+│   └── smyck~
+├── .i3
+│   ├── conky
+│   │   ├── conkyrc
+│   │   └── conkyrc~
+│   ├── i3Styles
+│   │   ├── bareBones
+│   │   └── cleanRice
+│   └── config
+├── .irssi
+│   ├── scripts
+│   │   └── autorun
+│   │       ├── adv_windowlist.pl
+│   │       ├── nm.pl
+│   │       └── trackbar.pl
+│   ├── default.theme
+│   ├── miromiro.theme
+│   ├── pbrisbin.theme
+│   └── test.theme
+├── .newsbeuter
+│   ├── config
+│   └── urls
+├── READMEMedia
+│   └── watchdogs.gif
+├── .watchDogs
+│   ├── .blumeText
+│   ├── .ctOSText
+│   ├── .dedText
+│   └── .watchVar
+├── .bashrc
+├── .emacs
+├── include.csv
+├── LICENSE
+├── README.md
+├── tree.txt
+├── .vimrc
+└── .Xresources
+
+11 directories, 175 files
