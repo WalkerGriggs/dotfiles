@@ -1,2 +1,0 @@
-new_window 1pixel
-exec_always feh --bg-scale ~/Pictures/black.jpg
