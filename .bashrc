@@ -1,12 +1,12 @@
-# ----------------------------------------------------------------------
+# ---------------------------------------------------------------------
 # file:		~/.bashrc
 # author:  	Walker Griggs	- www.walkergriggs.com
-# date:		03/27/2016    
-# ----------------------------------------------------------------------
+# date:		06/18/2016    
+# ---------------------------------------------------------------------
 
 set -o noclobber # don't overwrite files
 
-# Aliases --------------------------------------------------------------
+# Aliases -------------------------------------------------------------
 
 alias reload='xrdb ~/.Xresources & source ~/.bashrc'
 alias wifi='nmtui'
@@ -28,18 +28,20 @@ alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 
 # WatchDogs Term ------------------------------------------------------
-watchDogs=$(</home/wpgriggs/.watchDogs)
+watchDogs=$(</home/wpgriggs/.watchdogs/.watchVar)
 if [ $watchDogs == true ]; then
-	sleep 2
+	sleep .5
 	IFS='%'
 	CYAN='\033[1;36m'
+	GREEN='\033[1;32m'
+	WHITE='\033[1;97m'
 	while read line; do
-		printf "${CYAN}$line\n"
+		printf "${GREEN}$line\n"
 		sleep .04
-	done</home/wpgriggs/.watchText
+	done</home/wpgriggs/.watchdogs/.dedText
 fi
 
-# General bashrc -------------------------------------------------------
+# General bashrc ------------------------------------------------------
 
 # If not running interactively, don't do anything
 case $- in
@@ -106,9 +108,11 @@ unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)
     if [ $watchDogs == false ]; then
-    	PS1="┌─[\[\e[0;36m\]\u\[\e[0m@\e[0;32m\h \[\e[1;33m\]\w\[\e[0m\]]\n└─→ "
+        PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ "
     else
-    	PS1="\[\e[0;30m\]\[\e[106m\]_ctOS_\u\[\e[0m \[\e[1;30m\]\w \[\e[0m\]"
+        # PS1="\[\e[30m\]\e[106m _ctOS_ apearce \[\e[0m \e[1;30m\]\w \[\e[97m\]" # ctOS
+        # PS1="\[\e[97m\]Blume_ctOS t-bone@slave_A591185 \e[1;30m\]\w $ \[\e[97m\]" # Blume
+    	PS1="\[\e[1;32m\]C:/DEDSEC_TAKEOVER mholloway \w ////\[\e[0m \[\e[1;30m\]\[\e[0m\]" # Dedsec
     fi
     # Default prompt: PS1='\[\e]0\e[0;31m;\u\e[m@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     ;;
@@ -152,7 +156,7 @@ if ! shopt -oq posix; then
 fi
 
 
-# Functions ------------------------------------------------------------
+# Functions -----------------------------------------------------------
 welcome() {
     figlet "Hey, " $USER "!";
     echo -e ""; neofetch
@@ -198,11 +202,11 @@ dotfiles () {
 
 watchDogs() {
 	if [ $watchDogs == false ]; then
-		rm /home/wpgriggs/.watchDogs
-		echo true > /home/wpgriggs/.watchDogs
+		rm /home/wpgriggs/.watchdogs/.watchVar
+		echo true > /home/wpgriggs/.watchdogs/.watchVar
 	else
-		rm /home/wpgriggs/.watchDogs
-		echo false > /home/wpgriggs/.watchDogs
+		rm /home/wpgriggs/.watchdogs/.watchVar
+		echo false > /home/wpgriggs/.watchdogs/.watchVar
 	fi
 	reload
 }

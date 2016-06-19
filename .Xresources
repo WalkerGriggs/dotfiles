@@ -1,15 +1,16 @@
-!# ---------------------------------------------------------------------
+!# --------------------------------------------------------------------
 !# file:	~/.Xresources
 !# author:  	WalkerGriggs	- www.walkergriggs.com
-!# date:    	03/27/2016
-!# ---------------------------------------------------------------------
+!# date:    	06/18/2016
+!# --------------------------------------------------------------------
 
-#define sysColor 		#218693
+#define sysColor                #B3E512
 
-!# Xterm Settings ------------------------------------------------------
+!# Xterm Settings -----------------------------------------------------
 
 xterm*faceName:			DejaVu:size=12
-xterm*allowBoldFonts: 		false
+
+xterm*allowBoldFonts: 		true
 xterm*cursorColor: 		sysColor
 xterm*cursorBlink: 		true
 xterm*loginShell: 		true
@@ -21,4 +22,4 @@ xterm*toolBar: 			false
 !xterm*scrollTtyOutput: 	false
 !xterm*saveLines:		7500
 
-#include "/home/wpgriggs/.colors/smyck"
+#include "/home/wpgriggs/.colors/dedsec"

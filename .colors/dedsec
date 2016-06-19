@@ -1,0 +1,40 @@
+!# ---------------------------------------------------------------------
+!# file:	~/.colors/dedsec
+!# author:	WalkerGriggs	- www.walkergriggs.com
+!# date:    	06/18/2016
+!# ---------------------------------------------------------------------
+
+*background: #1A1A1A
+*foreground: #FAFAFA
+
+! Blacks
+*color0: #2E2E2E
+*color8: #404040
+
+! Reds
+*color1: #FF1065
+*color9: #FF1065
+
+! Greens
+*color2: #B3E512
+*color10: #B3E512
+
+! Yellows
+*color3: #FEAB12
+*color11: #FEAB12
+
+! Blues
+*color4: #0FBEFF
+*color12: #0FBEFF
+
+! Purples
+*color5: #C83CFF
+*color13: #C83CFF
+
+! Cyans
+*color6: #12CFFE
+*color14: #12CFFE
+
+! Whites
+*color7: #DADADA
+*color15: #FBFBFB
