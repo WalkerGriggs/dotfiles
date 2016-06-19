@@ -8,7 +8,7 @@ I saw an WatchDogs themed terminal, and wanted to stretch my bash legs implement
 # Current Tree:
 .
 ├── .colors </br>
-│   ├── base16 (al base16 Xresource files) </br>
+│   ├── base16 (all base16 Xresource files) </br>
 │   ├── blues </br>
 │   ├── darktooth </br>
 │   ├── dedsec </br>
