@@ -5,44 +5,58 @@ The include.csv file follows the format <Static System File Location>, <Relative
 # WatchDogs
 I saw an WatchDogs themed terminal, and wanted to stretch my bash legs implementing it. And when I say "stretch my bash legs", I mean, read in 2 easily overwritten files and print the string file if the boolean comes back true. I also added a 'watchDog' function to toggle between my standard bash config, and the ctOS config.
 
+Here are some examples:
+
+![alt tag](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEMedia/dedsec.png)
+![alt tag](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEMedia/ctOS.png)
+![alt tag](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEMedia/blume.png)
+
+
 # Current Tree:
-.
+. </br>
 ├── .colors </br>
-│   ├── base16 (all base16 Xresource files) </br>
+│   ├── base16 (all base16 Xresource files)</br>
 │   ├── blues </br>
 │   ├── darktooth </br>
 │   ├── dedsec </br>
-│   └── smyck </br>
+│   ├── onedark </br>
+│   ├── smyck </br>
+│   └── spacegray </br>
 ├── .i3 </br>
 │   ├── conky </br>
-│   │   └── conkyrc </br>
+│   │   ├── conkyrc </br>
+│   │   └── conkyrc~ </br>
 │   └── config </br>
 ├── .irssi </br>
 │   ├── scripts </br>
 │   │   └── autorun </br>
-│   │       ├── adv_windo </br>
+│   │       ├── adv_windowlist.pl </br>
 │   │       ├── nm.pl </br>
 │   │       └── trackbar.pl </br>
 │   ├── default.theme </br>
 │   ├── miromiro.theme </br>
 │   ├── pbrisbin.theme </br>
-│   └── test.theme </br>
+│   └── test.theme </br> </br>
 ├── .newsbeuter </br>
 │   ├── config </br>
 │   └── urls </br>
+├── READMEMedia </br>
+│   ├── blume.png </br>
+│   ├── ctOS.png </br> </br>
+│   └── dedsec.png </br>
 ├── .watchDogs </br>
 │   ├── .blumeText </br>
 │   ├── .ctOSText </br>
 │   ├── .dedText </br>
 │   └── .watchVar </br>
 ├── .bashrc </br>
-├──.Xresources </br>
 ├── .emacs </br>
-├── .vimrc </br>
 ├── include.csv </br>
-├── tree.txt </br>
 ├── LICENSE </br>
-└── README.md </br>
+├── README.md </br>
+├── tree.txt </br>
+├── .vimrc </br>
+└── .Xresources </br>
 
 11 directories, 175 files </br>
 
