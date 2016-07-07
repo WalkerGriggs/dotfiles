@@ -143,19 +143,15 @@
 │   │   ├── base16-twilight.light.xresources
 │   │   └── README.md
 │   ├── blues
-│   ├── blues~
 │   ├── darktooth
 │   ├── dedsec
-│   ├── dedsec~
+│   ├── onedark
 │   ├── smyck
-│   └── smyck~
+│   └── spacegray
 ├── .i3
 │   ├── conky
 │   │   ├── conkyrc
 │   │   └── conkyrc~
-│   ├── i3Styles
-│   │   ├── bareBones
-│   │   └── cleanRice
 │   └── config
 ├── .irssi
 │   ├── scripts
@@ -171,7 +167,9 @@
 │   ├── config
 │   └── urls
 ├── READMEMedia
-│   └── watchdogs.gif
+│   ├── blume.png
+│   ├── ctOS.png
+│   └── dedsec.png
 ├── .watchDogs
 │   ├── .blumeText
 │   ├── .ctOSText
@@ -186,4 +184,4 @@
 ├── .vimrc
 └── .Xresources
 
-11 directories, 175 files
+10 directories, 174 files

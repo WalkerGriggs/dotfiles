@@ -4,7 +4,7 @@
 !# date:    	06/18/2016
 !# --------------------------------------------------------------------
 
-#define sysColor                #B3E512
+#define sysColor                #61AFEF
 
 !# Xterm Settings -----------------------------------------------------
 
@@ -20,6 +20,6 @@ xterm*scrollKey: 		true
 xterm*toolBar: 			false
 
 !xterm*scrollTtyOutput: 	false
-!xterm*saveLines:		7500
+!xterm*saveLines:		    7500
 
-#include "/home/wpgriggs/.colors/dedsec"
+#include "/home/wpgriggs/.colors/onedark"

@@ -1,0 +1,6 @@
+# Dotfile script
+tree.txt
+include.csv
+
+# OS Files
+.DS_Store

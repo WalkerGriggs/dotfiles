@@ -174,7 +174,7 @@ mode "resize" {
 # Color Variables for i3-Bar and Conky --------------------------------
 set $background #1A1A1A
 set $foreground #FAFAFA 
-set $accent     #B3E512
+set $accent     #61AFEF      ####89EAB9
 
 client.focused		    $accent $accent $accent $accent
 client.unfocused        $background $background $background $background
@@ -208,5 +208,5 @@ new_window pixel 3
 
 # Execute on Start-Up -------------------------------------------------
 
-exec_always feh --bg-fill ~/Pictures/wd2/green.jpg
+exec_always feh --bg-fill ~/Pictures/sloth.jpg
 exec_always xrdb ~/.Xresources

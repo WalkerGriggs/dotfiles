@@ -108,7 +108,8 @@ unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)
     if [ $watchDogs == false ]; then
-        PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ "
+        #PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ " #decorated
+    	PS1="\[\e[1;34m\]\u\e[m@\e[1;37m\h \[\e[1;30m\]\w $\[\e[0m\] " #simple
     else
         # PS1="\[\e[30m\]\e[106m _ctOS_ apearce \[\e[0m \e[1;30m\]\w \[\e[97m\]" # ctOS
         # PS1="\[\e[97m\]Blume_ctOS t-bone@slave_A591185 \e[1;30m\]\w $ \[\e[97m\]" # Blume
