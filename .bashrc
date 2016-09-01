@@ -28,7 +28,7 @@ alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 
 # WatchDogs Term ------------------------------------------------------
-watchDogs=$(</home/wpgriggs/.watchdogs/.watchVar)
+watchDogs=$(</home/wpgriggs/.watchDogs/.watchVar)
 if [ $watchDogs == true ]; then
 	sleep .5
 	IFS='%'
@@ -38,7 +38,7 @@ if [ $watchDogs == true ]; then
 	while read line; do
 		printf "${GREEN}$line\n"
 		sleep .04
-	done</home/wpgriggs/.watchdogs/.dedText
+	done</home/wpgriggs/.watchDogs/.dedText
 fi
 
 # General bashrc ------------------------------------------------------
@@ -203,11 +203,11 @@ dotfiles () {
 
 watchDogs() {
 	if [ $watchDogs == false ]; then
-		rm /home/wpgriggs/.watchdogs/.watchVar
-		echo true > /home/wpgriggs/.watchdogs/.watchVar
+		rm /home/wpgriggs/.watchDogs/.watchVar
+		echo true > /home/wpgriggs/.watchDogs/.watchVar
 	else
-		rm /home/wpgriggs/.watchdogs/.watchVar
-		echo false > /home/wpgriggs/.watchdogs/.watchVar
+		rm /home/wpgriggs/.watchDogs/.watchVar
+		echo false > /home/wpgriggs/.watchDogs/.watchVar
 	fi
 	reload
 }
