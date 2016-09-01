@@ -1,6 +1,7 @@
 /home/wpgriggs/.bashrc,
 /home/wpgriggs/.Xresources,
 /home/wpgriggs/.emacs,
+/home/wpgriggs/.emacs.d/themes/*,.emacs.d/themes
 /home/wpgriggs/.vimrc,
 /home/wpgriggs/.watchdogs/.watchVar,.watchDogs
 /home/wpgriggs/.watchdogs/.dedText,.watchDogs

@@ -1,33 +1,41 @@
-!# ---------------------------------------------------------------------
-!# file:	~/.colors/darktooth
-!# author:	WalkerGriggs	- www.walkergriggs.com
-!# date:    	06/28/2016
-!# ---------------------------------------------------------------------
+!# --------------------------------------------------------------------
+!# file:    ~/.colors/darktooth
+!# author:  WalkerGriggs    www.walkergriggs.com
+!# date:    09/01/2016
+!# --------------------------------------------------------------------
 
 *.foreground:   #A89984
 *.background:   #1C1D1F
 *.cursorColor:  #A89984
 
+! Blacks
 *.color0: #1D2021
 *.color8: #665C54
 
+! Reds
 *.color1: #FB543F
 *.color9: #FB543F
 
+! Greens
 *.color2: #95C085
 *.color10: #95C085
 
+! Yellows
 *.color3: #FAC03B
 *.color11: #FAC03B
 
+! Blues
 *.color4: #0D6678
 *.color12: #0D6678
 
+! Purples
 *.color5: #8F4673
 *.color13: #8F4673
 
+! Cyans
 *.color6: #8BA59B
 *.color14: #8BA59B
 
+! Whites
 *.color7: #A89984
 *.color15: #FDF4C1

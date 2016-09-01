@@ -7,57 +7,57 @@ I saw an WatchDogs themed terminal, and wanted to stretch my bash legs implement
 
 Here are some examples:
 
-![alt tag](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEMedia/dedsec.png)
-![alt tag](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEMedia/ctOS.png)
-![alt tag](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEMedia/blume.png)
+![DedSecTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/dedsec.png)
+![ctOSTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/ctOS.png)
+![BlumeTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/blume.png)
 
 
-# Current Tree:
+# Current Tree (Ignoring various misc. files):
 . </br>
 ├── .colors </br>
-│   ├── base16 (all base16 Xresource files)</br>
-│   ├── blues </br>
-│   ├── darktooth </br>
-│   ├── dedsec </br>
-│   ├── onedark </br>
-│   ├── smyck </br>
-│   └── spacegray </br>
+│   ├── base16  </br>
+│   ├── blues </br>
+│   ├── darktooth </br>
+│   ├── dedsec </br>
+│   ├── onedark </br>
+│   ├── smyck </br>
+│   └── spacegray </br>
+├── .emacs.d </br>
+│   └── themes </br>
+│       ├── darktooth </br>
+│       │   ├── darktooth-theme.el </br>
+│       │   └── LICENSE </br>
+│       └── spacegray </br>
+│           ├── README.md </br>
+│           ├── spacegray1.png </br>
+│           └── spacegray-theme.el </br>
 ├── .i3 </br>
-│   ├── conky </br>
-│   │   ├── conkyrc </br>
-│   │   └── conkyrc~ </br>
-│   └── config </br>
+│   ├── conky </br>
+│   │   └── conkyrc </br>
+│   └── config </br>
 ├── .irssi </br>
-│   ├── scripts </br>
-│   │   └── autorun </br>
-│   │       ├── adv_windowlist.pl </br>
-│   │       ├── nm.pl </br>
-│   │       └── trackbar.pl </br>
-│   ├── default.theme </br>
-│   ├── miromiro.theme </br>
-│   ├── pbrisbin.theme </br>
-│   └── test.theme </br> </br>
+│   ├── scripts </br>
+│   │   └── autorun </br>
+│   │       ├── adv_windowlist.pl </br>
+│   │       ├── nm.pl </br>
+│   │       └── trackbar.pl </br>
+│   ├── default.theme </br>
+│   ├── miromiro.theme </br>
+│   ├── pbrisbin.theme </br>
+│   └── test.theme </br>
 ├── .newsbeuter </br>
-│   ├── config </br>
-│   └── urls </br>
-├── READMEMedia </br>
-│   ├── blume.png </br>
-│   ├── ctOS.png </br> </br>
-│   └── dedsec.png </br>
+│   ├── config </br>
+│   └── urls </br>
 ├── .watchDogs </br>
-│   ├── .blumeText </br>
-│   ├── .ctOSText </br>
-│   ├── .dedText </br>
-│   └── .watchVar </br>
+│   ├── .blumeText </br>
+│   ├── .ctOSText </br>
+│   ├── .dedText </br>
+│   └── .watchVar </br>
 ├── .bashrc </br>
 ├── .emacs </br>
-├── include.csv </br>
-├── LICENSE </br>
-├── README.md </br>
-├── tree.txt </br>
 ├── .vimrc </br>
 └── .Xresources </br>
 
-11 directories, 175 files </br>
+14 directories, 180 files
 
 Tree view given by: tree -a --dirsfirst -L 4 -I .git > tree.txt
