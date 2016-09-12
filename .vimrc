@@ -6,6 +6,15 @@
 
 nnoremap ; :
 
+set wildmenu "better command line completion
+set showcmd " Show partial commands
+set mouse=a "enable the use of mouse
+
+set visualbell
+set ruler
+
+syntax on
+
 set tabstop=2
 set expandtab
 set softtabstop=2
@@ -19,4 +28,8 @@ set showcmd
 set nocursorline
 set showmatch
 
-set list lcs=eol:¬,tab:>-,trail:.,nbsp:-
+set list lcs=eol:¬,tab:>-,trail:.,nbsp:_
+
+filetype on
+filetype indent on
+

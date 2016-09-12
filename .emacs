@@ -38,8 +38,8 @@
 (add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
 
 ;; Theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/spacegray")
-(load-theme 'spacegray t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'kooten t)
 
 ;; Smex
 (global-set-key (kbd "M-x") 'smex)
