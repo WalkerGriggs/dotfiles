@@ -16,4 +16,3 @@ Here are some examples:
 
 ![DedSecTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/dedsec.png)
 ![ctOSTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/ctOS.png)
-![BlumeTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/blume.png)
