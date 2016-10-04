@@ -1,51 +1,23 @@
 ;; ----------------------------------------------------------------------
 ;; file:        ~/.emacs
 ;; author:      WalkerGriggs     www.walkergriggs.com
-;; date:        09/01/2016
+;; date:        10/03/2016
 ;; ----------------------------------------------------------------------
-
-;; Sources referenced:
-;; http://aaronbedra.com/emacs.d/#start-up-options
 
 ;; Melpa
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+
 (package-initialize)
 
-;; Refresh Packages
-(when (not package-archive-contents)
-  (package-refresh-contents))
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-;; My Packages
-(defvar my-packages
-  '(
-    cider
-    org-bullets
-    smex
-    neotree
-    autopair
-    idle-highlight-mode
-  ))
-
-;; Install my packages
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-
-;; Font
-(add-to-list 'default-frame-alist '(font . "Inconsolata-12"))
-
-;; Theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'kooten t)
-
-;; Smex
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
 
 ;; Tabs
 (setq-default indent-tabs-mode nil) ;; Always spaces
@@ -64,55 +36,98 @@
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-;; Fringe
-(setq-default left-fringe-width  10)
-(setq-default right-fringe-width  10)
-
 ;; Menu Bars
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-
-;; Scroll Bar
-(scroll-bar-mode -1)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
-(setq mouse-wheel-progressive-speed nil)
-
-;; White Space
-(require 'whitespace)
-(global-whitespace-mode 1) ;; Whitespace ON.
-(setq whitespace-line-column 80) ;; Set indent limit.
-(add-hook 'prog-mode-hook 'whitespace-mode)
-
-(setq whitespace-display-mappings
-  ;; all numbers are Unicode codepoint in decimal. ⁖ (insert-char 182 1)g
-  '(
-    (space-mark 32 [183] [46]) ; 32 SPACE 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
-    (newline-mark 10 [172 10]) ; 10 LINE FEED
-    (tab-mark 9 [9655 9] [92 9]) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
-    ))
-
-(set-face-attribute 'whitespace-space nil :background nil :foreground "gray30")
-(set-face-attribute 'whitespace-newline nil :background nil :foreground "gray30")
-
-;; Idle Highlight Mode
-(defun idle-highlight-hook ()
-  (idle-highlight-mode 1))
-
-(add-hook 'emacs-lisp-mode-hook 'idle-highlight-hook)
-(add-hook 'clojure-mode-hook 'idle-highlight-hook)
-(add-hook 'python-mode-hook 'idle-highlight-hook)
-(add-hook 'java-mode-hook 'idle-highlight-hook)
-(add-hook 'js-mode-hook 'idle-highlight-hook)
 
 ;; Clipboard and Selection Mode
 (delete-selection-mode t)
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t)
 
-;; Linum Mode
-(global-linum-mode t)
-(setq linum-format "%d")
-(setq column-number-mode t)
+;; Theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'spacemacs-dark t)
+
+(use-package powerline
+  :ensure t
+  :config (powerline-default-theme))
+
+(use-package autopair
+  :init
+  (dolist (hook '(prog-mode-hook conf-mode-hook))
+    (add-hook hook #'autopair-mode)))
+
+(use-package whitespace
+  :init
+  (dolist (hook '(prog-mode-hook conf-mode-hook))
+    (add-hook hook #'whitespace-mode))
+  :config
+  (global-whitespace-mode 1) ;; Whitespace ON.
+  (setq whitespace-line-column 80) ;; Set indent limit.
+  (add-hook 'prog-mode-hook 'whitespace-mode)
+  (setq whitespace-display-mappings
+        '(
+          (space-mark 32 [183] [46])
+          (newline-mark 10 [172 10])
+          (tab-mark 9 [9655 9] [92 9])
+          )))
+
+;; Fringe
+(use-package fringe
+  :config
+  (setq-default left-fringe-width  10)
+  (setq-default right-fringe-width  10))
+
+;; Scroll Bar
+(use-package scroll-bar
+  :config
+  (scroll-bar-mode -1)
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+  (setq mouse-wheel-progressive-speed nil))
+
+;; Linum
+(use-package linum
+  :config
+  (global-linum-mode t)
+  (setq linum-format "%d")
+  (setq column-number-mode t))
+
+;; Smex
+;;(use-package smex
+;;  :ensure t
+ ;; :bind
+ ;; (("M-x" . smex))
+ ;; (("M-X" . smex-major-mode-commands))
+ ;; (("C-c C-c M-x" . execute-extended-command)))
+
+(use-package helm
+  :ensure t
+  :bind (("M-x" . helm-M-x)
+         ("C-x C-f" . helm-find-files))
+  :config
+  (setq helm-split-window-in-side-p t ;; opens helm inside window
+        helm-scroll-amount          8)
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-z") 'helm-select-action)
+  (setq helm-mode-fuzzy-match t))
+
+(use-package flycheck
+  :init
+  (dolist (hook '(org-mode-hook))
+    (add-hook hook #'flyspell-mode)))
+
+;; Org-Bullets
+(use-package org-mode
+  :config (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
+
+;; Idle Highlight
+(use-package idle-highlight-mode
+  :ensure t
+  :config (idle-highlight-mode 1)
+  :init
+  (dolist (hook '(prog-mode-hook conf-mode-hook))
+    (add-hook hook #'idle-highlight-mode)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -124,16 +139,18 @@
  '(neo-keymap-style (quote concise))
  '(neo-show-header nil)
  '(neo-show-hidden-files t)
- '(neo-theme (quote ascii))
+ '(neo-theme (quote ascii)
  '(neo-window-width 20))
-
-;; Org-Bullets
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda() (org-bullets-mode 1)))
+ '(org-startup-truncated t))
 
 ;; NeoTree
-(require 'neotree)
-(global-set-key [f4] 'neotree-toggle)
-(neotree-show)
+(use-package neotree
+  :ensure t
+  :init (neotree-show)
+  :bind (([f4] . neotree-toggle)))
 
-;; LANGUAGES
+(use-package cider
+  :ensure t
+  :config
+  (add-hook 'cider-mode-hook #'eldoc-mode)
+  (add-hook 'cider-repl-mode-hook #'paredit-mode))
