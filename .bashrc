@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------
-# file:		~/.bashrc
-# author:  	Walker Griggs	- www.walkergriggs.com
-# date:		06/18/2016    
+# file:    ~/.bashrc
+# author:  Walker Griggs - www.walkergriggs.com
+# date:    06/18/2016
 # ---------------------------------------------------------------------
 
 set -o noclobber # don't overwrite files
@@ -42,7 +42,7 @@ if [ $watchDogs == true ]; then
 	done</home/wpgriggs/.watchDogs/.dedText
 fi
 
-# General bashrc ------------------------------------------------------
+# General bashrc -----------------------------------------------------
 
 # If not running interactively, don't do anything
 case $- in
