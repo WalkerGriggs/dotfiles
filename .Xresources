@@ -1,25 +1,27 @@
 !# --------------------------------------------------------------------
-!# file:    ~/.Xresources
-!# author:  WalkerGriggs     www.walkergriggs.com
-!# date:    09/01/2016
+!# file:      ~/.Xresources
+!# author:    WalkerGriggs  - www.walkergriggs.com
+!# date:      12/18/2016
 !# --------------------------------------------------------------------
 
-#define sysColor          #61AFEF
+#define sysColor                #3676B3
 
 !# Xterm Settings -----------------------------------------------------
 
-xterm*faceName:           DejaVu:size=12
 
-xterm*allowBoldFonts:     true
-xterm*cursorColor:        sysColor
-xterm*cursorBlink:        true
-xterm*loginShell:         true
-xterm*termName:           xterm-256color
-xterm*scrollBar:          false
-xterm*scrollKey:          true
-xterm*toolBar:            false
+xterm*faceName:         meno:size=12
+!xterm*faceName:        DejaVu:size=12
 
-!xterm*scrollTtyOutput:   false
-!xterm*saveLines:         7500
+xterm*allowBoldFonts:   true
+xterm*cursorColor:      sysColor
+xterm*cursorBlink:      true
+xterm*loginShell:       true
+xterm*termName:         xterm-256color
+xterm*scrollBar:        false
+xterm*scrollKey:        true
+xterm*toolBar:          false
 
-#include "/home/wpgriggs/.colors/onedark"
+!xterm*scrollTtyOutput: false
+!xterm*saveLines:       7500
+
+#include "/home/wpgriggs/.colors/THEME_INCLUDE"

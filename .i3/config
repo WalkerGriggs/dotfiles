@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------
 # file:         ~/.i3/config
-# author: 	WalkerGriggs	- www.walkergriggs.com
-# date: 	06/18/2016
+# author:   WalkerGriggs  - www.walkergriggs.com
+# date:   06/18/2016
 # ---------------------------------------------------------------------
 
 set $mod Mod4
@@ -28,6 +28,9 @@ bindsym Ctrl+3 exec thunar
 bindsym Ctrl+4 exec atom
 bindsym Ctrl+5 exec emacs --no-site-file
 bindsym Ctrl+6 exec focuswriter
+bindsym Ctrl+7 exec plaidchat
+bindsym Ctrl+8 exec spotify
+bindsym Ctrl+9 exec google-chrome
 bindsym Ctrl+0 exec steam
 
 bindsym XF86AudioRaiseVolume exec amixer -c 1 set Master 1%+
@@ -47,6 +50,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym XF86Search exec dmenu_run
+bindsym Ctrl+d exec dmenu_run
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -170,43 +174,45 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+bindsym Mod1+r mode "resize"
 
 # Color Variables for i3-Bar and Conky --------------------------------
-set $background #1A1A1A
-set $foreground #FAFAFA 
-set $accent     #61AFEF      ####89EAB9
+set $background   #19191A
+set $foreground   #DBD6D1
+set $accent_light #3676B3
+set $accent_dark  #19191A
 
-client.focused		    $accent $accent $accent $accent
-client.unfocused        $background $background $background $background
-client.focused_inactive $background $background $background $background
-client.urgent           $foreground $foreground $foreground $foreground 
+client.focused          $accent_light $accent_light $accent_light $accent_light
+client.unfocused        $accent_dark  $accent_dark  $accent_dark  $accent_dark
+client.focused_inactive $background   $background   $background   $background
+client.urgent           $foreground   $foreground   $foreground   $foreground
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command conky -c $HOME/.i3/conky/conkyrc
-	mode dock
-	position top
-	font pango: DajaVu 10
+  status_command conky -c $HOME/.i3/conky/conkyrc
+  mode dock
+  position top
+  font pango: Menlo 10
 
 colors {
         background $background
-        statusline $foreground
-        separator $foreground
-      
-        focused_workspace  $background $background $foreground
-        active_workspace   $background $background $foreground
-        inactive_workspace $background $background $accent
-        urgent_workspace   $background $background $accent
+        statusline $accent_light
+        separator  $foreground
+
+        focused_workspace  $background $background $accent_light
+        active_workspace   $background $background $accent_light
+        inactive_workspace $background $background $foreground
+        urgent_workspace   $background $background $foreground
     }
 }
 
 # i3-Gaps  ------------------------------------------------------------
 
-gaps inner 15
+gaps inner 20
 new_window pixel 3
 
 # Execute on Start-Up -------------------------------------------------
 
-exec_always feh --bg-fill ~/Pictures/sloth.jpg
+exec_always feh --bg-tile ~/Pictures/escheresque_ste.png
 exec_always xrdb ~/.Xresources
