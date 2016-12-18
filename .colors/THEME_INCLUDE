@@ -1,0 +1,69 @@
+!# --------------------------------------------------------------------
+!# file:      ~/.colors/night_lights
+!# author:    WalkerGriggs  - www.walkergriggs.com
+!# date:      12/18/2016
+!# --------------------------------------------------------------------
+
+#define base00  #19191A
+#define base01  #313133
+#define base02  #3D3D40
+#define base03  #4A4A4D
+#define base04  #6F6F73
+#define base05  #949499
+#define base06  #B9B9BF
+#define base07  #DFDFE6
+
+#define base1A  #BF5C5C
+#define base0B  #36B360
+#define base1B  #5CBF7D
+#define base0C  #ACB336
+#define base1C  #BABF5C
+#define base0D  #3676B3
+#define base1D  #5C8FBF
+#define base0E  #8B36B3
+#define base1E  #A15DC0
+#define base0F  #369BB3
+#define base1F  #5CACBF
+
+*.foreground:   base07
+*.background:   base00
+
+! Blacks
+*.color0:       base00
+*.color8:       base03
+
+! Reds
+*.color1:       base0A
+*.color9:       base1A
+
+! Greens
+*.color2:       base0B
+*.color10:      base1B
+
+! Yellows
+*.color3:       base0C
+*.color11:      base1C
+
+! Blues
+*.color4:       base0D
+*.color12:      base1D
+
+! Purples
+*.color5:       base0E
+*.color13:      base1E
+
+! Cyans
+*.color6:       base0F
+*.color14:      base1F
+
+! Whites
+*.color7:       base05
+*.color15:      base07
+
+! Note: colors beyond 15 might not be loaded
+*.color16:      base01
+*.color17:      base02
+*.color18:      base03
+*.color19:      base04
+*.color20:      base05
+*.color21:      base06

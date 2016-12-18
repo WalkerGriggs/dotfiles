@@ -4,36 +4,36 @@
 !# date:    	06/18/2016
 !# --------------------------------------------------------------------
 
-*background: #1D1D1D
-*foreground: #FFFFFF
+*background: #212227
+*foreground: #CAD2E0
 
 ! Blacks
-*color0: #000000
+*color0: #1EF1F24
 *color8: #5D5D5D
 
 ! Reds
-*color1: #C75646
-*color9: #E09690
+*color1: #C76C58
+*color9: #DD6644
 
 ! Greens
-*color2: #8EB33B
-*color10: #CDEE69
+*color2: #778866
+*color10: #AABB99
 
 ! Yellows
-*color3: #D0B03C
-*color11: #FFe377
+*color3: #DDAA66
+*color11: #DDD666
 
 ! Blues
-*color4: #72B3CC
-*color12: #9CD9F0
+*color4: #334477
+*color12: #99AACC
 
 ! Purples
-*color5: #C8A0D1
-*color13: #FBB1F9
+*color5: #775566
+*color13: #AA8899
 
 ! Cyans
-*color6: #218693
-*color14: #77DFD8
+*color6: #778899
+*color14: #CCDDEE
 
 ! Whites
 *color7: #B0B0B0

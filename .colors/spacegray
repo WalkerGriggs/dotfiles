@@ -1,41 +1,33 @@
 !# --------------------------------------------------------------------
-!# file:    ~/.colors/spacegray
-!# author:  WalkerGriggs  www.walkergriggs.com
-!# date:    06/28/2016
+!# file:	~/.colors/spacegray
+!# author:	WalkerGriggs	- www.walkergriggs.com
+!# date:    	06/28//2016
 !# --------------------------------------------------------------------
 
 *.foreground:   #d0d0d0
 *.background:   #202020
 *.cursorColor:  #6A9FB5
 
-! Blacks
 *.color0: #101010
 *.color8: #454545
 
-! Reds
 *.color1: #AC4142
 *.color9: #AC4142
 
-! Greens
 *.color2: #90A959
 *.color10:#90A959
 
-! Yellows
 *.color3: #F4BF75
 *.color11:#F4BF75
 
-! Blues
 *.color4: #6A9FB5
 *.color12:#6A9FB5
 
-! Purples
 *.color5: #AA759F
 *.color13:#AA759F
 
-! Cyans
 *.color6: #75B5AA
 *.color14:#75B5AA
 
-! Whites
 *.color7: #E0E0E0
 *.color15:#F0F0F0

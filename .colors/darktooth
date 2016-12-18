@@ -1,41 +1,33 @@
-!# --------------------------------------------------------------------
-!# file:    ~/.colors/darktooth
-!# author:  WalkerGriggs    www.walkergriggs.com
-!# date:    09/01/2016
-!# --------------------------------------------------------------------
+!# ---------------------------------------------------------------------
+!# file:	~/.colors/darktooth
+!# author:	WalkerGriggs	- www.walkergriggs.com
+!# date:    	06/28/2016
+!# ---------------------------------------------------------------------
 
-*.foreground:   #A89984
-*.background:   #1C1D1F
-*.cursorColor:  #A89984
+*.foreground:   #928374
+*.background:   #232426
+*.cursorColor:  #928374
 
-! Blacks
-*.color0: #1D2021
-*.color8: #665C54
+*.color0: #232426
+*.color8: #8C7F6E
 
-! Reds
-*.color1: #FB543F
-*.color9: #FB543F
+*.color1: #E66950
+*.color9: #D97F6D
 
-! Greens
-*.color2: #95C085
-*.color10: #95C085
+*.color2: #8FB36B
+*.color10: #91A67C
 
-! Yellows
-*.color3: #FAC03B
-*.color11: #FAC03B
+*.color3: #E6CD50
+*.color11: #D9C76C
 
-! Blues
-*.color4: #0D6678
-*.color12: #0D6678
+*.color4: #6C75A6
+*.color12:#7A7F99
 
-! Purples
-*.color5: #8F4673
-*.color13: #8F4673
+*.color5:  #BF8FAF
+*.color13: #B398AA
 
-! Cyans
-*.color6: #8BA59B
-*.color14: #8BA59B
+*.color6: #6B998D
+*.color14: #708C85
 
-! Whites
-*.color7: #A89984
-*.color15: #FDF4C1
+*.color7: #E68422
+*.color15: #D98D41
