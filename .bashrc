@@ -1,13 +1,7 @@
 # ---------------------------------------------------------------------
-<<<<<<< HEAD
 # File:     ~/.bashrc
 # author:   Walker Griggs   - www.walkergriggs.com
 # date:     12/18/2016
-=======
-# file:    ~/.bashrc
-# author:  Walker Griggs - www.walkergriggs.com
-# date:    06/18/2016
->>>>>>> ad6f5392a7396cb68784465a2375e30d3b150128
 # ---------------------------------------------------------------------
 
 set -o noclobber # don't overwrite files
