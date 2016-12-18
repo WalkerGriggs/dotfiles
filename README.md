@@ -10,7 +10,7 @@ I finally got around to uploading some pictures of what my config files actually
 ![Emacs](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/2.png)
 
 # WatchDogs
-I saw an WatchDogs themed terminal, and wanted to stretch my bash legs implementing it. And when I say "stretch my bash legs", I mean, read in 2 easily overwritten files and print the string file if the boolean comes back true. I also added a 'watchDog' function to toggle between my standard bash config, and the ctOS config.
+I saw a WatchDogs themed terminal, and wanted to stretch my bash legs implementing it. And when I say "stretch my bash legs", I mean, read in 2 easily overwritten files and print the string file if the boolean comes back true. I also added a 'watchDog' function to toggle between my standard bash config, and the ctOS config.
 
 Here are some examples:
 
