@@ -60,8 +60,18 @@ let g:airline_symbols.linenr = ''
 " Removes the need for Shift-;
 nnoremap ; :
 
+" Splitting made easy...
+set splitbelow
+set splitright
+
+" split below, split right, swap, and exit
+nnoremap <silent> <F1> :split<CR>
+nnoremap <silent> <F2> :vsplit<CR>
+nnoremap <silent> <F3> <C-W>R
+nnoremap <silent> <F4> :exit<CR>
+
 " Toggle NERDTree
-nnoremap <silent> <F4> :NERDTreeToggle<CR>
+nnoremap <silent> <F5> :NERDTreeToggle<CR>
 
 set wildmenu "better command line completion
 set showcmd " Show partial commands
