@@ -1,0 +1,14 @@
+#!/bin/bash
+
+regex='^[0-9]+$'
+if [[ $1 =~ $regex ]] ; then
+  path=$PWD
+  for((i=1; i<=$1; i++)) do
+    path=$path/..
+  done
+  echo $path
+  cd $path
+else
+  echo "'$1' is not a valid integer."
+  echo "Usage: up <integer>"
+fi
