@@ -6,13 +6,13 @@ The include.csv file follows the format \<Static System File Location>, \<Relati
 
 I finally got around to uploading some pictures of what my config files actually look like:
 
-![Neofetch](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/1.png)
-![Emacs](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/2.png)
+![Neofetch](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/1.png)
+![Emacs](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/2.png)
 
 # WatchDogs
 I saw a WatchDogs themed terminal, and wanted to stretch my bash legs implementing it. And when I say "stretch my bash legs", I mean, read in 2 easily overwritten files and print the string file if the boolean comes back true. I also added a 'watchDog' function to toggle between my standard bash config, and the ctOS config.
 
 Here are some examples:
 
-![DedSecTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/dedsec.png)
-![ctOSTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/READMEdia/ctOS.png)
+![DedSecTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/dedsec.png)
+![ctOSTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/ctOS.png)
