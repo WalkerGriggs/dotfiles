@@ -16,11 +16,13 @@ alias colors='/home/wpgriggs/Documents/colors.sh'
 
 alias clla='clear && ls -al'
 alias ls='ls -h --color'
-alias la='ls -a'
-alias ll='ls -l'
-alias lla='ls -al'
+alias lla='ls -dUal -- .* *'
 alias date='date "+%F %T"'
 alias ..='cd ..'
+
+SCRIPT_P='/home/wpgriggs/Scripts/'
+alias up='. $SCRIPT_P/up'
+alias extract='. $SCRIPT_P/extract'
 
 alias reboot="sudo shutdown -r now"
 alias shutdown="sudo shutdown -h now"
@@ -169,45 +171,6 @@ welcome() {
     echo -e ""; df -h /dev/dm-1
     echo -e ""; fortune
     echo "";
-}
-
-extract() {
-    if [ -f $1 ] ; then
-        case $1 in
-            *.tar.bz2)   tar xvjf $1    ;;
-            *.tar.gz)    tar xvzf $1    ;;
-            *.tar.xz)    tar xvjf $1    ;;
-            *.bz2)       bunzip2 $1     ;;
-            *.rar)       rar x $1       ;;
-            *.gz)        gunzip $1      ;;
-            *.tar)       tar xvf $1     ;;
-            *.tbz2)      tar xvjf $1    ;;
-            *.tgz)       tar xvzf $1    ;;
-            *.zip)       unzip $1       ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x $1        ;;
-            *.xz)        unxz $1        ;;
-            *)           echo "don't know how to extract '$1'..." ;;
-        esac
-    else
-        echo "'$1' is not a valid file!"
-    fi
-}
-
-# Brings you "up" N directories
-up() {
-    regex='^[0-9]+$'
-    if [[ $1 =~ $regex ]] ; then
-        path=$PWD
-        for((i=1; i<=$1; i++)) do
-          path=$path/..
-        done
-        cd $path
-        export MPWD=$path
-    else
-        echo "'$1' is not a valid integer."
-        echo "Usage: up <integer>"
-    fi
 }
 
 # Sets .Xresource color theme given a file in ~/.colors
