@@ -14,6 +14,7 @@ alias news='newsbeuter -r'
 alias pingg='ping -c 3 www.google.com'
 alias colors='/home/wpgriggs/Documents/colors.sh'
 
+alias clla='clear && ls -al'
 alias ls='ls -h --color'
 alias la='ls -a'
 alias ll='ls -l'
