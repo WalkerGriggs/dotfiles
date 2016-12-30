@@ -29,7 +29,6 @@ alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
-
 # WatchDogs Term ------------------------------------------------------
 watchDogs=$(</home/wpgriggs/.watchDogs/.watchVar)
 if [ $watchDogs == true ]; then
@@ -112,7 +111,7 @@ case "$TERM" in
     xterm*|rxvt*)
         if [ $watchDogs == false ]; then
             #PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ " #decorated
-            PS1="\[\e[1;34m\]\u@\[\e[1;37m\]\h \[\e[1;30m\]\w $\[\e[m\] " #simple
+            PS1="\[\e[1;36m\]\u@\[\e[1;37m\]\h \[\e[1;30m\]\w $\[\e[m\] " #simple
         else
             #PS1="\[\e[30m\]\e[106m _ctOS_ apearce \[\e[0m \e[1;30m\]\w \[\e[97m\]" # ctOS
             #PS1="\[\e[97m\]Blume_ctOS t-bone@slave_A591185 \e[1;30m\]\w $ \[\e[97m\]" # Blume
@@ -172,7 +171,7 @@ welcome() {
     echo "";
 }
 
-extract () {
+extract() {
     if [ -f $1 ] ; then
         case $1 in
             *.tar.bz2)   tar xvjf $1    ;;
@@ -195,6 +194,23 @@ extract () {
     fi
 }
 
+# Brings you "up" N directories
+up() {
+    regex='^[0-9]+$'
+    if [[ $1 =~ $regex ]] ; then
+        path=$PWD
+        for((i=1; i<=$1; i++)) do
+          path=$path/..
+        done
+        cd $path
+        export MPWD=$path
+    else
+        echo "'$1' is not a valid integer."
+        echo "Usage: up <integer>"
+    fi
+}
+
+# Sets .Xresource color theme given a file in ~/.colors
 alias list_themes="ls -al /home/wpgriggs/.colors"
 set_theme() {
     path=/home/wpgriggs/.colors/
@@ -202,7 +218,8 @@ set_theme() {
         cp $path/$1 $path/THEME_INCLUDE
         reload # reload .Xresources and .bashrc with alias
     else
-        echo "'$path$1 is not a valid file!"
+        echo "'$path$1' is not a valid file."
+        echo "Usage: set_theme <theme found in ~/.colors>"
     fi
 }
 
