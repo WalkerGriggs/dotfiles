@@ -45,19 +45,30 @@
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t)
 
+;; Prog Hook
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+;; Window Splitting Made Easy
+(global-set-key [f1] 'split-window-horizontally)
+(global-set-key [f2] 'split-window-vertically)
+(global-set-key [f3] 'delete-window)
+
 ;; Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'spacemacs-dark t)
+(load-theme 'ample t)
 
+;; Powerline
 (use-package powerline
   :ensure t
   :config (powerline-default-theme))
 
+;; Autopair
 (use-package autopair
   :init
   (dolist (hook '(prog-mode-hook conf-mode-hook))
     (add-hook hook #'autopair-mode)))
 
+;; Whitespace
 (use-package whitespace
   :init
   (dolist (hook '(prog-mode-hook conf-mode-hook))
@@ -101,6 +112,7 @@
  ;; (("M-X" . smex-major-mode-commands))
  ;; (("C-c C-c M-x" . execute-extended-command)))
 
+;; Helm
 (use-package helm
   :ensure t
   :bind (("M-x" . helm-M-x)
@@ -112,6 +124,7 @@
   (define-key helm-map (kbd "C-z") 'helm-select-action)
   (setq helm-mode-fuzzy-match t))
 
+;; Flycheck
 (use-package flycheck
   :init
   (dolist (hook '(org-mode-hook))
@@ -149,8 +162,27 @@
   :init (neotree-show)
   :bind (([f4] . neotree-toggle)))
 
+;; Cide
 (use-package cider
   :ensure t
   :config
   (add-hook 'cider-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
+
+;; Useful definitions
+
+(defun lorem-ipsum ()
+  "Insert a lorem ipsum."
+    (interactive)
+      (insert "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do "
+              "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim"
+              "ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut "
+              "aliquip ex ea commodo consequat. Duis aute irure dolor in "
+              "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
+              "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
+              "culpa qui officia deserunt mollit anim id est laborum."))
+
+(defun insert-date ()
+  "Insert a time-stamp according to locale's date and time format."
+  (interactive)
+  (insert (format-time-string "%m_%d_%y" (current-time))))
