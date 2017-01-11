@@ -1,7 +1,7 @@
 ;; ----------------------------------------------------------------------
 ;; file:        ~/.emacs
 ;; author:      WalkerGriggs     www.walkergriggs.com
-;; date:        10/03/2016
+;; date:        01_10_17
 ;; ----------------------------------------------------------------------
 
 ;; Melpa
@@ -24,6 +24,14 @@
 (setq-default tab-width 2)
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'cperl-indent-level 'tab-width)
+
+;; UTF8
+(prefer-coding-system 'utf-8)
+(when (display-graphic-p)
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+
+;; Hippie Expand
+(bind-key "M-/" 'hippie-expand)
 
 ;; General Necessities
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -162,12 +170,22 @@
   :init (neotree-show)
   :bind (([f4] . neotree-toggle)))
 
-;; Cide
+;; Cider
 (use-package cider
   :ensure t
   :config
   (add-hook 'cider-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
+
+
+
+(add-hook 'python-mode-hook
+  (lambda ()
+    (setq indent-tabs-mode nil)
+    (setq tab-width 4)
+    (setq python-indent 4)))
+
+
 
 ;; Useful definitions
 
