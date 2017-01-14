@@ -1,14 +1,16 @@
-;; ----------------------------------------------------------------------
+;; ------------------------------------------------------------
 ;; file:        ~/.emacs
 ;; author:      WalkerGriggs     www.walkergriggs.com
-;; date:        01_10_17
-;; ----------------------------------------------------------------------
+;; date:        01_14_17
+;; ------------------------------------------------------------
 
 ;; Melpa
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
 (package-initialize)
 
@@ -16,6 +18,7 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(setq use-package-verbose t)
 
 (add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
 
@@ -30,9 +33,6 @@
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
-;; Hippie Expand
-(bind-key "M-/" 'hippie-expand)
-
 ;; General Necessities
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
@@ -43,6 +43,11 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
+
+;; Window Splitting Made Easy
+(global-set-key [f1] 'split-window-horizontally)
+(global-set-key [f2] 'split-window-vertically)
+(global-set-key [f3] 'delete-window)
 
 ;; Menu Bars
 (tool-bar-mode -1)
@@ -55,11 +60,6 @@
 
 ;; Prog Hook
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-
-;; Window Splitting Made Easy
-(global-set-key [f1] 'split-window-horizontally)
-(global-set-key [f2] 'split-window-vertically)
-(global-set-key [f3] 'delete-window)
 
 ;; Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -76,21 +76,13 @@
   (dolist (hook '(prog-mode-hook conf-mode-hook))
     (add-hook hook #'autopair-mode)))
 
-;; Whitespace
-(use-package whitespace
+;; Idle Highlight
+(use-package idle-highlight-mode
+  :ensure t
+  :config (idle-highlight-mode 1)
   :init
   (dolist (hook '(prog-mode-hook conf-mode-hook))
-    (add-hook hook #'whitespace-mode))
-  :config
-  (global-whitespace-mode 1) ;; Whitespace ON.
-  (setq whitespace-line-column 80) ;; Set indent limit.
-  (add-hook 'prog-mode-hook 'whitespace-mode)
-  (setq whitespace-display-mappings
-        '(
-          (space-mark 32 [183] [46])
-          (newline-mark 10 [172 10])
-          (tab-mark 9 [9655 9] [92 9])
-          )))
+    (add-hook hook #'idle-highlight-mode)))
 
 ;; Fringe
 (use-package fringe
@@ -112,25 +104,45 @@
   (setq linum-format "%d")
   (setq column-number-mode t))
 
-;; Smex
-;;(use-package smex
-;;  :ensure t
- ;; :bind
- ;; (("M-x" . smex))
- ;; (("M-X" . smex-major-mode-commands))
- ;; (("C-c C-c M-x" . execute-extended-command)))
-
-;; Helm
-(use-package helm
-  :ensure t
-  :bind (("M-x" . helm-M-x)
-         ("C-x C-f" . helm-find-files))
+;; Whitespace
+(use-package whitespace
+  :bind (("C-c C-w" . whitespace-mode))
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+    (add-hook hook #'whitespace-mode))
   :config
-  (setq helm-split-window-in-side-p t ;; opens helm inside window
-        helm-scroll-amount          8)
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-  (define-key helm-map (kbd "C-z") 'helm-select-action)
-  (setq helm-mode-fuzzy-match t))
+  (add-hook 'prog-mode-hook 'whitespace-mode)
+  (global-whitespace-mode t) ;; Whitespace ON.
+  (setq whitespace-global-modes '(not org-mode))
+  (setq whitespace-line-column 80) ;; Set indent limit.
+  (setq whitespace-display-mappings
+        '(
+          (space-mark 32 [183] [46])
+          (newline-mark 10 [172 10])
+          (tab-mark 9 [9655 9] [92 9]))))
+
+;; Org
+(use-package org
+  :ensure t
+  :mode (("\\.org$" . org-mode))
+  :bind (("C-c C-x C-i" . org-clock-in)
+         ("C-c C-x C-o" . org-clock-out)
+         ("C-c C-x C-j" . org-clock-goto)
+         ("C-c C-x C-r" . org-clock-report))
+  :config
+  (progn
+    (define-key org-mode-map "\M-q" 'toggle-truncate-lines)
+    (setq org-directory "~/org")
+    (setq org-clock-persist t)
+    (setq org-clock-mode-line-total 'current)
+    ;; config stuff
+    ))
+
+;; Org-Bullets
+(use-package org-bullets
+  :ensure t
+  :commands (org-bullets-mode)
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; Flycheck
 (use-package flycheck
@@ -138,36 +150,49 @@
   (dolist (hook '(org-mode-hook))
     (add-hook hook #'flyspell-mode)))
 
-;; Org-Bullets
-(use-package org-mode
-  :config (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
-
-;; Idle Highlight
-(use-package idle-highlight-mode
+;; Helm
+(use-package helm
   :ensure t
-  :config (idle-highlight-mode 1)
-  :init
-  (dolist (hook '(prog-mode-hook conf-mode-hook))
-    (add-hook hook #'idle-highlight-mode)))
+  :bind (("M-x" . helm-M-x)
+         ("C-x C-f" . helm-find-files))
+  :config
+  (setq helm-split-window-in-side-p        t ;; opens helm inside window
+        helm-move-to-line-cycle-in-source  t
+        helm-autoresize-min-height         20
+        helm-autoresize-max-height         35
+        helm-scroll-amount                 8)
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-z") 'helm-select-action)
+  (setq helm-mode-fuzzy-match t))
+
+
+;; Smex
+;;(use-package smex
+;;  :ensure t
+ ;; :bind
+ ;; (("M-x" . smex))
+ ;; (("M-X" . smex-major-mode-commands))
+;; (("C-c C-c M-x" . execute-extended-command)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(neo-create-file-auto-open t)
  '(neo-dont-be-alone nil)
  '(neo-keymap-style (quote concise))
  '(neo-show-header nil)
  '(neo-show-hidden-files t)
- '(neo-theme (quote ascii)
- '(neo-window-width 20))
+ '(neo-theme (quote ascii))
  '(org-startup-truncated t))
 
 ;; NeoTree
 (use-package neotree
   :ensure t
-  :init (neotree-show)
   :bind (([f4] . neotree-toggle)))
 
 ;; Cider
@@ -177,8 +202,7 @@
   (add-hook 'cider-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
 
-
-
+;; Python
 (add-hook 'python-mode-hook
   (lambda ()
     (setq indent-tabs-mode nil)
@@ -186,9 +210,7 @@
     (setq python-indent 4)))
 
 
-
 ;; Useful definitions
-
 (defun lorem-ipsum ()
   "Insert a lorem ipsum."
     (interactive)
@@ -204,3 +226,20 @@
   "Insert a time-stamp according to locale's date and time format."
   (interactive)
   (insert (format-time-string "%m_%d_%y" (current-time))))
+
+(defun insert-header (filename &optional args)
+  "Insert custom header onto file. (File, author, and date)"
+  (interactive "*fInsert file name: \nP")
+  (insert "------------------------------------------------------------\n")
+  (insert "file:        ")
+  (cond ((eq '- args)
+           (insert (file-relative-name filename)))
+          ((not (null args))
+           (insert (expand-file-name filename)))
+          (t
+           (insert filename)))
+  (insert "\nauthor:      WalkerGriggs     www.walkergriggs.com\n")
+  (insert "date:        ")
+  (insert (format-time-string "%m_%d_%y" (current-time)))
+  (insert "\n------------------------------------------------------------\n"))
+(global-set-key "\C-c\C-i" 'insert-header)
