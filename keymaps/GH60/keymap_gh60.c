@@ -1,3 +1,13 @@
+// ------------------------------------------------------------
+// file:        ~/keymap_gh60.c
+// author:      WalkerGriggs     www.walkergriggs.com
+// date:        01_14_17
+//
+// Modified layout from tmk_keyboard's, keymap_poker.c
+// Found at: github.com/tmk/tmk_keyboard/blob/master/keyboard/gh60/keymap_poker.c
+// Originally written by: yashikno and tmk
+// ------------------------------------------------------------
+
 #include "keymap_common.h"
 
 const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
