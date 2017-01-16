@@ -15,13 +15,7 @@
 ###                                             An X11 Theme Manager
 
 CURPATH=$(dirname "$0")
-CONFPATH=$CURPATH/conf
-BINPATH=$CURPATH/bin
-SCRIPTPATH=$CURPATH/script
-KBDFILE=./DotFiles/.colors/
-JQ=$BINPATH/jq
 CONFPATH=/users/wpgriggs/Desktop/DotFiles/.colors/
-#PATH=/users/wpgriggs/Desktop/DotFiles/.colors/
 
 function welcome {
     # Prints figlet ascii art starting with '###'
