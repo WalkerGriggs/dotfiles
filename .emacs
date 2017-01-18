@@ -5,12 +5,13 @@
 ;; ------------------------------------------------------------
 
 ;; Melpa
+;; Make sure to use httpS archives.
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/"))
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 (package-initialize)
 
@@ -19,6 +20,26 @@
   (package-refresh-contents)
   (package-install 'use-package))
 (setq use-package-verbose t)
+
+;; Lets secure out editor just a bit
+;; Found at: https://glyph.twistedmatrix.com/2015/11/editor-malware.html
+(setq tls-checktrust t)
+
+;; Because Emacs no longer trusts https, we need to distribute trust root certs
+;; I'm using PyPi 'certifi' which can be installed in pip.
+;; I'm also using gnutls-cli (Debian: gnutls-bin. OSX: gnutls)
+(let ((trustfile
+       (replace-regexp-in-string
+        "\\\\" "/"
+        (replace-regexp-in-string
+         "\n" ""
+         (shell-command-to-string "python -m certifi")))))
+  (setq tls-program
+        (list
+         (format "gnutls-cli%s --x509cafile %s -p %%p %%h"
+                 (if (eq window-system 'w32) ".exe" "") trustfile)))
+  (setq gnutls-verify-error t)
+  (setq gnutls-trustfiles (list trustfile)))
 
 (add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
 
@@ -165,6 +186,10 @@
   (define-key helm-map (kbd "C-z") 'helm-select-action)
   (setq helm-mode-fuzzy-match t))
 
+(use-package magit
+  :ensure t
+  :bind (("C-c s" . magit-status)
+         ("C-c d" . magit-diff)))
 
 ;; Smex
 ;;(use-package smex
@@ -181,7 +206,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" "3f5701c23d328be03536349b29cb24c5cfa79ea9ef9c46cf89668eda16b88a9c" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(neo-create-file-auto-open t)
  '(neo-dont-be-alone nil)
  '(neo-keymap-style (quote concise))
@@ -243,9 +268,3 @@
   (insert (format-time-string "%m_%d_%y" (current-time)))
   (insert "\n------------------------------------------------------------\n"))
 (global-set-key "\C-c\C-i" 'insert-header)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
