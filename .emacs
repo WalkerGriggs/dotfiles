@@ -181,7 +181,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+    ("938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" "3f5701c23d328be03536349b29cb24c5cfa79ea9ef9c46cf89668eda16b88a9c" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(neo-create-file-auto-open t)
  '(neo-dont-be-alone nil)
  '(neo-keymap-style (quote concise))
@@ -243,3 +243,9 @@
   (insert (format-time-string "%m_%d_%y" (current-time)))
   (insert "\n------------------------------------------------------------\n"))
 (global-set-key "\C-c\C-i" 'insert-header)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
