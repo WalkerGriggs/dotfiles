@@ -15,7 +15,7 @@
 ###                                             An X11 Theme Manager
 
 CURPATH=$(dirname "$0")
-CONFPATH=/users/wpgriggs/Desktop/DotFiles/.colors/
+CONFPATH= ~/.colors/
 
 function welcome {
     # Prints figlet ascii art starting with '###'
@@ -72,7 +72,7 @@ function copy_config {
     echo "Using configuration file:" $1
     if [ -f $CONFPATH/$1 ] ; then
         cp $CONFPATH/$1 $CONFPATH/THEME_INCLUDE
-        #reload # reload .Xresources and .bashrc with alias
+        xrdb ~/.Xresources # .Xresources and .bashrc with alias
     else
         echo "'$path$1' is not a valid file."
         echo "Usage: set_theme <theme found in ~/.colors>"

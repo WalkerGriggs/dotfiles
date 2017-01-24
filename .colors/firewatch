@@ -1,0 +1,34 @@
+*background: #282B34
+*foreground: #ABB2C0 
+
+! Blacks
+*color0: #6B7381
+*color8: #6B7381
+
+! Reds
+*color1: #E46A71
+*color9: #E46A71
+
+! Greens
+*color2: #67C488
+*color10: #67C488
+
+! Yellows
+*color3: #E7C271
+*color11: #E7C271
+
+! Blues
+*color4: #5B9BD1
+*color12: #5B9BD1
+
+! Purples
+*color5: #E16705
+*color13: #E16705
+
+! Cyans
+*color6: #4CB6C4
+*color14: #4CB6C4
+
+! White
+*color7: #EBEBFF
+*color15: #EBEBFF
