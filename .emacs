@@ -199,14 +199,25 @@
  ;; (("M-X" . smex-major-mode-commands))
 ;; (("C-c C-c M-x" . execute-extended-command)))
 
+(use-package multiple-cursors
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+         ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)
+         ("C-c C-<" . mc/mark-all-like-this)
+         ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
+
+(use-package rainbow-mode
+  :ensure t
+  :bind (("C-c C-r" . rainbow-mode))
+  :init
+  (dolist (hook '(prog-mode-hook html-mode-hook sass-mode-hook scss-mode-hook))
+    (add-hook hook 'rainbow-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(neo-create-file-auto-open t)
  '(neo-dont-be-alone nil)
  '(neo-keymap-style (quote concise))
@@ -268,3 +279,4 @@
   (insert (format-time-string "%m_%d_%y" (current-time)))
   (insert "\n------------------------------------------------------------\n"))
 (global-set-key "\C-c\C-i" 'insert-header)
+
