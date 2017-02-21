@@ -79,9 +79,6 @@
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t)
 
-;; Prog Hook
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
-
 ;; Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'ample t)
@@ -165,12 +162,6 @@
   :commands (org-bullets-mode)
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-;; Flycheck
-(use-package flycheck
-  :init
-  (dolist (hook '(org-mode-hook))
-    (add-hook hook #'flyspell-mode)))
-
 ;; Helm
 (use-package helm
   :ensure t
@@ -199,6 +190,7 @@
  ;; (("M-X" . smex-major-mode-commands))
 ;; (("C-c C-c M-x" . execute-extended-command)))
 
+;; Multiple Cursors
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
@@ -206,12 +198,13 @@
          ("C-c C-<" . mc/mark-all-like-this)
          ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
 
+;; Rainbow Mode
 (use-package rainbow-mode
   :ensure t
   :bind (("C-c C-r" . rainbow-mode))
   :init
   (dolist (hook '(prog-mode-hook html-mode-hook sass-mode-hook scss-mode-hook))
-    (add-hook hook 'rainbow-mode))
+    (add-hook hook 'rainbow-mode)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -245,6 +238,40 @@
     (setq tab-width 4)
     (setq python-indent 4)))
 
+;; Web Mode
+(use-package web-mode
+  :mode (("\\.html\\'" . web-mode)))
+
+;; Flycheck
+(use-package flycheck
+  :init
+  (dolist (hook '(org-mode-hook))
+    (add-hook hook #'flyspell-mode)))
+
+;; Latex
+(use-package auctex
+  :ensure t
+  :mode ("\\.tex\\'" . latex-mode)
+  :commands (latex-mode LaTeX-mode plain-tex-mode)
+  :init
+  (progn
+    (add-hook 'LaTeX-mode-hook #'LaTeX-preview-setup)
+    (add-hook 'LaTeX-mode-hook #'flyspell-mode)
+    (add-hook 'Latex-mode-hook #'flyspell-buffer)
+    (setq TeX-auto-save t
+          TeX-parse-self t
+          TeX-save-query nil)))
+
+;; Flymake
+(use-package flymake :disabled t)
+
+;; Flyspell
+(use-package flyspell
+  :ensure t
+  :init
+  (progn
+    (add-hook 'prog-mode-hook #'flyspell-prog-mode)
+    (add-hook 'text-mode-hook #'flyspell-mode)))
 
 ;; Useful definitions
 (defun lorem-ipsum ()
@@ -279,4 +306,3 @@
   (insert (format-time-string "%m_%d_%y" (current-time)))
   (insert "\n------------------------------------------------------------\n"))
 (global-set-key "\C-c\C-i" 'insert-header)
-

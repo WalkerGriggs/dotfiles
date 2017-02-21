@@ -174,12 +174,12 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym Mod1+r mode "resize"
+bindsym $mod+r mode "resize"
 
 # Color Variables for i3-Bar and Conky --------------------------------
 set $background   #19191A
 set $foreground   #DBD6D1
-set $accent_light #3676B3
+set $accent_light #0FBEFF
 set $accent_dark  #19191A
 
 client.focused          $accent_light $accent_light $accent_light $accent_light
@@ -209,10 +209,11 @@ colors {
 
 # i3-Gaps  ------------------------------------------------------------
 
-gaps inner 20
+# gaps inner 20
 new_window pixel 3
 
 # Execute on Start-Up -------------------------------------------------
 
-exec_always feh --bg-tile ~/Pictures/escheresque_ste.png
+exec_always /home/wpgriggs/.screenlayout/two_over_one_up.sh
+exec_always feh --bg-fill ~/Pictures/blackpool.jpg --bg-fill ~/Pictures/greece.jpg --bg-stretch ~/Pictures/ship.jpg
 exec_always xrdb ~/.Xresources
