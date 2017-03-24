@@ -273,6 +273,21 @@
     (add-hook 'prog-mode-hook #'flyspell-prog-mode)
     (add-hook 'text-mode-hook #'flyspell-mode)))
 
+;; MySQL
+(use-package sqlup-mode
+  :ensure t)
+
+(use-package sql-mysql
+  :init
+  (progn
+    (add-hook 'sql-mode-hook 'sqlup-mode)
+    (add-hook 'sql-interactive-mode-hook 'sqlup-mode)
+    (add-hook 'sql-interactive-mode-hook
+              (lambda ()
+                (toggle-truncate-lines t))))
+  :config
+  (global-set-key (kbd "C-c u") 'sqlup-capitalize-keywords-in-region))
+
 ;; Useful definitions
 (defun lorem-ipsum ()
   "Insert a lorem ipsum."
