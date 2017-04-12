@@ -209,11 +209,11 @@ colors {
 
 # i3-Gaps  ------------------------------------------------------------
 
-# gaps inner 20
+gaps inner 20
 new_window pixel 3
 
 # Execute on Start-Up -------------------------------------------------
 
-exec_always /home/wpgriggs/.screenlayout/two_over_one_up.sh
-exec_always feh --bg-fill ~/Pictures/blackpool.jpg --bg-fill ~/Pictures/greece.jpg --bg-stretch ~/Pictures/ship.jpg
+exec_always feh --bg-fill ~/Pictures/root.jpg 
+exec_always xmodmap ~/.Xmodmap
 exec_always xrdb ~/.Xresources
