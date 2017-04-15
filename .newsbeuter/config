@@ -4,13 +4,15 @@
 # date:    	06/18/2016
 # ----------------------------------------------------------------------
 
-browser lynx
+browser firefox
 
 # Key Binds ------------------------------------------------------------
 
-unbind-key	R
-bind-key	^R	reload-all
-bind-key	"SPACE"	open
+bind-key	"RIGHT"	open
+bind-key  "LEFT" quit
+bind-key  "ENTER" open-in-browser-and-mark-read
+
+#macro o open-in-browser; toggle-article-read "read"
 
 # Hide Settings --------------------------------------------------------
 
@@ -19,7 +21,8 @@ ignore-article "*" "title =~ \"Advertisement\""
 ignore-mode "display"
  	
 # General Settings -----------------------------------------------------
-
+auto-reload yes
+notify-xterm yes
 show-read-feeds 		no
 always-display-description 	yes
 cleanup-on-quit			yes

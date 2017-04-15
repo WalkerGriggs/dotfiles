@@ -1,9 +1,17 @@
-http://feeds.feedburner.com/TechCrunch/
-http://rss.nytimes.com/services/xml/rss/nyt/Politics.xml
-http://rss.nytimes.com/services/xml/rss/nyt/PersonalTech.xml
-http://rss.nytimes.com/services/xml/rss/nyt/Wold.xml
-https://teksyndicate.com/rss
-http://www.wired.com/category/gear/feed
-http://www.wired.com/category/threatlevel/feed
-https://www.eff.org/rss
+http://feeds.feedburner.com/TechCrunch/ Tech
+http://rss.nytimes.com/services/xml/rss/nyt/Politics.xml Politics
+http://rss.nytimes.com/services/xml/rss/nyt/PersonalTech.xml Tech
+http://rss.nytimes.com/services/xml/rss/nyt/Wold.xml News
+https://teksyndicate.com/rss Tech
+http://www.wired.com/category/gear/feed Tech
+http://www.wired.com/category/threatlevel/feed News
+https://www.eff.org/rss/updates.xml Tech
+https://www.theatlantic.com/feed/channel/politics/ Politics
+https://www.theatlantic.com/feed/channel/business/ Money
+https://www.theatlantic.com/feed/channel/science/ Tech
+https://www.theatlantic.com/feed/channel/news/ News
+http://www.wsj.com/xml/rss/3_7455.xml News
+http://www.wsj.com/xml/rss/3_7085.xml News
+http://www.wsj.com/xml/rss/3_7014.xml Money
+http://www.wsj.com/xml/rss/3_7031.xml Money
 "query:Unread Articles:unread = \"yes\""
