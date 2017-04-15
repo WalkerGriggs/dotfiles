@@ -14,6 +14,7 @@ alias wifi='nmtui'
 alias news='newsbeuter -r'
 alias pingg='ping -c 3 www.google.com'
 alias colors='/home/wpgriggs/Documents/colors.sh'
+alias age='sudo tune2fs -l /dev/sda2 | grep "created"'
 
 alias clla='clear && ls -al'
 alias ls='ls -h --color'
@@ -21,7 +22,7 @@ alias lla='ls -dUal -- .* *'
 alias date='date "+%F %T"'
 alias ..='cd ..'
 
-SCRIPT_P='/home/wpgriggs/Scripts/'
+SCRIPT_P='/home/wpgriggs/scripts/'
 alias up='. $SCRIPT_P/up'
 alias extract='. $SCRIPT_P/extract'
 
@@ -32,6 +33,7 @@ alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
+
 # WatchDogs Term ------------------------------------------------------
 watchDogs=$(</home/wpgriggs/.watchDogs/.watchVar)
 if [ $watchDogs == true ]; then
