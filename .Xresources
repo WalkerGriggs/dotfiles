@@ -21,6 +21,8 @@ xterm*scrollBar:        false
 xterm*scrollKey:        true
 xterm*toolBar:          false
 
+xterm*selectToClipboard: true
+
 !xterm*scrollTtyOutput: false
 !xterm*saveLines:       7500
 
