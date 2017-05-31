@@ -1,40 +1,59 @@
-# ------------------------------------------------------------
-# file:        ~/.bashrc
-# author:      WalkerGriggs     www.walkergriggs.com
-# date:        01_14_17
-# ------------------------------------------------------------
+# ---------------------------------------------------------------------
+# File:     ~/.bashrc
+# author:   Walker Griggs   - www.walkergriggs.com
+# date:     05/31/2017
+# ---------------------------------------------------------------------
 
-
-set -o noclobber # don't overwrite files
+set -o noclobber # dont overwrite files
 
 # Aliases -------------------------------------------------------------
 
 alias reload='xrdb ~/.Xresources & source ~/.bashrc'
+
+# Layout ----------------------
+alias ANSI='setxkbmap us'
+alias JIS='setxkbmap jp'
+
+# Docker ----------------------
+alias dps='docker ps -a'
+alias drm_stopped='docker ps -aq --no-trunc | xargs docker rm'
+alias drmi_untagged='docker images -q --filter dangling=true | xargs docker rmi'
+alias dbuild='docker build --rm -t'
+
+# General Utils ---------------
 alias wifi='nmtui'
+alias vpn='sh /home/wpgriggs/Builds/pia.sh'
 alias news='newsbeuter -r'
 alias pingg='ping -c 3 www.google.com'
-alias colors='/home/wpgriggs/Documents/colors.sh'
+alias date='date "+%F %T"'
 alias age='sudo tune2fs -l /dev/sda2 | grep "created"'
 
+# List ------------------------
 alias clla='clear && ls -al'
 alias ls='ls -h --color'
-alias lla='ls -dUal -- .* *'
-alias date='date "+%F %T"'
-alias ..='cd ..'
+alias lla='ls -dUhal -- .* *'
+alias ..='cd ../'
 
-SCRIPT_P='/home/wpgriggs/scripts/'
+# Scripts ---------------------
+SCRIPT_P='/home/wpgriggs/Scripts/'
 alias up='. $SCRIPT_P/up'
 alias extract='. $SCRIPT_P/extract'
+alias colors='. $SCRIPT_P/colors'
 
+# System ----------------------
 alias reboot="sudo shutdown -r now"
 alias shutdown="sudo shutdown -h now"
 
+# apt-get ---------------------
 alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 
 # WatchDogs Term ------------------------------------------------------
+# Watchdog term is an old bit of bash config that I wrote to emulate the
+# style of the Watchdog game series. It has to real functionality and I'm
+# eventually going to move it out of .bashrc.
 watchDogs=$(</home/wpgriggs/.watchDogs/.watchVar)
 if [ $watchDogs == true ]; then
     sleep .5
@@ -115,8 +134,8 @@ unset color_prompt force_color_prompt
 case "$TERM" in
     xterm*|rxvt*)
         if [ $watchDogs == false ]; then
-            #PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ " #decorated
-            PS1="\[\e[1;36m\]\u@\[\e[1;37m\]\h \[\e[1;30m\]\w $\[\e[m\] " #simple
+            PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ " #decorated
+            #PS1="\[\e[1;35m\]\u@\[\e[1;37m\]\h \[\e[0;32m\]\w $\[\e[m\] " #simple
         else
             #PS1="\[\e[30m\]\e[106m _ctOS_ apearce \[\e[0m \e[1;30m\]\w \[\e[97m\]" # ctOS
             #PS1="\[\e[97m\]Blume_ctOS t-bone@slave_A591185 \e[1;30m\]\w $ \[\e[97m\]" # Blume
@@ -165,6 +184,10 @@ fi
 
 
 # Functions -----------------------------------------------------------
+
+# NOTE: in all honesty, the following functions are quite bush league.
+# They were written as early bash tests. Better off just deleting these...
+
 welcome() {
     figlet "Hey, " $USER "!";
     echo -e ""; neofetch
@@ -208,3 +231,9 @@ watchDogs() {
     fi
     reload
 }
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
