@@ -8,7 +8,7 @@ set -o noclobber # dont overwrite files
 
 # Aliases -------------------------------------------------------------
 
-alias reload='xrdb ~/.Xresources & source ~/.bashrc'
+alias reload='xrdb $HOME/.Xresources & source $HOME/.bashrc'
 
 # Layout ----------------------
 alias ANSI='setxkbmap us'
@@ -22,11 +22,12 @@ alias dbuild='docker build --rm -t'
 
 # General Utils ---------------
 alias wifi='nmtui'
-alias vpn='sh /home/wpgriggs/Builds/pia.sh'
+alias vpn='sh $HOME/Builds/pia.sh'
 alias news='newsbeuter -r'
 alias pingg='ping -c 3 www.google.com'
 alias date='date "+%F %T"'
 alias age='sudo tune2fs -l /dev/sda2 | grep "created"'
+alias weather='curl wttr.in/bos?q2p'
 
 # List ------------------------
 alias clla='clear && ls -al'
@@ -35,37 +36,19 @@ alias lla='ls -dUhal -- .* *'
 alias ..='cd ../'
 
 # Scripts ---------------------
-SCRIPT_P='/home/wpgriggs/Scripts/'
-alias up='. $SCRIPT_P/up'
-alias extract='. $SCRIPT_P/extract'
-alias colors='. $SCRIPT_P/colors'
+alias up='. $HOME/Scripts/up'
+alias extract='. $HOME/Scripts/extract'
+alias colors='. $HOME/Scripts/colors'
 
 # System ----------------------
 alias reboot="sudo shutdown -r now"
 alias shutdown="sudo shutdown -h now"
 
 # apt-get ---------------------
-alias install='sudo apt-get install'
+#alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
-
-# WatchDogs Term ------------------------------------------------------
-# Watchdog term is an old bit of bash config that I wrote to emulate the
-# style of the Watchdog game series. It has to real functionality and I'm
-# eventually going to move it out of .bashrc.
-watchDogs=$(</home/wpgriggs/.watchDogs/.watchVar)
-if [ $watchDogs == true ]; then
-    sleep .5
-    IFS='%'
-    CYAN='\033[1;36m'
-    GREEN='\033[1;32m'
-    WHITE='\033[1;97m'
-    while read line; do
-        printf "${GREEN}$line\n"
-        sleep .04
-    done</home/wpgriggs/.watchDogs/.dedText
-fi
 
 # General bashrc -----------------------------------------------------
 
@@ -133,14 +116,8 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
     xterm*|rxvt*)
-        if [ $watchDogs == false ]; then
-            PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ " #decorated
-            #PS1="\[\e[1;35m\]\u@\[\e[1;37m\]\h \[\e[0;32m\]\w $\[\e[m\] " #simple
-        else
-            #PS1="\[\e[30m\]\e[106m _ctOS_ apearce \[\e[0m \e[1;30m\]\w \[\e[97m\]" # ctOS
-            #PS1="\[\e[97m\]Blume_ctOS t-bone@slave_A591185 \e[1;30m\]\w $ \[\e[97m\]" # Blume
-            PS1="\[\e[1;32m\]C:/DEDSEC_TAKEOVER mholloway \w ////\[\e[0m \[\e[1;30m\]\[\e[0m\]" # Dedsec
-        fi
+       PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ " #decorated
+       #PS1="\[\e[1;35m\]\u@\[\e[1;37m\]\h \[\e[0;32m\]\w $\[\e[m\] " #simple
         # Default prompt: PS1='\[\e]0\e[0;31m;\u\e[m@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
         ;;
     *)
@@ -200,9 +177,9 @@ welcome() {
 }
 
 # Sets .Xresource color theme given a file in ~/.colors
-alias list_themes="ls -al /home/wpgriggs/.colors"
+alias list_themes="ls -al /home/wgriggs/.colors"
 set_theme() {
-    path=/home/wpgriggs/.colors/
+    path=$HOME/.colors/
     if [ -f $path/$1 ] ; then
         cp $path/$1 $path/THEME_INCLUDE
         reload # reload .Xresources and .bashrc with alias
@@ -210,26 +187,6 @@ set_theme() {
         echo "'$path$1' is not a valid file."
         echo "Usage: set_theme <theme found in ~/.colors>"
     fi
-}
-
-dotfiles () {
-    foo=/home/wpgriggs/Documents/DotFiles
-    while IFS=, read xx yy; do
-        echo $foo/$yy
-        mkdir -p $foo/$yy
-        cp -rvu $xx $foo/$yy
-    done < /home/wpgriggs/Documents/DotFiles/include.csv
-}
-
-watchDogs() {
-    if [ $watchDogs == false ]; then
-        rm /home/wpgriggs/.watchDogs/.watchVar
-        echo true > /home/wpgriggs/.watchDogs/.watchVar
-    else
-        rm /home/wpgriggs/.watchDogs/.watchVar
-        echo false > /home/wpgriggs/.watchDogs/.watchVar
-    fi
-    reload
 }
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.

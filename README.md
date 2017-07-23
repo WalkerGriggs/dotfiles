@@ -1,18 +1,12 @@
-# Personal DotFiles
-Current dot-files and config-files for my many machines.
-The include.csv file follows the format \<Static System File Location>, \<Relative Destination (Root if blank)>. This ties with the .bashrc 'dotfiles' function, which compiles all desired files into one git repo directory.
+Personal DotFiles
+===================
+This repository contains many of my person .dot/config files. Take them with a grain of salt, and don't assume everything in here is best practice. Changes you find a legacy config from 2 machines ago are high, so many sure you read through the file before copy/pasting.
 
-# My Environment
+If you have find something you think is incorrect, or could be improved upon, feel free to create an issue or pull request.
 
-I finally got around to uploading some pictures of what my config files actually look like:
+## My Environment
 
-![Neofetch](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/1.png)
-![Emacs](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/2.png)
+After quite a few iterations, I finally got around to uploading some screenshots of what my environment actually looks like. That being said, I have a few machines, and these pictures are from my most recent Deb9 install:
 
-# WatchDogs
-I saw a WatchDogs themed terminal, and wanted to stretch my bash legs implementing it. And when I say "stretch my bash legs", I mean, read in 2 easily overwritten files and print the string file if the boolean comes back true. I also added a 'watchDog' function to toggle between my standard bash config, and the ctOS config.
-
-Here are some examples:
-
-![DedSecTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/dedsec.png)
-![ctOSTerm](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/ctOS.png)
+![Env](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/env.png)
+![Rofi](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/rofi.png)

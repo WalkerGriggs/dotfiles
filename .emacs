@@ -7,7 +7,6 @@
 ;; Melpa
 ;; Make sure to use httpS archives.
 (require 'package)
-(setq package-enable-at-startup nil)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives
@@ -41,7 +40,7 @@
   (setq gnutls-verify-error t)
   (setq gnutls-trustfiles (list trustfile)))
 
-(add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
+;;(add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
 
 ;; Tabs
 (setq-default indent-tabs-mode nil) ;; Always spaces
@@ -90,17 +89,17 @@
 
 ;; Autopair
 (use-package autopair
-  :init
+  :config
   (dolist (hook '(prog-mode-hook conf-mode-hook))
     (add-hook hook #'autopair-mode)))
 
 ;; Idle Highlight
-(use-package idle-highlight-mode
-  :ensure t
-  :config (idle-highlight-mode 1)
-  :init
-  (dolist (hook '(prog-mode-hook conf-mode-hook))
-    (add-hook hook #'idle-highlight-mode)))
+;;(use-package idle-highlight-mode
+;;  :ensure t
+;;  :config (idle-highlight-mode 1)
+;;  :init
+;;  (dolist (hook '(prog-mode-hook conf-mode-hook))
+;;    (add-hook hook #'idle-highlight-mode)))
 
 ;; Fringe
 (use-package fringe
