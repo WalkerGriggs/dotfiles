@@ -7,7 +7,8 @@
 ;
 ;=====================================================
 
-[bar/bottom]
+[bar/primary]
+monitor = ${env:PRIMARY_MONITOR:DP-1}
 ; bottom = true
 width = 100%
 height = 25
@@ -26,9 +27,42 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-;font-0 = unifont:size=9;1
-;font-1 = tamsyn:pixelsize=10;0
-;font-2 = unifont:size=6;-1
+font-0 = NotoSans-Regular:size=9;0
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=8;-1
+font-3 = FontAwesome:size=10;0
+font-4 = unifont:size=6;-3
+font-5 = siji:size=6;-3
+font-6 = fixed:size=8;0
+
+font-7 = NotoSans-Regular:size=10;0
+font-8 = MaterialIcons:size=6;0
+
+separator = |
+wm-restack = i3
+
+modules-left = i3
+modules-center = date
+modules-right = xkeyboard volume cpu-extended memory-extended battery wifi wired vpn-name vpn-ip
+
+[bar/secondary]
+; bottom = true
+width = 100%
+height = 25
+offset-x = 0
+offset-y = 0
+
+background = #2B2E37
+foreground = #ccfafafa
+
+spacing = 1
+lineheight = 1
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
 
 font-0 = NotoSans-Regular:size=9;0
 font-1 = MaterialIcons:size=10;0
@@ -43,14 +77,12 @@ font-8 = MaterialIcons:size=6;0
 
 
 separator = |
+wm-restack = i3
 
 modules-left = i3
 modules-center = date
-modules-right = xkeyboard volume cpu-extended memory-extended battery wifi wired vpncheck
+modules-right = 
 
-;tray-position = right
-
-wm-restack = i3
 
 [module/i3]
 type = internal/i3
@@ -76,13 +108,19 @@ label-visible = x %index%
 label-visible-foreground = #444
 label-visible-padding = 2
 
-[module/vpncheck]
+[module/vpn-name]
 type = custom/script
-exec = ping -c 1 google.com | grep -i from | awk '{print $4}' | sed 's/.$//'
-interval = 5
+exec-if = pgrep -x openvpn
+exec =  nmcli --terse -f TYPE,NAME conn show --active | sed -n 's/^vpn://p'
+interval = 0.25
+label = %output%
+
+[module/vpn-ip]
+type = custom/script
+exec-if = pgrep -x openvpn
+exec = dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
+interval = 0.25
 label = VPN %{F#555}%output% %{F-}
-format-underline = #268bd2
-format-prefix-foreground = #5b
 
 [module/date]
 type = internal/date
@@ -108,7 +146,7 @@ label = %percentage%%
 
 [module/cpu-extended]
 type = internal/cpu
-interval = 0.2
+interval = 0.1
 
 format = <label> <ramp-coreload>
 label = CPU
@@ -200,10 +238,10 @@ animation-packetloss-framerate = 500
 
 [module/wired]
 type = internal/network
-interface = enp3s0
+interface = enp4s0
 interval = 0.1
 
-label-connected =  %ifname% %{F#66}%local_ip% [%linkspeed%] %{F#ff}%upspeed% %downspeed%
+label-connected = %ifname% %{F#66}%local_ip% %{F#ff}
 label-disconnected = %{F#66}%ifname% 
 label-disconnected-foreground = #66
 

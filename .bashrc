@@ -11,8 +11,9 @@ set -o noclobber # dont overwrite files
 alias reload='xrdb $HOME/.Xresources & source $HOME/.bashrc'
 
 # Layout ----------------------
-alias ANSI='setxkbmap us'
+alias ANSI='setxkbmap us && xmodmap $HOME/.Xmodmap'
 alias JIS='setxkbmap jp'
+alias XMM='xmodmap $HOME/.Xmodmap'
 
 # Docker ----------------------
 alias dps='docker ps -a'
