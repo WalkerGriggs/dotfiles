@@ -8,7 +8,7 @@
 ;=====================================================
 
 [bar/primary]
-monitor = ${env:PRIMARY_MONITOR:DP-1}
+;monitor = ${env:PRIMARY_MONITOR:DP-1}
 ; bottom = true
 width = 100%
 height = 25
@@ -43,7 +43,7 @@ wm-restack = i3
 
 modules-left = i3
 modules-center = date
-modules-right = xkeyboard volume cpu-extended memory-extended battery wifi wired vpn-name vpn-ip
+modules-right = xkeyboard volume cpu-extended memory-extended battery-0 battery-1 wifi wired vpn-name vpn-ip
 
 [bar/secondary]
 ; bottom = true
@@ -276,16 +276,28 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = #66
 
-[module/battery]
+[module/battery-0]
+type = internal/battery
+full_at = 98
+battery = BAT0
+adapter = ADP1
+poll-interval = 1
+
+format-charging = B0 +<label-charging>
+format-discharging = B0 -<label-discharging>
+format-full = B0 <label-full>
+animation-charging-framerate_ms = 750
+
+[module/battery-1]
 type = internal/battery
 full_at = 98
 battery = BAT1
 adapter = ADP1
 poll-interval = 1
 
-format-charging = BAT +<label-charging>
-format-discharging = BAT -<label-discharging>
-format-full = BAT <label-full>
+format-charging = B1 +<label-charging>
+format-discharging = B1 -<label-discharging>
+format-full = B1 <label-full>
 animation-charging-framerate_ms = 750
 
 [module/memory-simple]
