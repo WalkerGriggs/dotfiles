@@ -27,70 +27,38 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = NotoSans-Regular:size=9;0
-font-1 = MaterialIcons:size=10;0
+;;font-0 = NotoSans-Regular:size=10-;0
+font-0 = SourceCodePro-Regular:size=9;;0
+font-1 = MaterialIcons:size=10;-3
 font-2 = Termsynu:size=8;-1
 font-3 = FontAwesome:size=10;0
 font-4 = unifont:size=6;-3
 font-5 = siji:size=6;-3
 font-6 = fixed:size=8;0
 
-font-7 = NotoSans-Regular:size=10;0
+;;font-7 = NotoSans-Regular:size=10;0
+font-7 = SourceCodePro-Regular:size=10;1
 font-8 = MaterialIcons:size=6;0
 
 separator = |
 wm-restack = i3
 
-modules-left = i3
+modules-left = i3 xwindow
 modules-center = date
-modules-right = xkeyboard volume cpu-extended memory-extended battery-0 battery-1 wifi wired vpn-name vpn-ip
+modules-right = xkeyboard volume cpu-extended memory-simple battery-1 wifi wired vpn-name vpn-ip
 
-[bar/secondary]
-; bottom = true
-width = 100%
-height = 25
-offset-x = 0
-offset-y = 0
-
-background = #2B2E37
-foreground = #ccfafafa
-
-spacing = 1
-lineheight = 1
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 2
-module-margin-right = 2
-
-font-0 = NotoSans-Regular:size=9;0
-font-1 = MaterialIcons:size=10;0
-font-2 = Termsynu:size=8;-1
-font-3 = FontAwesome:size=10;0
-font-4 = unifont:size=6;-3
-font-5 = siji:size=6;-3
-font-6 = fixed:size=8;0
-
-font-7 = NotoSans-Regular:size=10;0
-font-8 = MaterialIcons:size=6;0
-
-
-separator = |
-wm-restack = i3
-
-modules-left = i3
-modules-center = date
-modules-right = 
-
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
 
 [module/i3]
 type = internal/i3
+strip-wsnumbers=true
+index-sort = true
 format = <label-state>
 
 ;pin-workspaces = true
 ;wsname-maxlen = 1
-;index-sort = true
 
 label-focused = %{F#55aa55}%index%%{F}
 label-focused-background = #ee333333
@@ -252,7 +220,7 @@ headphone_mixer = Headphone
 headphone_control_numid = 9
 
 format-volume = <ramp-volume> <label-volume>
-label-muted =   muted
+label-muted = muted
 label-muted-foreground = #66
 
 ramp-volume-0 = 

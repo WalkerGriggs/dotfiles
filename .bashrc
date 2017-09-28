@@ -11,9 +11,8 @@ set -o noclobber # dont overwrite files
 alias reload='xrdb $HOME/.Xresources & source $HOME/.bashrc'
 
 # Layout ----------------------
-alias ANSI='setxkbmap us && xmodmap $HOME/.Xmodmap'
+alias ANSI='setxkbmap us'
 alias JIS='setxkbmap jp'
-alias XMM='xmodmap $HOME/.Xmodmap'
 
 # Docker ----------------------
 alias dps='docker ps -a'
@@ -52,6 +51,13 @@ alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 
 # General bashrc -----------------------------------------------------
+
+# Set window title to PWD
+case $TERM in
+  xterm*)
+  PROMPT_COMMAND='echo -ne "\033]0; $PWD \007";'
+  ;;
+esac
 
 # If not running interactively, don't do anything
 case $- in
@@ -117,8 +123,8 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
     xterm*|rxvt*)
-       PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ " #decorated
-       #PS1="\[\e[1;35m\]\u@\[\e[1;37m\]\h \[\e[0;32m\]\w $\[\e[m\] " #simple
+       #PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ " #decorated
+       PS1="\[\e[1;35m\]\u@\[\e[1;37m\]\h \[\e[0;32m\]\w $\[\e[m\] " #simple
         # Default prompt: PS1='\[\e]0\e[0;31m;\u\e[m@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
         ;;
     *)
