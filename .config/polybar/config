@@ -7,6 +7,34 @@
 ;
 ;=====================================================
 
+[colors]
+;background = #2B2E37
+;foreground = #CCFAFA
+
+background = ${xrdb:*.background}
+foreground = ${xrdb:*.foreground}
+
+color1 = ${xrdb:*.color1}
+color9 = ${xrdb:*.color9}
+
+color2 = ${xrdb:*.color2}
+color10 = ${xrdb:*.color10}
+
+color3 = ${xrdb:*.color3}
+color11 = ${xrdb:*.color11}
+
+color4 = ${xrdb:*.color4}
+color12 = ${xrdb:*.color12}
+
+color5 = ${xrdb:*.color5}
+color13 = ${xrdb:*.color13}
+
+color6 = ${xrdb:*.color6}
+color14 = ${xrdb:*.color15}
+
+color7 = ${xrdb:*.color7}
+color15 = ${xrdb:*.color15}
+
 [bar/primary]
 ;monitor = ${env:PRIMARY_MONITOR:DP-1}
 ; bottom = true
@@ -15,8 +43,8 @@ height = 25
 offset-x = 0
 offset-y = 0
 
-background = #2B2E37
-foreground = #ccfafafa
+background = ${colors.background}
+foreground = ${colors.foreground}
 
 spacing = 1
 lineheight = 1
@@ -27,7 +55,6 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-;;font-0 = NotoSans-Regular:size=10-;0
 font-0 = SourceCodePro-Regular:size=9;;0
 font-1 = MaterialIcons:size=10;-3
 font-2 = Termsynu:size=8;-1
@@ -36,7 +63,6 @@ font-4 = unifont:size=6;-3
 font-5 = siji:size=6;-3
 font-6 = fixed:size=8;0
 
-;;font-7 = NotoSans-Regular:size=10;0
 font-7 = SourceCodePro-Regular:size=10;1
 font-8 = MaterialIcons:size=6;0
 
@@ -45,11 +71,7 @@ wm-restack = i3
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = xkeyboard volume cpu-extended memory-simple battery-1 wifi wired vpn-name vpn-ip
-
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
+modules-right = xkeyboard volume battery-total cpu-extended memory-simple wifi wired vpn ip
 
 [module/i3]
 type = internal/i3
@@ -76,19 +98,9 @@ label-visible = x %index%
 label-visible-foreground = #444
 label-visible-padding = 2
 
-[module/vpn-name]
-type = custom/script
-exec-if = pgrep -x openvpn
-exec =  nmcli --terse -f TYPE,NAME conn show --active | sed -n 's/^vpn://p'
-interval = 0.25
-label = %output%
-
-[module/vpn-ip]
-type = custom/script
-exec-if = pgrep -x openvpn
-exec = dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
-interval = 0.25
-label = VPN %{F#555}%output% %{F-}
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
 
 [module/date]
 type = internal/date
@@ -121,34 +133,34 @@ label = CPU
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
-ramp-coreload-0-foreground = #55aa55
+ramp-coreload-0-foreground = ${colors.color2}
 ramp-coreload-1 = ▂
 ramp-coreload-1-font = 2
-ramp-coreload-1-foreground = #55aa55
+ramp-coreload-1-foreground = ${colors.color2}
 ramp-coreload-2 = ▃
 ramp-coreload-2-font = 2
-ramp-coreload-2-foreground = #55aa55
+ramp-coreload-2-foreground = ${colors.color2}
 ramp-coreload-3 = ▄
 ramp-coreload-3-font = 2
-ramp-coreload-3-foreground = #55aa55
+ramp-coreload-3-foreground = ${colors.color3}
 ramp-coreload-4 = ▅
 ramp-coreload-4-font = 2
-ramp-coreload-4-foreground = #f5a70a
+ramp-coreload-4-foreground = ${colors.color3}
 ramp-coreload-5 = ▆
 ramp-coreload-5-font = 2
-ramp-coreload-5-foreground = #f5a70a
+ramp-coreload-5-foreground = ${colors.color3}
 ramp-coreload-6 = ▇
 ramp-coreload-6-font = 2
-ramp-coreload-6-foreground = #ff5555
+ramp-coreload-6-foreground = ${colors.color1}
 ramp-coreload-7 = █
 ramp-coreload-7-font = 2
-ramp-coreload-7-foreground = #ff5555
+ramp-coreload-7-foreground = ${colors.color1}
 
 bar-load-width = 20
-bar-load-foreground-0 = #55aa55
-bar-load-foreground-1 = #55aa55
-bar-load-foreground-2 = #f5a70a
-bar-load-foreground-3 = #ff5555
+bar-load-foreground-0 = ${colors.color2}
+bar-load-foreground-1 = ${colors.color2}
+bar-load-foreground-2 = ${colors.color3}
+bar-load-foreground-3 = ${colors.color1}
 bar-load-gradient = false
 bar-load-indicator = │
 bar-load-indicator-font = 2
@@ -167,24 +179,27 @@ ping_interval = 10
 udspeed-minwidth = 4
 
 format-connected = <label-connected>
-label-connected = %essid% %{F#66}%local_ip% %{F#ff}
+label-connected = %essid%
+
+; For connected IP
+;%{F#66}%local_ip% %{F#ff}
 
 ; <ramp-signal>
 ramp-signal-0 = ▁
 ramp-signal-0-font = 2
-ramp-signal-0-foreground =  #ff5555
+ramp-signal-0-foreground =  ${colors.color1}
 ramp-signal-1 = ▂
 ramp-signal-1-font = 2
-ramp-signal-1-foreground =  #f5a70a
+ramp-signal-1-foreground =  ${colors.color3}
 ramp-signal-2 = ▄
 ramp-signal-2-font = 2
-ramp-signal-2-foreground =  #f5a70a
+ramp-signal-2-foreground =  ${colors.color3}
 ramp-signal-3 = ▆
 ramp-signal-3-font = 2
-ramp-signal-3-foreground = #55aa55
+ramp-signal-3-foreground = ${colors.color2}
 ramp-signal-4 = ▇
 ramp-signal-4-font = 2
-ramp-signal-4-foreground =  #55aa55
+ramp-signal-4-foreground =  ${colors.color2}
 
 ;ramp-signal-0 = 1
 ;ramp-signal-1 = 2
@@ -198,7 +213,7 @@ label-disconnected-foreground = #66
 
 format-packetloss = <animation-packetloss> <label-connected>
 animation-packetloss-0 = ⚠
-animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-0-foreground = ${colors.color3}
 animation-packetloss-1 = 📶
 animation-packetloss-1-foreground = #000000
 animation-packetloss-framerate = 500
@@ -209,9 +224,27 @@ type = internal/network
 interface = enp4s0
 interval = 0.1
 
-label-connected = %ifname% %{F#66}%local_ip% %{F#ff}
+label-connected = %ifname%
+
+; For connected IP
+; %{F#66}%local_ip% %{F#ff}
+
 label-disconnected = %{F#66}%ifname% 
 label-disconnected-foreground = #66
+
+[module/vpn]
+type = custom/script
+exec-if = pgrep -x openvpn
+exec =  nmcli --terse -f TYPE,NAME conn show --active | sed -n 's/^vpn://p'
+interval = 0.25
+label = %output%
+
+[module/ip]
+type = custom/script
+exec = $HOME/Scripts/ip.sh
+interval = 2
+label = %{F#555}%output%
+format = <label>
 
 [module/volume]
 type = internal/volume
@@ -219,7 +252,7 @@ speaker_mixer = Speaker
 headphone_mixer = Headphone
 headphone_control_numid = 9
 
-format-volume = <ramp-volume> <label-volume>
+format-volume = VOL <label-volume>
 label-muted = muted
 label-muted-foreground = #66
 
@@ -227,7 +260,6 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
-
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -244,19 +276,7 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = #66
 
-[module/battery-0]
-type = internal/battery
-full_at = 98
-battery = BAT0
-adapter = ADP1
-poll-interval = 1
-
-format-charging = B0 +<label-charging>
-format-discharging = B0 -<label-discharging>
-format-full = B0 <label-full>
-animation-charging-framerate_ms = 750
-
-[module/battery-1]
+[module/battery]
 type = internal/battery
 full_at = 98
 battery = BAT1
@@ -267,6 +287,13 @@ format-charging = B1 +<label-charging>
 format-discharging = B1 -<label-discharging>
 format-full = B1 <label-full>
 animation-charging-framerate_ms = 750
+
+[module/battery-total]
+type = custom/script
+exec = "sum=$(acpi -b | egrep -o '[0-9]{1,3}%' | tr -d '%' | xargs -I% echo -n '+%'); echo $(( sum ))%"
+interval = 5
+label=%output%
+format=BAT <label>
 
 [module/memory-simple]
 type = internal/memory
@@ -279,10 +306,10 @@ format = <label> <bar-used>
 label = RAM %gb_used%
 
 bar-used-width = 20
-bar-used-foreground-0 = #aaff77
-bar-used-foreground-1 = #aaff77
-bar-used-foreground-2 = #fba922
-bar-used-foreground-3 = #ff5555
+bar-used-foreground-0 = ${colors.color2}
+bar-used-foreground-1 = ${colors.color2}
+bar-used-foreground-2 = ${colors.color3}
+bar-used-foreground-3 = ${colors.color1}
 bar-used-indicator =  ▇
 bar-used-indicator-font = 9
 bar-used-indicator-foreground = #ff
