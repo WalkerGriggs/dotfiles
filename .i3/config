@@ -51,8 +51,17 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym XF86Search exec dmenu_run
-bindsym Ctrl+i exec rofi -show wind -modi wind:$HOME/Scripts/wind.sh
-bindsym Ctrl+d exec rofi -show run -lines 5 -width 100 -padding 300 -fullscreen -opacity "85" -font "Roboto Light 40" -separator-style "none" -config "/$HOME/.config/rofi/config"
+
+# Rofi Wind
+#bindsym Ctrl+i exec rofi -show wind -modi wind:$HOME/Scripts/wind.sh
+
+# Fullscreen Rofi
+# bindsym Ctrl+d exec rofi -show run -lines 5 -width 100 -padding 300 -fullscreen -opacity "85" -font "Roboto Light 40" -separator-style "none" -config "/$HOME/.config/rofi/config"
+
+# Simple Rofi
+bindsym Ctrl+d exec rofi -show run -config "/$HOME/.config/rofi/simple"
+
+
 #bindsym Ctrl+g exec rofi -dmenu -p "google: " -show run -lines 1 -width 100 -padding 300 -fullscreen -opacity "85" -font "Roboto Light 40" -separator-style "none" -config "/$HOME/.config/rofi/config" | xargs -I{} xdg-open https://www.google.com/search?q={}
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -216,7 +225,7 @@ client.background       $base07
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command exec polybar primary
+  status_command exec polybar primary & polybar secondary
   mode invisible
   position top
   font pango: Menlo 10
