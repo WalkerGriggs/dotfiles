@@ -51,16 +51,13 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym XF86Search exec dmenu_run
-
-# Rofi Wind
-#bindsym Ctrl+i exec rofi -show wind -modi wind:$HOME/Scripts/wind.sh
+bindsym Ctrl+i exec rofi -show wind -modi wind:$HOME/Scripts/wind.sh
 
 # Fullscreen Rofi
 # bindsym Ctrl+d exec rofi -show run -lines 5 -width 100 -padding 300 -fullscreen -opacity "85" -font "Roboto Light 40" -separator-style "none" -config "/$HOME/.config/rofi/config"
 
 # Simple Rofi
 bindsym Ctrl+d exec rofi -show run -config "/$HOME/.config/rofi/simple"
-
 
 #bindsym Ctrl+g exec rofi -dmenu -p "google: " -show run -lines 1 -width 100 -padding 300 -fullscreen -opacity "85" -font "Roboto Light 40" -separator-style "none" -config "/$HOME/.config/rofi/config" | xargs -I{} xdg-open https://www.google.com/search?q={}
 
@@ -203,7 +200,7 @@ set $base03 #707880
 set $base04 #C9CCD3
 set $base05 #CDD3DE
 set $base06 #D5DBE5
-set $base07 #FFFFFF
+set $base07 #E7E8EB
 set $base08 #EC5F67
 set $base09 #EA9560
 set $base0A #FFCC00
@@ -225,7 +222,7 @@ client.background       $base07
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command exec polybar primary & polybar secondary
+  status_command exec polybar primary
   mode invisible
   position top
   font pango: Menlo 10
@@ -243,19 +240,17 @@ colors {
 }
 
 # i3-Gaps  ------------------------------------------------------------
+new_window normal 0px
 
 gaps inner 15
 gaps outer 5
 smart_gaps on
 smart_borders on
-new_window normal 0
-
-#new_window pixel 3
 
 # Execute on Start-Up -------------------------------------------------
-
 exec_always ./.screenlayout/school.sh       # monitor layout
 exec_always feh --bg-fill ~/Pictures/cyber.jpg  # wallpaper
 exec_always compton                         # load compton
+exec_always gnome-settings-daemon
 exec_always xmodmap ~/.Xmodmap              # set keyboard layout
 exec_always xrdb ~/.Xresources              # load Xresource

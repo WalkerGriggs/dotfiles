@@ -1,0 +1,30 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("Xresources"
+ (filename . "~/.Xresources")
+ (front-context-string . "!# -------------")
+ (rear-context-string)
+ (position . 1))
+("bashrc"
+ (filename . "~/.bashrc")
+ (front-context-string . "# --------------")
+ (rear-context-string)
+ (position . 1))
+("polybar"
+ (filename . "~/.config/polybar/config")
+ (front-context-string . ";===============")
+ (rear-context-string)
+ (position . 1))
+("i3"
+ (filename . "~/.i3/config")
+ (front-context-string . "# --------------")
+ (rear-context-string)
+ (position . 1))
+("emacs"
+ (filename . "~/.emacs")
+ (front-context-string . ";; -------------")
+ (rear-context-string)
+ (position . 1))
+)

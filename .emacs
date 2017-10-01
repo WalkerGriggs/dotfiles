@@ -40,7 +40,32 @@
   (setq gnutls-verify-error t)
   (setq gnutls-trustfiles (list trustfile)))
 
-;;(add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
+;; Theme / Font
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'default-frame-alist '(font . "SourceCodePro-11"))
+(load-theme 'doom-one t)
+
+;; Startup
+(setq initial-scratch-message "")
+(setq inhibit-startup-message t)
+(setq visible-bell nil)
+
+;; Break Lines (for Dashboard)
+(use-package page-break-lines
+  :ensure t
+  :config
+  (page-break-lines-mode))
+
+;; Startup Dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-banner-logo-title "")
+  (setq dashboard-startup-banner 4)
+  (setq dashboard-items '((bookmarks . 5)
+                          (recents . 10)
+                          (agenda . 5))))
 
 ;; Tabs
 (setq-default indent-tabs-mode nil) ;; Always spaces
@@ -78,14 +103,12 @@
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t)
 
-;; Theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'ample t)
-
 ;; Powerline
 (use-package powerline
   :ensure t
-  :config (powerline-default-theme))
+  :init (progn
+          (setq powerline-arrow-shape 'curve)   ;; give your mode-line curves
+          (powerline-default-theme)))
 
 ;; Autopair
 (use-package autopair
@@ -93,18 +116,18 @@
   (dolist (hook '(prog-mode-hook conf-mode-hook))
     (add-hook hook #'autopair-mode)))
 
-;; Idle Highlight
-;;(use-package idle-highlight-mode
-;;  :ensure t
-;;  :config (idle-highlight-mode 1)
-;;  :init
-;;  (dolist (hook '(prog-mode-hook conf-mode-hook))
-;;    (add-hook hook #'idle-highlight-mode)))
+;;Idle Highlight
+(use-package idle-highlight-mode
+  :ensure t
+  :config (idle-highlight-mode 1)
+  :init
+  (dolist (hook '(prog-mode-hook conf-mode-hook))
+    (add-hook hook #'idle-highlight-mode)))
 
 ;; Fringe
 (use-package fringe
   :config
-  (setq-default left-fringe-width  10)
+  (setq-default left-fringe-width  20)
   (setq-default right-fringe-width  10))
 
 ;; Scroll Bar
@@ -181,6 +204,10 @@
   :bind (("C-c s" . magit-status)
          ("C-c d" . magit-diff)))
 
+(use-package git-gutter-fringe+
+  :ensure t
+  :init (global-git-gutter+-mode))
+
 ;; Smex
 ;;(use-package smex
 ;;  :ensure t
@@ -210,6 +237,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#454545" "#cd5542" "#6aaf50" "#baba36" "#5180b3" "#ab75c3" "#68a5e9" "#bdbdb3"])
+ '(custom-safe-themes
+   (quote
+    ("0b05332cff4d50d2fad5c567acff2f6dfe8e7c4d63930e4265aaac7908e5273c" "365d9553de0e0d658af60cff7b8f891ca185a2d7ba3fc6d29aadba69f5194c7f" "4182c491b5cc235ba5f27d3c1804fc9f11f51bf56fb6d961f94788be034179ad" "94146ac747852749e9444b184eb1e958f0e546072f66743929a05c3af62de473" "3a20bf1e8c8d44d0ac7354d29f0f8722881c25f014f5065a0b4fb53895606478" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" "f8cf128fa0ef7e61b5546d12bb8ea1584c80ac313db38867b6e774d1d38c73db" "e068203104e27ac7eeff924521112bfcd953a655269a8da660ebc150c97d0db8" "31cda5d49c1b7d595b7bafa9fc73ad5db51fd93077423224d3e1f9beb7446118" default)))
  '(neo-create-file-auto-open t)
  '(neo-dont-be-alone nil)
  '(neo-keymap-style (quote concise))
@@ -329,3 +361,9 @@
   (insert (format-time-string "%m_%d_%y" (current-time)))
   (insert "\n------------------------------------------------------------\n"))
 (global-set-key "\C-c\C-i" 'insert-header)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
