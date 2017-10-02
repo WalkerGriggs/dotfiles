@@ -50,23 +50,6 @@
 (setq inhibit-startup-message t)
 (setq visible-bell nil)
 
-;; Break Lines (for Dashboard)
-(use-package page-break-lines
-  :ensure t
-  :config
-  (page-break-lines-mode))
-
-;; Startup Dashboard
-(use-package dashboard
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook)
-  (setq dashboard-banner-logo-title "")
-  (setq dashboard-startup-banner 4)
-  (setq dashboard-items '((bookmarks . 5)
-                          (recents . 10)
-                          (agenda . 5))))
-
 ;; Tabs
 (setq-default indent-tabs-mode nil) ;; Always spaces
 (setq-default tab-width 2)
@@ -103,6 +86,32 @@
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t)
 
+;; Break Lines (for Dashboard)
+(use-package page-break-lines
+  :ensure t
+  :config
+  (page-break-lines-mode))
+
+;; Startup Dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq dashboard-banner-logo-title ""
+        dashboard-startup-banner 4
+        dashboard-items '((bookmarks . 5)
+                          (recents . 10)
+                          (agenda ))))
+
+;; Recentf
+(use-package recentf
+  :config ;; remove agenda files from list.
+  (setq recentf-exclude '("work.org"
+                          "school.org"
+                          "life.org")
+        recentf-max-saved-items 500
+        recentf-max-menu-items 15))
+
 ;; Powerline
 (use-package powerline
   :ensure t
@@ -119,6 +128,7 @@
 ;;Idle Highlight
 (use-package idle-highlight-mode
   :ensure t
+
   :config (idle-highlight-mode 1)
   :init
   (dolist (hook '(prog-mode-hook conf-mode-hook))
@@ -127,22 +137,22 @@
 ;; Fringe
 (use-package fringe
   :config
-  (setq-default left-fringe-width  20)
-  (setq-default right-fringe-width  10))
+  (setq-default left-fringe-width  20
+                right-fringe-width  10))
 
 ;; Scroll Bar
 (use-package scroll-bar
   :config
   (scroll-bar-mode -1)
-  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
-  (setq mouse-wheel-progressive-speed nil))
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))
+        mouse-wheel-progressive-speed nil))
 
 ;; Linum
 (use-package linum
   :config
   (global-linum-mode t)
-  (setq linum-format "%d")
-  (setq column-number-mode t))
+  (setq linum-format "%d"
+        column-number-mode t))
 
 ;; Whitespace
 (use-package whitespace
@@ -153,9 +163,9 @@
   :config
   (add-hook 'prog-mode-hook 'whitespace-mode)
   (global-whitespace-mode t) ;; Whitespace ON.
-  (setq whitespace-global-modes '(not org-mode))
-  (setq whitespace-line-column 80) ;; Set indent limit.
-  (setq whitespace-display-mappings
+  (setq whitespace-global-modes '(not org-mode)
+        whitespace-line-column 80 ;; Set indent limit.
+        whitespace-display-mappings
         '(
           (space-mark 32 [183] [46])
           (newline-mark 10 [172 10])
@@ -172,11 +182,19 @@
   :config
   (progn
     (define-key org-mode-map "\M-q" 'toggle-truncate-lines)
-    (setq org-directory "~/org")
-    (setq org-clock-persist t)
-    (setq org-clock-mode-line-total 'current)
-    ;; config stuff
-    ))
+    (setq org-directory "~/org"
+          org-clock-persist t
+          org-clock-mode-line-total 'current
+          org-agenda-files (list "~/.org/work.org"
+                                 "~/.org/school.org"
+                                 "~/.org/life.org")
+          org-agenda-custom-commands
+          '(("c" "Simple agenda view"
+             ((tags "PRIORITY=\"H\""
+                    ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                     (org-agenda-overriding-header "High-priority unfinished tasks:")))
+              (agenda "")
+              (alltodo "")))))))
 
 ;; Org-Bullets
 (use-package org-bullets
@@ -194,10 +212,10 @@
         helm-move-to-line-cycle-in-source  t
         helm-autoresize-min-height         20
         helm-autoresize-max-height         35
-        helm-scroll-amount                 8)
+        helm-scroll-amount                 8
+        helm-mode-fuzzy-match t)
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-  (define-key helm-map (kbd "C-z") 'helm-select-action)
-  (setq helm-mode-fuzzy-match t))
+  (define-key helm-map (kbd "C-z") 'helm-select-action))
 
 (use-package magit
   :ensure t
@@ -265,9 +283,9 @@
 ;; Python
 (add-hook 'python-mode-hook
   (lambda ()
-    (setq indent-tabs-mode nil)
-    (setq tab-width 4)
-    (setq python-indent 4)))
+    (setq indent-tabs-mode nil
+          tab-width 4
+          python-indent 4)))
 
 ;; Web Mode
 (use-package web-mode
