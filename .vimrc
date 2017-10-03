@@ -101,3 +101,9 @@ set list lcs=eol:¬,tab:>-,trail:.,nbsp:_
 filetype on
 filetype indent on
 
+" Xterm title
+let &term = $TERM
+set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
+if &term == "xterm" || &term == "xterm-color" || $TERM == "xterm-256color"
+  set title
+endif
