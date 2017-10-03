@@ -100,8 +100,7 @@
   (setq dashboard-banner-logo-title ""
         dashboard-startup-banner 4
         dashboard-items '((bookmarks . 5)
-                          (recents . 10)
-                          (agenda ))))
+                          (recents . 10))))
 
 ;; Recentf
 (use-package recentf
@@ -185,16 +184,25 @@
     (setq org-directory "~/org"
           org-clock-persist t
           org-clock-mode-line-total 'current
+          org-agenda-deadline-warning-days 4
           org-agenda-files (list "~/.org/work.org"
                                  "~/.org/school.org"
-                                 "~/.org/life.org")
+                                 "~/.org/life.org"
+                                 "/ssh:wpgriggs@walkergriggs.com:/home/wpgriggs/.org/life.org")
           org-agenda-custom-commands
           '(("c" "Simple agenda view"
-             ((tags "PRIORITY=\"H\""
+             (
+              (tags "PRIORITY=\"A\""
                     ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
                      (org-agenda-overriding-header "High-priority unfinished tasks:")))
               (agenda "")
-              (alltodo "")))))))
+              (alltodo ""
+                       ((org-agenda-view-columns-initially t)
+                        (org-agenda-overriding-header "Global TODO:")))
+              )
+             ))
+          )
+    (define-key global-map "\C-ca" 'org-agenda)))
 
 ;; Org-Bullets
 (use-package org-bullets
