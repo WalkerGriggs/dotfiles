@@ -71,6 +71,8 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key "\C-cr" 'rgrep)
+
 
 ;; Window Splitting Made Easy
 (global-set-key [f1] 'split-window-horizontally)

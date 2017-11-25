@@ -3,12 +3,15 @@
 "# author:  WalkerGriggs    www.walkergriggs.com
 "# date:    12/21/2016
 "# -------------------------------------------------------------------
+set nocompatible
+filetype off
 
 execute pathogen#infect()
 
 " General Vim-Airline config
 set laststatus=2
 set encoding=utf-8
+set term=screen-256color
 
 " Use minimalist color scheme for syntax
 set t_Co=256
@@ -72,12 +75,16 @@ nnoremap <silent> <F4> :exit<CR>
 
 " Toggle NERDTree
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
+nnoremap <silent> <F6> :NERDTreeCWD<CR>
 
 set wildmenu "better command line completion
 set showcmd " Show partial commands
 set mouse=a "enable the use of mouse
 
 set ruler
+set visualbell
+set textwidth=80
+set hidden
 
 " Tabbing rules
 set tabstop=2
