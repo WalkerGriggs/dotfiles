@@ -9,9 +9,9 @@
 !# Xterm Settings -----------------------------------------------------
 
 
-! xterm*faceName:         bitbuntufull:size=8
-!xterm*faceName:        DroidSansFallbackFull:size=11
-xterm*faceName:       SourceCodePro:size=11
+!xterm*faceName:         bitbuntufull:size=8
+!xterm*faceName:         DroidSansFallbackFull:size=11
+xterm*faceName:         SourceCodePro:size=11
 
 xterm*allowBoldFonts:   true
 xterm*cursorColor:      sysColor

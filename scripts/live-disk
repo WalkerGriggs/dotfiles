@@ -1,0 +1,62 @@
+#!/bin/bash
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+### ooooo         o8o                        ooooo  .oooooo..o   .oooooo.
+### `888'         `"'                        `888' d8P'    `Y8  d8P'  `Y8b
+###  888         oooo  oooo    ooo  .ooooo.   888  Y88bo.      888      888
+###  888         `888   `88.  .8'  d88' `88b  888   `"Y8888o.  888      888
+###  888          888    `88..8'   888ooo888  888       `"Y88b 888      888
+###  888       o  888     `888'    888    .o  888  oo     .d8P `88b    d88'
+### o888ooooood8 o888o     `8'     `Y8bod8P' o888o 8""88888P'   `Y8bood8P'
+
+function banner {
+  cat "$0" | grep -e "^###" | sed "s/^###//g" && printf "\n"
+}
+
+function osx {
+  hdiutil convert -format UDRW -o $img $iso
+  diskutil partitionDisk $disk 1 "Free Space" "unused" "100%"
+  print_color ${BLUE} "[INFO] Beginning dd util"
+  dd if="$img.dmg" of=$disk bs=1m
+}
+
+function linux {
+  print_color ${BLUE} "[INFO] Formatting ${disk} as Fat32"
+  mkdosfs -F 32 -I $disk
+  print_color ${BLUE} "[INFO] Beginning dd util"
+  dd if=$iso of=$disk bs=1M
+}
+
+# Arguments: color enum, string
+# Example: print_color ${RED} "[ERROR] ... "
+function print_color {
+  printf "$1 $2 ${NC}\n"
+}
+
+# Kick off script banner
+banner
+
+# Verify and set arguments
+if [ "$#" -ne 2 ]; then
+  print_color ${RED} "[ERROR] Usage: ./live-disk <.iso> <disk>"
+  exit 1
+else
+  unamestr=`uname`
+  iso="$1"
+  img="${iso%.*}.img"
+  disk="$2"
+fi
+
+# Run OS specific functions
+if [[ "$unamestr" == 'Darwin' ]]; then
+  print_color ${BLUE} "[INFO] OS recognized: OSX"
+  osx
+elif [[ "$unamestr" == 'Linux' ]]; then
+  print_color ${BLUE} "[INFO] OS recognized: Linux"
+  linux
+fi
+
+print_color ${GREEN} "Live disk created successfully"
