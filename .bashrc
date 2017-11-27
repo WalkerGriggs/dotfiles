@@ -6,14 +6,15 @@
 
 set -o noclobber # dont overwrite files
 
-# Aliases ------------------------------------------------3-------------
+# Aliases --------------------------------------------------------------
 
 alias reload='xrdb $HOME/.Xresources & source $HOME/.bashrc & i3-msg restart'
 
-# Layout ----------------------
+# Keyboard Layout -------------
 alias ANSI='setxkbmap us'
 alias JIS='setxkbmap jp'
-alias XMM='xmodmap ~/.Xmodmap'
+alias XMM_STD='setxkbmap us && xmodmap ~/.Xmodmap_std'
+alias XMM_WKL='setxkbmap us && xmodmap ~/.Xmodmap_wkl'
 
 # Docker ----------------------
 alias dps='docker ps -a'
@@ -29,6 +30,7 @@ alias pingg='ping -c 3 www.google.com'
 alias date='date "+%F %T"'
 alias age='sudo tune2fs -l /dev/sda2 | grep "created"'
 alias weather='curl wttr.in/bos?q2p'
+alias modes='stat -c "%a %n" *'
 
 # List ------------------------
 alias clla='clear && ls -al'

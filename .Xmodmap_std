@@ -1,14 +1,14 @@
-! Winkey-less Xmodmap
+! Standard Caps/Control Xmodmap
 !
 ! |---------+
 ! | Ctrl    |
 ! |-----------+
 ! | Shift     |
 ! |-----------------------------------------------------------------------------------------+
-! |  Super  |     |  Alt  |                  Space                   |  Alt  |     |  Ctrl  |
+! | Hyper | Super |  Alt  |                 Space                  |  Alt  | Super |  Ctrl  |
 ! `-----------------------------------------------------------------------------------------'
 !
-! Moves control to caps lock, moves super to old control, and leaves super (win key) unassinged
+! Move control to caps lock, and assigns hyper to old control
 !
 ! was:
 ! keycode  37 = Control_L NoSymbol Control_L
@@ -16,10 +16,11 @@
 ! keycode 133 = Super_L NoSymbol Super_L
 !
 ! now:
-! keycode  37 = Super_L NoSymbol Super_L
+! keycode  37 = Hyper_L NoSymbol Hyper_L
 ! keycode  66 = Control_L NoSymbol Control_L
-! keycode 133 =
+! keycode 133 = Super_L NoSymbol Super_L
 
+! Start with fresh assignments
 clear      lock
 clear   control
 clear      mod1
@@ -28,16 +29,14 @@ clear      mod3
 clear      mod4
 clear      mod5
 
-keycode      37 = Super_L
+! Bind Hyper and Control
+keycode      37 = Hyper_L
 keycode      66 = Control_L
 
-keycode      133 = NoSymbol
-keycode      134 = NoSymbol
-
+! Assign mod bindings.
 add     control = Control_L Control_R
 add        mod1 = Alt_L Alt_R Meta_L
 add        mod2 = Num_Lock
 add        mod3 = Hyper_L
 add        mod4 = Super_L Super_R
 add        mod5 = Mode_switch ISO_Level3_Shift
-
