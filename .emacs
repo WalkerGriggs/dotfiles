@@ -104,6 +104,16 @@
         dashboard-items '((bookmarks . 5)
                           (recents . 10))))
 
+;; Tramp Mode
+;; tramp
+(use-package tramp
+  :ensure t
+  :config
+  (setq tramp-verbose 9
+        tramp-default-method "ssh")
+  (add-to-list 'tramp-default-proxies-alist
+               '("nscc-n24" nil "/ssh:wpgriggs@nscc:")))
+
 ;; Recentf
 (use-package recentf
   :config ;; remove agenda files from list.
@@ -340,6 +350,13 @@
   (progn
     (add-hook 'prog-mode-hook #'flyspell-prog-mode)
     (add-hook 'text-mode-hook #'flyspell-mode)))
+
+;; Terraform
+(use-package terraform-mode
+  :ensure t
+  :mode "\\.tf$"
+  :config
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
 ;; MySQL
 (use-package sqlup-mode
