@@ -1,7 +1,6 @@
 ;; ------------------------------------------------------------
 ;; file:        ~/.emacs
 ;; author:      WalkerGriggs     www.walkergriggs.com
-;; date:        01_14_17
 ;; ------------------------------------------------------------
 
 ;; Melpa
@@ -40,10 +39,13 @@
   (setq gnutls-verify-error t)
   (setq gnutls-trustfiles (list trustfile)))
 
+(use-package xresources-theme
+  :ensure t)
+
 ;; Theme / Font
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'default-frame-alist '(font . "SourceCodePro-11"))
-(load-theme 'doom-one t)
+(load-theme 'xresources t)
 
 ;; Startup
 (setq initial-scratch-message "")
@@ -307,6 +309,24 @@
           tab-width 4
           python-indent 4)))
 
+;; Go-mode
+(add-hook 'before-save-hook #'gofmt-before-save)
+(use-package go-mode
+  :ensure t
+  :config
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 'gofmt-before-save)
+              (setq tab-width 2)
+              (setq indent-tabs-mode 1))))
+
+;; Terraform
+(use-package terraform-mode
+  :ensure t
+  :mode "\\.tf$"
+  :config
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
+
 ;; Web Mode
 (use-package web-mode
   :mode (("\\.html\\'" . web-mode)))
@@ -350,13 +370,6 @@
   (progn
     (add-hook 'prog-mode-hook #'flyspell-prog-mode)
     (add-hook 'text-mode-hook #'flyspell-mode)))
-
-;; Terraform
-(use-package terraform-mode
-  :ensure t
-  :mode "\\.tf$"
-  :config
-  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
 ;; MySQL
 (use-package sqlup-mode

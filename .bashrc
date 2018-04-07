@@ -1,7 +1,6 @@
 # ---------------------------------------------------------------------
 # File:     ~/.bashrc
 # author:   Walker Griggs   - www.walkergriggs.com
-# date:     05/31/2017
 # ---------------------------------------------------------------------
 
 set -o noclobber # dont overwrite files
@@ -21,6 +20,12 @@ alias dps='docker ps -a'
 alias drm_stopped='docker ps -aq --no-trunc | xargs docker rm'
 alias drmi_untagged='docker images -q --filter dangling=true | xargs docker rmi'
 alias dbuild='docker build --rm -t'
+
+# Golang ----------------------
+export GOPATH=$HOME/go
+
+# AWS -------------------------
+export AWS_PROFILE=wgriggs
 
 # General Utils ---------------
 alias wifi='nmtui'

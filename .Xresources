@@ -1,7 +1,6 @@
 !# --------------------------------------------------------------------
 !# file:      ~/.Xresources
 !# author:    WalkerGriggs  - www.walkergriggs.com
-!# date:      12/18/2016
 !# --------------------------------------------------------------------
 
 #define sysColor                #3676B3
@@ -27,4 +26,5 @@ xterm*selectToClipboard: true
 !xterm*scrollTtyOutput: false
 !xterm*saveLines:       7500
 
-#include "/home/wgriggs/.colors/THEME_INCLUDE"
+! #include "/home/wgriggs/.colors/THEME_INCLUDE"
+#include "/home/wgriggs/.cache/wal/colors.Xresources"
