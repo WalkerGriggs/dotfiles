@@ -15,6 +15,11 @@ alias JIS='setxkbmap jp'
 alias XMM_STD='setxkbmap us && xmodmap ~/.Xmodmap_std'
 alias XMM_WKL='setxkbmap us && xmodmap ~/.Xmodmap_wkl'
 
+# Cross Compiler --------------
+export PREFIX="$HOME/opt/cross"
+export TARGET=i686-elf
+export PATH="$PREFIX/bin:$PATH"
+
 # Docker ----------------------
 alias dps='docker ps -a'
 alias drm_stopped='docker ps -aq --no-trunc | xargs docker rm'
@@ -23,6 +28,7 @@ alias dbuild='docker build --rm -t'
 
 # Golang ----------------------
 export GOPATH=$HOME/go
+export GIT_TERMINAL_PROMPT=1
 
 # AWS -------------------------
 export AWS_PROFILE=wgriggs
@@ -36,6 +42,7 @@ alias date='date "+%F %T"'
 alias age='sudo tune2fs -l /dev/sda2 | grep "created"'
 alias weather='curl wttr.in/bos?q2p'
 alias modes='stat -c "%a %n" *'
+alias tmux='TERM=xterm-256color tmux'
 
 # List ------------------------
 alias clla='clear && ls -al'
@@ -58,8 +65,18 @@ alias remove='sudo apt-get remove'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 
-# General bashrc -----------------------------------------------------
+# Path ------------------------
+    # Add gcc cross compiler for os dev
+# export PATH="$PATH:$HOME/Builds/bin:$HOME/opt/cross/bin"
 
+    # Add Golang
+export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
+
+    # Add RVM to PATH for scripting.
+    # Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# General bashrc -----------------------------------------------------
 # Set window title to PWD
 case $TERM in
   xterm*)
@@ -131,9 +148,17 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
     xterm*|rxvt*)
-       #PS1="┌─[\[\e[0;32m\]\u\e[m@\e[0;35m\h \[\e[1;31m\]\w\[\e[0m\]]\n└─→ " #decorated
-       PS1="\[\e[1;35m\]\u@\[\e[1;37m\]\h \[\e[0;32m\]\w $\[\e[m\] " #simple
-        # Default prompt: PS1='\[\e]0\e[0;31m;\u\e[m@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+        # Colored decorated
+        PS1="┌─[\[\e[0;32m\]\u\e[m\e[0;35m@\h \[\e[0;31m\]\w\[\e[0m\]]\n└─→ "
+
+        # Colored Simple
+        #PS1="\[\e[1;35m\]\u@\[\e[1;37m\]\h \[\e[0;32m\]\w $\[\e[m\] "
+
+        # All white simple
+        #PS1="\[\e[1;39m\]\u@\h \w $\[\e[m\] " #simple
+
+        # Default prompt
+        # PS1='\[\e]0\e[0;31m;\u\e[m@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
         ;;
     *)
         ;;
@@ -203,9 +228,6 @@ set_theme() {
         echo "Usage: set_theme <theme found in ~/.colors>"
     fi
 }
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
