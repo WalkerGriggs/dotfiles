@@ -36,7 +36,7 @@ export AWS_PROFILE=wgriggs
 # General Utils ---------------
 alias wifi='nmtui'
 alias vpn='sh $HOME/Builds/pia.sh'
-alias news='newsbeuter -r'
+alias news='newsbeuter -r -C $HOME/.config/newsbeuter/config -u $HOME/.config/newsbeuter/urls'
 alias pingg='ping -c 3 www.google.com'
 alias date='date "+%F %T"'
 alias age='sudo tune2fs -l /dev/sda2 | grep "created"'
