@@ -1,30 +1,59 @@
 !# --------------------------------------------------------------------
 !# file:      ~/.Xresources
 !# author:    WalkerGriggs  - www.walkergriggs.com
+!# date:      12/18/2016
 !# --------------------------------------------------------------------
 
-#define sysColor                #3676B3
+#define sysColor                #fd971f
 
-!# Xterm Settings -----------------------------------------------------
+!# URxvt Settings -----------------------------------------------------
+URxvt.scrollBar:       False
+URxvt.scrollStyle:     rxvt
+URxvt*scrollTtyOutput: False
+URxvt*scrollWithBuffer:  True
+URxvt*scrollTtyKeypress: True
 
+URxvt.buffered:        False
+URxvt.saveLines:       2500
+URxvt.termName:        xterm-256color
+URxvt.urgentOnBell:    True
+URxvt.cursorBlink:     True
 
-!xterm*faceName:         bitbuntufull:size=8
-!xterm*faceName:         DroidSansFallbackFull:size=11
-xterm*faceName:         SourceCodePro:size=11
+URxvt.clipboard.autocopy: True
 
-xterm*allowBoldFonts:   true
-xterm*cursorColor:      sysColor
-xterm*cursorBlink:      true
-xterm*loginShell:       true
-xterm*termName:         xterm-256color
-xterm*scrollBar:        false
-xterm*scrollKey:        true
-xterm*toolBar:          false
+URsvt.internalBorder:  5
+URxvt.font:            xft:SourceCodePro:size=11
 
-xterm*selectToClipboard: true
+! Extensions
+urxvt*perl-lib:        /usr/lib/urxvt/perl/
+URxvt.perl-ext-common: default,clipboard,matcher,resize-font,
 
-!xterm*scrollTtyOutput: false
-!xterm*saveLines:       7500
+URxvt.iso14755:        False
+URxvt.iso14755_52:     False
+
+URxvt.urlLauncher:     firefox
+URxvt.underlineURLs:   True
+URxvt.matcher.button:  1
+
+!# Xterm Settings ----------------------------------------------------
+xterm*faceName:        SourceCodePro:size=11
+xTerm*utf8:            True
+xTerm*locale:          True
+xTerm*utf8Title:       True
+
+xterm*allowBoldFonts:  True
+xterm*cursorColor:     sysColor
+xterm*cursorBlink:     True
+xterm*loginShell:      True
+xterm*termName:        xterm-256color
+xterm*scrollBar:       False
+xterm*scrollKey:       True
+xterm*toolBar:         False
+
+xterm*selectToClipboard: True
+
+xterm*scrollTtyOutput: False
+xterm*saveLines:       2500
 
 ! #include "/home/wgriggs/.colors/THEME_INCLUDE"
 #include "/home/wgriggs/.cache/wal/colors.Xresources"

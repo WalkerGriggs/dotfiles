@@ -44,7 +44,7 @@ bindsym XF86AudioMute exec amixer -q -c 1 -D pulse sset Master toggle
 floating_modifier $mod
 
 # Start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
