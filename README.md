@@ -11,3 +11,5 @@ After quite a few iterations, I finally got around to uploading some screenshots
 ![Emacs](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/emacs.png)
 ![Weechat](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/weechat.png)
 ![Rofi](https://github.com/WalkerGriggs/DotFiles/blob/master/assets/rofi.png)
+
+CHANGE
