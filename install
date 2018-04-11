@@ -1,9 +1,34 @@
 #!/bin/bash
+#
+# Dynamic gnu-stow script stolen from dylanaraps/dotfiles/install.sh
 
-for dir in */; do
-  child=("$dir"*); root=
-  [[ "$child" =~ $dir(bin|etc|var|usr|opt) ]] && root="root required"
-  read -rn 1 -p "install ${dir/\/*}${root:+ ($root)}? [y/n] " ans; echo
-  [[ "${ans,,}" != "y" ]] && continue
-  [[ "$root" ]] && { sudo stow "$dir" -t /;:; } || stow "$dir"
+install() {
+    for dir in */; do
+        child=("$dir"*); root=
+        [[ "$child" =~ $dir(bin|etc|var|usr|opt) ]] && root="root required"
+
+        if [[ $verbose -eq 1 ]] ; then
+            printf "%s tree: \n" "$dir"
+            exa -lhadRTL3 ./$dir || tree -aL 3 ./$dir
+        fi
+
+        read -rn 1 -p "install ${dir/\/*}${root:+ ($root)}? [y/n] " ans; echo
+        [[ "${ans,,}" != "y" ]] && continue
+        [[ "$root" ]] && { sudo stow -v "$dir" -t /;:; } || stow -v "$dir"
+    done
+}
+
+OPT_IDX=1         # Reset in case getopts has been used previously in the shell.
+verbose=0
+
+while getopts "vd" opt; do
+    case "$opt" in
+        v )  verbose=1
+            ;;
+    esac
 done
+
+shift $((OPTIND-1))
+[ "$1" = "--" ] && shift
+
+install

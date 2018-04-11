@@ -47,7 +47,7 @@ alias tmux='TERM=xterm-256color tmux'
 # List ------------------------
 alias l='exa -uahg --group-directories-first'
 alias ll='l -l --git'
-alias tree='exa -lhugRT --git --group-directories-first'
+alias tree='exa -lhaT --git --group-directories-first'
 
 alias ..='cd ../'
 
@@ -72,6 +72,9 @@ alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 
     # Add Golang
 export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
+
+    # Add Scripts and Builds binaries
+export PATH="$PATH:$HOME/Scripts/bin:$HOME/Builds/bin"
 
     # Add RVM to PATH for scripting.
     # Make sure this is the last PATH variable change.
