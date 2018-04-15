@@ -51,11 +51,6 @@ alias tree='exa -lhaT --git --group-directories-first'
 
 alias ..='cd ../'
 
-# Scripts ---------------------
-alias up='. $HOME/Scripts/up'
-alias extract='. $HOME/Scripts/extract'
-alias colors='. $HOME/Scripts/colors'
-
 # System ----------------------
 alias reboot="sudo shutdown -r now"
 alias shutdown="sudo shutdown -h now"
@@ -74,7 +69,7 @@ alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 
     # Add Scripts and Builds binaries
-export PATH="$PATH:$HOME/Scripts:$HOME/Builds/bin:$HOME/bin/"
+export PATH="$PATH:$HOME/Scripts:$HOME/Builds/bin:$HOME/.bin/"
 
     # Add RVM to PATH for scripting.
     # Make sure this is the last PATH variable change.
