@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ddc="http://www.dictionary.com/browse/"
+word=$@
+
+res=$(curl -s "$ddc/$word" | grep -oP '(?<=<meta name="description" content=").*(?=See more.)' | sed "s/.*definition,/$word:/") 
+
+if [ -z "$res" ] ; then
+  printf "this word wasn't found.\n"
+  exit "1"
+else
+  printf "$res\n"
+fi

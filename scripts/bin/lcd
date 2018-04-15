@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# See dylanaraps/bin/lcd
+# cd and ls
+
+lcd() {
+    cd "$@" || return
+    exa -x --group-directories-first -a 2>/dev/null ||\
+    ls --group-directories-first
+}

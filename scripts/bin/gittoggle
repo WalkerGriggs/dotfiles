@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Toggle git repo between ssh and https
+
+repo_remote="$(git remote get-url origin || exit 1)"
+
+[[ -z "$repo_remote" || ! "$repo_remote" =~ github.com ]] && exit 1
+
+if [[ "$repo_remote" =~ ^git@github ]]; then
+    repo="${repo_remote/'git@github.com:'}"
+    repo="${repo%'.git'}"
+    repo="https://github.com/${repo}"
+else
+    repo="${repo_remote/'https://github.com/'}"
+    repo="${repo%%.git}"
+    repo="git@github.com:${repo}.git"
+fi
+
+read -rn 1 -p "Change origin repo to $repo? [y/n] " ans; echo
+[[ "${ans,,}" != "y" ]] && exit 1
+git remote set-url origin "$repo"

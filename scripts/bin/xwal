@@ -15,7 +15,7 @@
 ###                                             An X11 Theme Manager
 
 CURPATH=$(dirname "$0")
-CONFPATH= ~/.colors/
+CONFPATH=$HOME/.colors/
 
 function welcome {
     # Prints figlet ascii art starting with '###'

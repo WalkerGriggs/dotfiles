@@ -1,4 +1,9 @@
+# Ignore most emacs.d files
 elpa
 melpa
+tramp
 auto-save-list
 recentf
+
+# Likewise with vim
+.netrwhist

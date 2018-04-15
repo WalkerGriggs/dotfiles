@@ -74,7 +74,7 @@ alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 
     # Add Scripts and Builds binaries
-export PATH="$PATH:$HOME/Scripts/bin:$HOME/Builds/bin"
+export PATH="$PATH:$HOME/Scripts:$HOME/Builds/bin:$HOME/bin/"
 
     # Add RVM to PATH for scripting.
     # Make sure this is the last PATH variable change.
