@@ -21,7 +21,7 @@ URxvt.cursorBlink:     True
 
 URxvt.clipboard.autocopy: True
 
-URsvt.internalBorder:  5
+URxvt.internalBorder:  5
 URxvt.font:            xft:SourceCodePro:size=11
 
 ! Extensions

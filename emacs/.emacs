@@ -6,10 +6,12 @@
 ;; Melpa
 ;; Make sure to use httpS archives.
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(customize-set-variable
+ 'package-archives
+ '(("melpa" . "https://melpa.org/packages/")
+   ("melpa-stable" . "https://stable.melpa.org/packages/")
+   ("gnu" . "https://elpa.gnu.org/packages/")
+   ("org" . "https://orgmode.org/elpa/")))
 
 (package-initialize)
 
@@ -17,7 +19,17 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+;; Always ensure packages
+(customize-set-variable 'use-package-always-ensure t)
 (setq use-package-verbose t)
+
+;; Always update packges
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
 
 ;; Lets secure out editor just a bit
 ;; Found at: https://glyph.twistedmatrix.com/2015/11/editor-malware.html
@@ -39,13 +51,22 @@
   (setq gnutls-verify-error t)
   (setq gnutls-trustfiles (list trustfile)))
 
-(use-package xresources-theme
-  :ensure t)
+;; Doom Theme
+(use-package doom-themes
+  :ensure t
+  :config
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t)) ; if nil, italics is universally disabled
 
 ;; Theme / Font
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'default-frame-alist '(font . "SourceCodePro-11"))
-(load-theme 'xresources t)
+(load-theme 'doom-city-lights t)
+
+;; Doom Configs
+(doom-themes-visual-bell-config)
+(doom-themes-neotree-config)  ; all-the-icons fonts must be installed!
+(doom-themes-org-config)
 
 ;; Startup
 (setq initial-scratch-message "")
@@ -114,7 +135,9 @@
   (setq tramp-verbose 9
         tramp-default-method "ssh")
   (add-to-list 'tramp-default-proxies-alist
-               '("nscc-n24" nil "/ssh:wpgriggs@nscc:")))
+               '("nscc-n24" nil "/ssh:wpgriggs@nscc:"))
+  (add-to-list 'tramp-default-proxies-alist
+               '("n3" nil "/ssh:wpgriggs@bombur.cs.colby.edu:")))
 
 ;; Recentf
 (use-package recentf
@@ -149,12 +172,14 @@
 
 ;; Fringe
 (use-package fringe
+  :ensure nil
   :config
   (setq-default left-fringe-width  20
                 right-fringe-width  10))
 
 ;; Scroll Bar
 (use-package scroll-bar
+  :ensure nil
   :config
   (scroll-bar-mode -1)
   (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))
@@ -251,10 +276,10 @@
 ;; Smex
 ;;(use-package smex
 ;;  :ensure t
- ;; :bind
- ;; (("M-x" . smex))
- ;; (("M-X" . smex-major-mode-commands))
-;; (("C-c C-c M-x" . execute-extended-command)))
+;;  :bind
+;;  (("M-x" . smex))
+;;  (("M-X" . smex-major-mode-commands))
+;;  (("C-c C-c M-x" . execute-extended-command)))
 
 ;; Multiple Cursors
 (use-package multiple-cursors
@@ -301,6 +326,33 @@
   :config
   (add-hook 'cider-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode))
+
+;; Git Modes
+(use-package gitattributes-mode
+  :mode ("/\\.gitattributes\\'"
+         "/info/attributes\\'"
+         "/git/attributes\\'"))
+
+(use-package gitconfig-mode
+  :mode ("/\\.gitconfig\\'"
+         "/\\.git/config\\'"
+         "/modules/.*/config\\'"
+         "/git/config\\'"
+         "/\\.gitmodules\\'"
+         "/etc/gitconfig\\'"))
+
+(use-package gitignore-mode
+  :mode ("/\\.gitignore\\'"
+         "/info/exclude\\'"
+         "/git/ignore\\'"))
+
+;; Docker
+(use-package dockerfile-mode
+  :mode "Dockerfile.*\\'")
+
+;; Nginx
+(use-package nginx-mode
+  :mode ("nginx\\.conf\\'" "/nginx/.+\\.conf\\'"))
 
 ;; Python
 (add-hook 'python-mode-hook

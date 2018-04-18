@@ -20,6 +20,8 @@ export PREFIX="$HOME/opt/cross"
 export TARGET=i686-elf
 export PATH="$PREFIX/bin:$PATH"
 
+export FONTCONFIG_PATH=/etc/fonts
+
 # Docker ----------------------
 alias dps='docker ps -a'
 alias drm_stopped='docker ps -aq --no-trunc | xargs docker rm'
@@ -142,20 +144,50 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
+# prompt setup
+shell_config=$HOME/.config/shell
+source "$shell_config/git-prompt.sh"
+PROMPT_DIRTRIM=2
+
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWUPSTREAM=auto
+
+set_prompt () {
+    PS1=''
+
+    # color escape codes
+    local color_off='\[\e[0m\]'
+    local color_black='\[\e[0;30m\]'
+    local color_red='\[\e[0;31m\]'
+    local color_green='\[\e[0;32m\]'
+    local color_yellow='\[\e[0;33m\]'
+    local color_blue='\[\e[1;34m\]'
+    local color_purple='\[\e[0;35m\]'
+    local color_cyan='\[\e[0;36m\]'
+    local color_gray='\[\e[0;37m\]'
+
+    # Default (with git branch)
+    PS1+="\u"
+    PS1+=$color_blue"@\h "
+    PS1+=$color_green"\w $(__git_ps1 '(%s) ')$ "
+    PS1+=$color_off
+
+    # Decorated (without git branch)
+    #PS1+="┌─["
+    #PS1+=$color_green"\u"
+    #PS1+=$color_purple"\h "
+    #PS1+=$color_red"\w"
+    #PS1+=$color_off"]\n└─→ "
+}
+
 case "$TERM" in
     xterm*|rxvt*)
-        # Colored decorated
-        PS1="┌─[\[\e[0;32m\]\u\e[m\e[0;35m@\h \[\e[0;31m\]\w\[\e[0m\]]\n└─→ "
-
-        # Colored Simple
-        #PS1="\[\e[1;35m\]\u@\[\e[1;37m\]\h \[\e[0;32m\]\w $\[\e[m\] "
-
-        # All white simple
-        #PS1="\[\e[1;39m\]\u@\h \w $\[\e[m\] " #simple
-
+        PROMPT_COMMAND='set_prompt'
         # Default prompt
         # PS1='\[\e]0\e[0;31m;\u\e[m@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
         ;;
@@ -170,7 +202,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
+    alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
@@ -213,19 +245,6 @@ welcome() {
     echo -e ""; df -h /dev/dm-1
     echo -e ""; fortune
     echo "";
-}
-
-# Sets .Xresource color theme given a file in ~/.colors
-alias list_themes="ls -al /home/wgriggs/.colors"
-set_theme() {
-    path=$HOME/.colors/
-    if [ -f $path/$1 ] ; then
-        cp $path/$1 $path/THEME_INCLUDE
-        reload # reload .Xresources and .bashrc with alias
-    else
-        echo "'$path$1' is not a valid file."
-        echo "Usage: set_theme <theme found in ~/.colors>"
-    fi
 }
 
 export NVM_DIR="$HOME/.nvm"
