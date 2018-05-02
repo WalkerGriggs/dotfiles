@@ -1,11 +1,14 @@
 # Ignore most emacs.d files
+url/
 elpa/
 melpa/
-tramp
 auto-save-list/
+tramp
 recentf
 .last-package-update-day
 
-
 # Likewise with vim
 .netrwhist
+
+# Ranger
+bookmarks
