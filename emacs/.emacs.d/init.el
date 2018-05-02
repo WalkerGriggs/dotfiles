@@ -25,4 +25,5 @@
                         "platform"
                         "org"
                         "languages"
+                        "git"
                         ))
