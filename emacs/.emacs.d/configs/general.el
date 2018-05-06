@@ -136,7 +136,7 @@
   (add-hook 'prog-mode-hook 'whitespace-mode)
   (global-whitespace-mode t) ;; Whitespace ON.
   (setq whitespace-global-modes '(not org-mode)
-        whitespace-line-column 80 ;; Set indent limit.
+        whitespace-line-column 100 ;; Set indent limit.
         whitespace-display-mappings
         '(
           (space-mark 32 [183] [46])
