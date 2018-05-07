@@ -126,23 +126,6 @@
   (setq linum-format "%d"
         column-number-mode t))
 
-;; Whitespace
-(use-package whitespace
-  :bind (("C-c C-w" . whitespace-mode))
-  :init
-  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-    (add-hook hook #'whitespace-mode))
-  :config
-  (add-hook 'prog-mode-hook 'whitespace-mode)
-  (global-whitespace-mode t) ;; Whitespace ON.
-  (setq whitespace-global-modes '(not org-mode)
-        whitespace-line-column 100 ;; Set indent limit.
-        whitespace-display-mappings
-        '(
-          (space-mark 32 [183] [46])
-          (newline-mark 10 [172 10])
-          (tab-mark 9 [9655 9] [92 9]))))
-
 ;; Flycheck
 (use-package flycheck
   :init

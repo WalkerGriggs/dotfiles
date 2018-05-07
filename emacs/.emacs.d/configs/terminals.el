@@ -46,9 +46,16 @@
    (if string string (current-kill 0))))
 
 (defun my-term-hook ()
-  (goto-address-mode)               ; Clickable URLs
+  (goto-address-mode)
   (bind-key "C-y" #'my-term-paste term-raw-map))
 (add-hook 'term-mode-hook 'my-term-hook)
 
 (add-hook 'term-mode-hook (lambda()
-        (setq yas-dont-activate t)))
+                            (setq yas-dont-activate t)))
+
+(defun set-no-process-query-on-exit ()
+  (let ((proc (get-buffer-process (current-buffer))))
+    (when (processp proc)
+      (set-process-query-on-exit-flag proc nil))))
+
+(add-hook 'term-exec-hook 'set-no-process-query-on-exit)

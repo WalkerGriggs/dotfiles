@@ -22,12 +22,20 @@
 
 (toc:load-config-file '("packages" ;; always bootsrap packages first
                         "general"
+                        "whitespace"
                         "platform"
                         "org"
                         "languages"
                         "git"
                         "terminals"
                         ))
+
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (split-window-horizontally)
+            ;; (ansi-term "/bin/bash")
+            ))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

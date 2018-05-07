@@ -172,11 +172,13 @@ set_prompt () {
     local color_gray='\[\e[0;37m\]'
 
     # Default (with git branch)
-    PS1+="\u"
-    PS1+=$color_blue"@\h "
-    PS1+=$color_green"\w $(__git_ps1 '(%s) ')$ "
-    PS1+=$color_off
+    #PS1+="\u"
+    #PS1+=$color_blue"@\h "
+    #PS1+=$color_green"\w $(__git_ps1 '(%s) ')$ "
+    #PS1+=$color_off
 
+    PS1+=$color_yellow"\w\n"
+    PS1+=$color_gray"$(__git_ps1 '(%s) ')$ "$color_off
     # Decorated (without git branch)
     #PS1+="┌─["
     #PS1+=$color_green"\u"

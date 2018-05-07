@@ -53,7 +53,7 @@ bindsym $mod+Shift+q kill
 bindsym XF86Search exec dmenu_run
 
 # Fullscreen Rofi
-bindsym Ctrl+d exec rofi -show run -lines 5 -width 100 -padding 300 -fullscreen -opacity "85" -font "Roboto Light 40" -separator-style "none" -config "/$HOME/.config/rofi/blue_fs"
+# bindsym Ctrl+d exec rofi -show run -lines 5 -width 100 -padding 300 -fullscreen -opacity "85" -font "Roboto Light 40" -separator-style "none" -config "/$HOME/.config/rofi/blue_fs"
 
 # Simple Rofi 
 # bindsym Ctrl+d exec rofi -show run -config "/$HOME/.config/rofi/pink_windowed"
@@ -249,11 +249,10 @@ smart_borders on
 
 # Execute on Start-Up -------------------------------------------------
 exec_always ./.screenlayout/school.sh       # monitor layout
-exec_always $HOME/.local/bin/wal -b 1A1A1A -i ~/Pictures/neon.jpg -e
+exec_always $HOME/.local/bin/wal -b 1A1A1A -i ~/Pictures/night-city.jpg -e
 
     # exec_always feh --bg-fill ~/Pictures/ggbridge.jpg # wallpaper
     # exec --no-startup-id xsetroot -solid "#333333"
-
 exec_always compton                         # load compton
 exec_always gnome-settings-daemon 
 exec_always xmodmap ~/.Xmodmap              # set keyboard layout
