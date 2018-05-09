@@ -6,15 +6,13 @@
 
     ;; `hungry-delete-skip-ws-backward'; do not delete back-slashes at EOL.
     (defun hungry-delete-skip-ws-forward ()
-      "Skip over any whitespace following point.
-This function skips over horizontal and vertical whitespace."
+      "Skip over any whitespace following point."
       (skip-chars-forward hungry-delete-chars-to-skip)
       (while (get-text-property (point) 'read-only)
         (backward-char)))
 
     (defun hungry-delete-skip-ws-backward ()
-      "Skip over any whitespace preceding point.
-This function skips over horizontal and vertical whitespace."
+      "Skip over any whitespace preceding point."
       (skip-chars-backward hungry-delete-chars-to-skip)
       (while (get-text-property (point) 'read-only)
         (forward-char)))
@@ -41,7 +39,7 @@ This function skips over horizontal and vertical whitespace."
   :config
   (add-hook 'prog-mode-hook 'whitespace-mode)
   (global-whitespace-mode t) ;; Whitespace ON.
-  (setq whitespace-global-modes '(not org-mode)
+  (setq whitespace-global-modes '(not org-mode LaTeX-mode latex-mode)
         whitespace-line-column 100 ;; Set indent limit.
         whitespace-display-mappings
         '(

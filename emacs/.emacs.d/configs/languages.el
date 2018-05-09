@@ -42,20 +42,6 @@
 (use-package web-mode
   :mode (("\\.html\\'" . web-mode)))
 
-;; Latex
-(use-package auctex
-  :ensure t
-  :mode ("\\.tex\\'" . latex-mode)
-  :commands (latex-mode LaTeX-mode plain-tex-mode)
-  :init
-  (progn
-    (add-hook 'LaTeX-mode-hook #'LaTeX-preview-setup)
-    (add-hook 'LaTeX-mode-hook #'flyspell-mode)
-    (add-hook 'Latex-mode-hook #'flyspell-buffer)
-    (setq TeX-auto-save t
-          TeX-parse-self t
-          TeX-save-query nil)))
-
 ;; Markdown
 (use-package markdown-mode
   :ensure t
