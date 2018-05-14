@@ -23,13 +23,14 @@
 (toc:load-config-file '("packages" ;; always bootsrap packages first
                         "evil"
                         "general"
-                        "whitespace"
                         "platform"
                         "org"
-                        "languages"
                         "git"
                         "terminals"
+                        "languages"
                         "latex"
+                        "whitespace"
+                        "appearance"
                         "custom-set-variables"
                         ))
 
