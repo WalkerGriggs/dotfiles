@@ -9,6 +9,9 @@
 (use-package dockerfile-mode
   :mode "Dockerfile.*\\'")
 
+(use-package docker
+  :ensure t)
+
 ;; Nginx
 (use-package nginx-mode
   :mode ("nginx\\.conf\\'" "/nginx/.+\\.conf\\'"))
@@ -30,6 +33,12 @@
               (add-hook 'before-save-hook 'gofmt-before-save)
               (setq tab-width 2)
               (setq indent-tabs-mode 1))))
+
+(use-package go-playground
+  :ensure t
+  :bind (("C-c C-g p" . go-playground)
+         ("C-c C-g e" . go-playground-exec)
+         ("C-c C-g r" . go-playground-rm)))
 
 ;; Terraform
 (use-package terraform-mode
