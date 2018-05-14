@@ -7,7 +7,38 @@
 ;; Git Gutter
 (use-package git-gutter-fringe+
   :ensure t
-  :init (global-git-gutter+-mode))
+  :init (global-git-gutter+-mode)
+  :config
+
+  (fringe-helper-define 'git-gutter-fr+-added nil
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX..")
+
+  (fringe-helper-define 'git-gutter-fr+-deleted nil
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX..")
+
+  (fringe-helper-define 'git-gutter-fr+-modified nil
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."
+  "..XXXX.."))
 
 ;; Git Modes
 (use-package gitattributes-mode
