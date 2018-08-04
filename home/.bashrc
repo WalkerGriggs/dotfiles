@@ -1,13 +1,26 @@
-# ---------------------------------------------------------------------
-# File:     ~/.bashrc
-# author:   Walker Griggs   - www.walkergriggs.com
-# ---------------------------------------------------------------------
+#    ██████╗  █████╗ ███████╗██╗  ██╗██████╗  ██████╗
+#    ██╔══██╗██╔══██╗██╔════╝██║  ██║██╔══██╗██╔════╝
+#    ██████╔╝███████║███████╗███████║██████╔╝██║
+#    ██╔══██╗██╔══██║╚════██║██╔══██║██╔══██╗██║
+# ██╗██████╔╝██║  ██║███████║██║  ██║██║  ██║╚██████╗
+# ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝
+#
+# Walker Griggs
+# walker@walkergriggs.com
+# github.com/WalkerGriggs
 
 set -o noclobber # dont overwrite files
 
-# Aliases --------------------------------------------------------------
+# Aliases ------------------------------------------------------
 
-alias reload='xrdb $HOME/.Xresources & source $HOME/.bashrc & i3-msg restart'
+# Git --------------------------
+if [ -f /usr/share/bash-completion/completions/git ]; then
+    . /usr/share/bash-completion/completions/git
+fi
+
+for al in `__git_aliases`; do
+    alias g$al="git $al"
+done
 
 # Keyboard Layout -------------
 alias ANSI='setxkbmap us'
@@ -36,13 +49,11 @@ export GIT_TERMINAL_PROMPT=1
 export AWS_PROFILE=wgriggs
 
 # General Utils ---------------
+alias reload='xrdb $HOME/.Xresources & source $HOME/.bashrc & i3-msg restart'
 alias wifi='nmtui'
 alias news='newsbeuter -r -C $HOME/.config/newsbeuter/config -u $HOME/.config/newsbeuter/urls'
-alias pingg='ping -c 3 www.google.com'
 alias date='date "+%F %T"'
 alias cal='ncal'
-alias age='sudo tune2fs -l /dev/sda2 | grep "created"'
-alias weather='curl wttr.in/bos?q2p'
 alias modes='stat -c "%a %n" *'
 alias tmux='TERM=xterm-256color tmux'
 
@@ -57,27 +68,24 @@ alias ..='cd ../'
 alias reboot="sudo shutdown -r now"
 alias shutdown="sudo shutdown -h now"
 
-# apt-get ---------------------
-#alias install='sudo apt-get install'
-alias remove='sudo apt-get remove'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get update && sudo apt-get upgrade'
 
-# Path ------------------------
-    # Add gcc cross compiler for os dev
+# Path ---------------------------------------------------------
+
+# Add gcc cross compiler for os dev
 # export PATH="$PATH:$HOME/Builds/bin:$HOME/opt/cross/bin"
 
-    # Add Golang
+# Add Golang
 export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 
-    # Add Scripts and Builds binaries
+# Add Scripts and Builds binaries
 export PATH="$PATH:$HOME/Scripts:$HOME/Builds/bin:$HOME/.bin/"
 
-    # Add RVM to PATH for scripting.
-    # Make sure this is the last PATH variable change.
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# General bashrc -----------------------------------------------------
+
+# General bashrc -----------------------------------------------
+
 # Set window title to PWD
 case $TERM in
   xterm*)
@@ -91,128 +99,24 @@ case $- in
     *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
+# History and Shopt ------------
+
+# Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# Append to the history file; don't overwrite.
+shopt -s histappend
+
+# Check the window size after each command and update LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+# Used in a path expansion, match all files, directories, subdirectories.
+shopt -s globstar
 
-# make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# Bash Completions -------------
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        # We have color support; assume it's compliant with Ecma-48
-        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-        # a case would tend to support setf rather than setaf.)
-        color_prompt=yes
-    else
-        color_prompt=
-    fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-
-unset color_prompt force_color_prompt
-
-# prompt setup
-shell_config=$HOME/.config/shell
-source "$shell_config/git-prompt.sh"
-PROMPT_DIRTRIM=2
-
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWCOLORHINTS=1
-GIT_PS1_SHOWUPSTREAM=auto
-
-set_prompt () {
-    PS1=''
-
-    # color escape codes
-    local color_off='\[\e[0m\]'
-    local color_black='\[\e[0;30m\]'
-    local color_red='\[\e[0;31m\]'
-    local color_green='\[\e[0;32m\]'
-    local color_yellow='\[\e[0;33m\]'
-    local color_blue='\[\e[1;34m\]'
-    local color_purple='\[\e[0;35m\]'
-    local color_cyan='\[\e[0;36m\]'
-    local color_gray='\[\e[0;37m\]'
-
-    # Default (with git branch)
-    #PS1+="\u"
-    #PS1+=$color_blue"@\h "
-    #PS1+=$color_green"\w $(__git_ps1 '(%s) ')$ "
-    #PS1+=$color_off
-
-    PS1+=$color_yellow"\w\n"
-    PS1+=$color_gray"$(__git_ps1 '(%s) ')$ "$color_off
-    # Decorated (without git branch)
-    #PS1+="┌─["
-    #PS1+=$color_green"\u"
-    #PS1+=$color_purple"\h "
-    #PS1+=$color_red"\w"
-    #PS1+=$color_off"]\n└─→ "
-}
-
-case "$TERM" in
-    xterm*|rxvt*)
-        PROMPT_COMMAND='set_prompt'
-        # Default prompt
-        # PS1='\[\e]0\e[0;31m;\u\e[m@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-        ;;
-    *)
-        ;;
-esac
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
-fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
@@ -224,30 +128,63 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
+
+if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-      . /etc/bash_completion
-  fi
+elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
 fi
 
 
-# Functions -----------------------------------------------------------
+# Command Prompt -----------------------------------------------
 
-# NOTE: in all honesty, the following functions are quite bush league.
-# They were written as early bash tests. Better off just deleting these...
+PROMPT_DIRTRIM=2
 
-welcome() {
-    figlet "Hey, " $USER "!";
-    echo -e ""; neofetch
-    echo -e ""; cal
-    echo -ne "Up time:";uptime | awk /'up/'
-    echo -en "Local IP Address :"; /sbin/ifconfig wlan0 | awk /'inet addr/ {print $2}' | sed -e s/addr:/' '/ 
-    echo -e ""; df -h /dev/dm-1
-    echo -e ""; fortune
-    echo "";
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWUPSTREAM=auto
+
+set_prompt () {
+    PS1=''
+
+    # color escape codes
+    local off='\[\033[0m\]'
+    local blue='\[\033[1;34m\]'
+    local purple='\[\033[0;35m\]'
+    local gray='\[\033[0;37m\]'
+
+    PS1+=$blue'\D{%T} '
+    PS1+=$purple'\u'$off':'$purple'\W '
+    PS1+='\[\033[1;92m\]$(__git_ps1 "(%s)") ›\[\033[0m\] '
 }
+
+case "$TERM" in
+    xterm*|rxvt*)
+        PROMPT_COMMAND='set_prompt' ;;
+
+    *color*)
+        PROMPT_COMMAND='set_prompt' ;;
+
+    *)
+        PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ ' ;;
+esac
+
+
+# Misc ---------------------------------------------------------
+
+# Dir Colors -------------------
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+fi
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# NVM --------------------------
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
