@@ -21,6 +21,17 @@
          ("C-c C-<" . mc/mark-all-like-this)
          ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
 
+(use-package tramp
+  :ensure t
+  :config
+  (setq tramp-verbose 9
+        tramp-default-method "ssh")
+  (add-to-list 'tramp-default-proxies-alist
+               '("nscc-n24" nil "/ssh:wpgriggs@nscc:"))
+  (add-to-list 'tramp-default-proxies-alist
+               '("n3" nil "/ssh:wpgriggs@bombur.cs.colby.edu:")))
+
+
 ;; Rainbow Mode
 (use-package rainbow-mode
   :ensure t

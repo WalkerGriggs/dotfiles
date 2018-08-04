@@ -8,7 +8,7 @@
 ;; Theme / Font
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'default-frame-alist '(font . "SourceCodePro-11"))
-(load-theme 'gruvbox-dark-medium t)
+(load-theme 'doom-city-lights t)
 
 ;; Doom Configs
 (doom-themes-visual-bell-config)

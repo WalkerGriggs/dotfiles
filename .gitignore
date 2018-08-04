@@ -6,6 +6,7 @@ auto-save-list/
 tramp
 recentf
 .last-package-update-day
+.mc-lists.el
 
 # Likewise with vim
 .netrwhist

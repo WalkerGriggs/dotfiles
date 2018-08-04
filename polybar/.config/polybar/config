@@ -66,7 +66,7 @@ font-6 = fixed:size=8;0
 font-7 = SourceCodePro-Regular:size=10;1
 font-8 = MaterialIcons:size=6;0
 
-separator = "|"
+separator = |
 wm-restack = i3
 
 modules-left = i3 xwindow
@@ -89,8 +89,8 @@ lineheight = 1
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 2
+module-margin-right = 2
 
 font-0 = SourceCodePro-Regular:size=9;;0
 font-1 = MaterialIcons:size=10;-3
@@ -101,8 +101,9 @@ font-5 = siji:size=6;-3
 font-6 = fixed:size=8;0
 
 font-7 = SourceCodePro-Regular:size=10;1
+font-8 = MaterialIcons:size=6;0
 
-separator =
+separator = |
 wm-restack = i3
 
 modules-left = i3
@@ -148,7 +149,7 @@ date-alt = " %Y-%m-%d"
 time = %I:%M
 time-alt = +%I:%M:%S
 
-format-prefix = ""
+;format-prefix =
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = ${colors.color6}
 format-padding = 2
@@ -288,8 +289,7 @@ speaker_mixer = Speaker
 headphone_mixer = Headphone
 headphone_control_numid = 9
 
-label-volume =" %percentage%"
-format-volume = <label-volume>
+format-volume = VOL <label-volume>
 label-muted = muted
 label-muted-foreground = #66
 
