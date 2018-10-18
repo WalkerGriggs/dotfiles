@@ -12,7 +12,8 @@ set $mod Mod4
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 
 font pango: SourceCodePro 10
-for_window [class=".*"] title_format "<span font='SourceCodePro 9'> > %title</span>"
+#for_window [class=".*"] title_format "<span font='SourceCodePro 9'> > %title</span>"
+for_window [class="^.*"] border pixel 3
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -25,7 +26,7 @@ for_window [class=".*"] title_format "<span font='SourceCodePro 9'> > %title</sp
 
 bindsym Ctrl+1 exec firefox
 bindsym Ctrl+2 exec icedove
-bindsym Ctrl+3 exec thunar
+bindsym Ctrl+3 exec nautilus
 bindsym Ctrl+4 exec virtualbox
 bindsym Ctrl+5 exec emacs --no-site-file
 bindsym Ctrl+6 exec focuswriter
@@ -51,6 +52,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym XF86Search exec dmenu_run
+
+bindsym $mod+Shift+h exec polybar-msg cmd toggle
 
 # Fullscreen Rofi
 # bindsym Ctrl+d exec rofi -show run -lines 5 -width 100 -padding 300 -fullscreen -opacity "85" -font "Roboto Light 40" -separator-style "none" -config "/$HOME/.config/rofi/blue_fs"
@@ -222,39 +225,31 @@ client.background       $base07
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command exec polybar primary # & polybar secondary
+  status_command exec polybar top # & polybar topbg
   mode invisible
   position top
-  font pango: Menlo 10
+}
 
-colors {
-        background $background
-        statusline $accent_light
-        separator  $foreground
-
-        focused_workspace  $background $background $accent_light
-        active_workspace   $background $background $accent_light
-        inactive_workspace $background $background $foreground
-        urgent_workspace   $background $background $foreground
-    }
+bar {
+  status_command exec polybar bottom & polybar bottombg
+  mode invisible
+  position bottom
 }
 
 # i3-Gaps  ------------------------------------------------------------
 new_window normal 0px
 
-gaps inner 15
-gaps outer 5
-smart_gaps on
+gaps inner 10
+gaps outer 7
+# smart_gaps on
 smart_borders on
 
 # Execute on Start-Up -------------------------------------------------
 exec_always ./.screenlayout/school.sh       # monitor layout
-exec_always $HOME/.local/bin/wal -b 1A1A1A -i ~/Pictures/night-city.jpg -e
+exec_always feh --bg-fill $HOME/Pictures/ghostinshell.jpg
 
-    # exec_always feh --bg-fill ~/Pictures/ggbridge.jpg # wallpaper
-    # exec --no-startup-id xsetroot -solid "#333333"
+    # exec_always $HOME/.local/bin/wal -b 1A1A1A -i ~/Pictures/night-city.jpg -e
 
 exec_always compton                         # load compton
-exec_always gnome-settings-daemon
-exec_always xmodmap ~/.Xmodmap              # set keyboard layout
+exec_always xmodmap ~/.XMM_STD              # set keyboard layout
 exec_always xrdb ~/.Xresources              # load Xresource
