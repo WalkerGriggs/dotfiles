@@ -4,7 +4,6 @@
   :config
   (global-evil-leader-mode))
 
-
 (use-package evil-surround
   :ensure t
   :defer t

@@ -1,14 +1,4 @@
-;; ███████╗███╗   ███╗ █████╗  ██████╗███████╗
-;; ██╔════╝████╗ ████║██╔══██╗██╔════╝██╔════╝
-;; █████╗  ██╔████╔██║███████║██║     ███████╗
-;; ██╔══╝  ██║╚██╔╝██║██╔══██║██║     ╚════██║
-;; ███████╗██║ ╚═╝ ██║██║  ██║╚██████╗███████║
-;; ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚══════╝
-;;
-;; Walker Griggs
-;; walker@walkergriggs.com
-;; github.com/WalkerGriggs
-
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; Load all configs
 (defconst toc:emacs-config-dir "~/.emacs.d/configs/" "")
@@ -17,25 +7,14 @@
   (dolist (file filelist)
     (load (expand-file-name
            (concat toc:emacs-config-dir file)))
-    (message "Loaded config file:%s" file)
-    ))
+    (message "Loaded config file:%s" file)))
 
 (toc:load-config-file '("packages" ;; always bootsrap packages first
-                        "evil"
-                        "general"
-                        "platform"
-                        "org"
-                        "git"
-                        "terminals"
-                        "languages"
-                        "latex"
-                        "whitespace"
+			"general"
                         "appearance"
-                        "custom-set-variables"
-                        ))
-
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            ;; (split-window-horizontally)
-            ;; (ansi-term "/bin/bash")
-            ))
+			"navigation"
+                        "evil"
+                        "terminals"
+                        "languages/ruby"
+                        "languages/go"
+                        "languages/python"))
