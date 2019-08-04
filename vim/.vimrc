@@ -22,6 +22,11 @@ let g:airline_theme='minimalist'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+" Don't use swapfile of backups
+set noswapfile
+set nobackup
+set nowritebackup
+
 " Setting airline symbols.
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -58,19 +63,12 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-
 " Removes the need for Shift-;
 nnoremap ; :
 
 " Splitting made easy...
 set splitbelow
 set splitright
-
-" split below, split right, swap, and exit
-nnoremap <silent> <F1> :split<CR>
-nnoremap <silent> <F2> :vsplit<CR>
-nnoremap <silent> <F3> <C-W>R
-nnoremap <silent> <F4> :exit<CR>
 
 " Toggle NERDTree
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
@@ -106,6 +104,20 @@ set list lcs=eol:¬,tab:>-,trail:.,nbsp:_
 
 filetype on
 filetype indent on
+
+" vim-go
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_term_enabled = 1
+let g:go_snippet_engine = "neosnippet"
+let g:go_highlight_space_tab_error = 0
+let g:go_highlight_array_whitespace_error = 0
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_extra_types = 0
+let g:go_highlight_operators = 0
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_autosave = 1
 
 " Xterm title
 let &term = $TERM
