@@ -1,22 +1,23 @@
-Dotfiles
-===================
-Take these dotfiles with a grain of salt, and don't assume everything in here is best practice. Chances you find a legacy config from 2 machines ago are high, so make sure you read through the file before copy/pasting.
+<p align="center">
+  <b style="font-size: 58px;"> Dotfiles V2 </b>
+  <br><br>
+  <img align="center" src="https://github.com/WalkerGriggs/DotFiles/blob/v2/.assets/batman-alter.png" width="250" />
+</p>
 
-## Screenshots
+I have a confession.
 
-![Emacs](https://github.com/WalkerGriggs/DotFiles/blob/master/.assets/emacs.png)
-![Rofi](https://github.com/WalkerGriggs/DotFiles/blob/master/.assets/rofi.png)
+In my early Linux years, I fell into the script-kiddie trap of copying and pasting from Russian hackers (not really) and amassing configs in search of that elusive LOC. I recently took stock of all the packages and configs that I either a) didn't write myself or b) didn't entirely know what they did. There were a lot...
 
-# Setup Details
-  - Distro: Debian 9.3
-  - Window Manager: i3wm
-  - Terminal Emulator: URxvt
-  - Shell: bash
-  - Text Editor: Emacs
-  - Bar: Polybar
-  - Launcher: Rofi
-  - RSS: Newsbeuter
+So, I'm starting fresh. Every config here is written for me, by me (mostly). No more configs from other developers based on __their__ workflow; I'm only pushing changes that happen organically and out of neceessity. At the same time, I'm reducing focus on ricing out my window managers. Sorry, [/r/unixporn](https://reddit.com/r/unixporn).
 
-# Installation
+Consider this the Atkins Diet for dotfiles -- we're slimming it down folks!
 
-I've shamelessly adapted my GNU Stow scrpit and filestructure from [Brendan Whitfield](https://brendanwhitfield.wordpress.com/2015/04/20/managing-dotfiles-with-gnu-stow/) and [Dylan Araps](https://github.com/dylanaraps/dotfiles/blob/master/install.sh). Simply clone the repo into your root directory and run the install script to dynamically stow the directories.
+## Installation
+
+I've included a [GNU Stow](https://www.gnu.org/software/stow/) script inspired by [Brendan Whitfield](https://brendanwhitfield.wordpress.com/2015/04/20/managing-dotfiles-with-gnu-stow/) which neatly drops everything into place. 
+
+1) Clone the repo into your `$HOME` directory... `git clone https://github.com/walkergriggs/dotfiles $HOME/dotfiles`
+2) Make sure `stow` is installed. Apt or brew should do just fine.
+3) Run `./install`... `cd $HOME/dotfiles && ./install`
+
+__Be warned__, while Stow is good about not overwriting files, I wouldn't trust it completely. Make sure your current configs are backed up to a safe place.
