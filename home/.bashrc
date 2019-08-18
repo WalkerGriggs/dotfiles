@@ -13,25 +13,11 @@ set -o noclobber # dont overwrite files
 
 # Aliases ------------------------------------------------------
 
-# Git --------------------------
-if [ -f /usr/share/bash-completion/completions/git ]; then
-    . /usr/share/bash-completion/completions/git
-fi
-
-for al in `__git_aliases`; do
-    alias g$al="git $al"
-done
-
 # Keyboard Layout -------------
 alias ANSI='setxkbmap us'
 alias JIS='setxkbmap jp'
 alias XMM_STD='setxkbmap us && xmodmap ~/.Xmodmap_std'
 alias XMM_WKL='setxkbmap us && xmodmap ~/.Xmodmap_wkl'
-
-# Cross Compiler --------------
-export PREFIX="$HOME/opt/cross"
-export TARGET=i686-elf
-export PATH="$PREFIX/bin:$PATH"
 
 export FONTCONFIG_PATH=/etc/fonts
 
@@ -71,14 +57,14 @@ alias shutdown="sudo shutdown -h now"
 
 # Path ---------------------------------------------------------
 
-# Add gcc cross compiler for os dev
-# export PATH="$PATH:$HOME/Builds/bin:$HOME/opt/cross/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Add Golang
 export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 
 # Add Scripts and Builds binaries
 export PATH="$PATH:$HOME/Scripts:$HOME/Builds/bin:$HOME/.bin/"
+
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -138,33 +124,16 @@ fi
 
 # Command Prompt -----------------------------------------------
 
-PROMPT_DIRTRIM=2
-
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWCOLORHINTS=1
-GIT_PS1_SHOWUPSTREAM=auto
-
-set_prompt () {
-    PS1=''
-
-    # color escape codes
-    local off='\[\033[0m\]'
-    local blue='\[\033[1;34m\]'
-    local purple='\[\033[0;35m\]'
-    local gray='\[\033[0;37m\]'
-
-    PS1+=$blue'\D{%T} '
-    PS1+=$purple'\u'$off':'$purple'\W '
-    PS1+='\[\033[1;92m\]$(__git_ps1 "(%s)") ›\[\033[0m\] '
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
 }
 
 case "$TERM" in
     xterm*|rxvt*)
-        PROMPT_COMMAND='set_prompt' ;;
+        PROMPT_COMMAND='_update_ps1' ;;
 
     *color*)
-        PROMPT_COMMAND='set_prompt' ;;
+        PROMPT_COMMAND='_update_ps1' ;;
 
     *)
         PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ ' ;;
