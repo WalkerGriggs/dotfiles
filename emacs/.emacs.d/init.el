@@ -10,11 +10,14 @@
     (message "Loaded config file:%s" file)))
 
 (toc:load-config-file '("packages" ;; always bootsrap packages first
-			"general"
+                        "general"
                         "appearance"
-			"navigation"
+                        "navigation"
                         "evil"
+                        "git"
                         "terminals"
+                        "whitespace"
                         "languages/ruby"
                         "languages/go"
-                        "languages/python"))
+                        "languages/python"
+                        "custom-set-variables"))
