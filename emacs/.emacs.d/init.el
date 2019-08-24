@@ -17,7 +17,7 @@
                         "git"
                         "terminals"
                         "whitespace"
+                        "lsp"
                         "languages/ruby"
                         "languages/go"
-                        "languages/python"
-                        "custom-set-variables"))
+                        "languages/python"))

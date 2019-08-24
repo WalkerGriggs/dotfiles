@@ -12,3 +12,11 @@
         helm-mode-fuzzy-match t)
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
   (define-key helm-map (kbd "C-z") 'helm-select-action))
+
+(use-package centaur-tabs
+  :ensure t
+  :config
+  (centaur-tabs-mode t)
+  :bind
+  ("C-<prior>" . centaur-tabs-backward)
+  ("C-<next>" . centaur-tabs-forward))

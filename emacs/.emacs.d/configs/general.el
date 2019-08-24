@@ -16,6 +16,7 @@
 (setq make-backup-files nil)
 (setq-default truncate-lines 0)
 (show-paren-mode 1)
+(setq create-lockfiles nil)
 
 ;; General Key Bindings
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -25,6 +26,12 @@
 (delete-selection-mode t)
 (transient-mark-mode t)
 (setq x-select-enable-clipboard t)
+
+;; Window navigation
+(global-set-key (kbd "C-x h") 'windmove-left)
+(global-set-key (kbd "C-x j") 'windmove-down)
+(global-set-key (kbd "C-x k") 'windmove-up)
+(global-set-key (kbd "C-x l") 'windmove-right)
 
 ;; Autopair
 (use-package autopair

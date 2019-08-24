@@ -8,7 +8,7 @@
 (use-package git-gutter-fringe+
   :ensure t
   :init (global-git-gutter+-mode)
-  :config
+  :config)
 
 ;; Git Modes
 (use-package gitattributes-mode
