@@ -3,7 +3,8 @@
   :config
   (add-hook 'python-mode-hook #'lsp)
   (add-hook 'go-mode-hook #'lsp)
-  (add-hook 'ruby-mode-hook #'lsp))
+  (add-hook 'ruby-mode-hook #'lsp)
+  (add-hook 'rust-mode-hook #'lsp))
 
 (use-package company
   :config

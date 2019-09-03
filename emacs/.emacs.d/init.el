@@ -20,4 +20,5 @@
                         "lsp"
                         "languages/ruby"
                         "languages/go"
-                        "languages/python"))
+                        "languages/python"
+                        "languages/rust"))
