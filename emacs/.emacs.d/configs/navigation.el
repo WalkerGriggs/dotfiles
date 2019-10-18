@@ -1,22 +1,21 @@
-;; Helm
-(use-package helm
+(use-package ivy
   :ensure t
-  :bind (("M-x" . helm-M-x)
-         ("C-x C-f" . helm-find-files))
-  :config
-  (setq helm-split-window-in-side-p        t ;; opens helm inside window
-        helm-move-to-line-cycle-in-source  t
-        helm-autoresize-min-height         20
-        helm-autoresize-max-height         35
-        helm-scroll-amount                 8
-        helm-mode-fuzzy-match t)
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-  (define-key helm-map (kbd "C-z") 'helm-select-action))
-
-(use-package centaur-tabs
-  :ensure t
-  :config
-  (centaur-tabs-mode t)
+  :diminish (ivy-mode . "")
   :bind
-  ("C-<prior>" . centaur-tabs-backward)
-  ("C-<next>" . centaur-tabs-forward))
+  (:map ivy-mode-map
+        ("C-'" . ivy-avy)
+        ("M-x" . counsel-M-x))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format ""
+        ivy-initial-inputs-alist nil
+        ivy-re-builders-alist
+        '((swiper . ivy--regex-plus)
+          (t . ivy--regex-fuzzy))))
+
+(use-package counsel-projectile
+  :ensure t
+  :bind
+  (:map ivy-mode-map
+        ("C-x f" . counsel-projectile-find-file)))
