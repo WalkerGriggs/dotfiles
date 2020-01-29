@@ -33,6 +33,9 @@
 (global-set-key (kbd "C-x k") 'windmove-up)
 (global-set-key (kbd "C-x l") 'windmove-right)
 
+;; Text mode hooks
+(add-hook 'text-mode-hook 'visual-line-mode)
+
 ;; Autopair
 (use-package autopair
   :config
