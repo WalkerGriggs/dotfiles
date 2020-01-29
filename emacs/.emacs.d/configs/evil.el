@@ -27,13 +27,15 @@
 
   (setq evil-default-cursor t)
 
+  (with-eval-after-load 'evil-maps
+    (define-key evil-motion-state-map (kbd "/") 'swiper))
+
   (evil-leader/set-leader ",")
   (evil-leader/set-key
     "g" 'magit-status
     "k" 'kill-buffer
     "K" 'kill-this-buffer
     "l" 'kill-whole-line
-    "o" 'occur
     "t" 'ansi-term
     "w" 'save-buffer
     ))
