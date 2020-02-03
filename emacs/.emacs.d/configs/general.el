@@ -52,7 +52,8 @@
 
 ;; Flycheck
 (use-package flycheck
-  :init
+  :defer package-defer-time
+  :config
   (dolist (hook '(org-mode-hook))
     (add-hook hook #'flyspell-mode)))
 

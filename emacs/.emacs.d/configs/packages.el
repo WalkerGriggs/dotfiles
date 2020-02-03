@@ -4,9 +4,7 @@
 (customize-set-variable
  'package-archives
  '(("melpa" . "https://melpa.org/packages/")
-   ("melpa-stable" . "https://stable.melpa.org/packages/")
-   ("gnu" . "https://elpa.gnu.org/packages/")
-   ("org" . "https://orgmode.org/elpa/")))
+   ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 

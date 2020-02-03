@@ -1,6 +1,7 @@
 (use-package ivy
   :ensure t
-  :diminish (ivy-mode . "")
+  :demand
+  ;; :diminish (ivy-mode . "")
   :bind
   (:map ivy-mode-map
         ("C-'" . ivy-avy)
@@ -18,4 +19,4 @@
   :ensure t
   :bind
   (:map ivy-mode-map
-        ("C-x f" . counsel-projectile-find-file)))
+        ("C-c f" . counsel-projectile-find-file)))
