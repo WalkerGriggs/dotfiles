@@ -1,3 +1,11 @@
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "C-;") 'comment-or-uncomment-region)
+
+(global-set-key (kbd "C-x h") 'windmove-left)
+(global-set-key (kbd "C-x j") 'windmove-down)
+(global-set-key (kbd "C-x k") 'windmove-up)
+(global-set-key (kbd "C-x l") 'windmove-right)
+
 (use-package ivy
   :ensure t
   :demand
@@ -20,3 +28,23 @@
   :bind
   (:map ivy-mode-map
         ("C-c f" . counsel-projectile-find-file)))
+
+(use-package vimish-fold
+  :ensure t
+  :commands (vimish-fold-toggle
+             vimish-fold)
+  :bind
+    (("C-c C-f" . vimish-fold)
+     ("C-c C-u" . vimish-fold-unfold)
+     ("C-c C-t" . vimish-fold-toggle)
+     ("C-c C-r" . vimish-fold-delete)))
+
+(use-package dumb-jump
+  :ensure t
+  :bind (("C-c j g" . dumb-jump-go)
+         ("C-c j b" . dumb-jump-back)
+         ("C-c j q" . dumb-jump-quick-look)
+         ("C-c j p" . dumb-jump-prompt))
+  :config (setq dumb-jump-selector 'ivy
+                dumb-jump-aggressive t
+                dumb-jump-confirm-jump-to-modified-file t))

@@ -1,8 +1,17 @@
-;; Menu Bars
+;;(load-theme 'dracula t)
+(use-package dracula-theme)
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(show-paren-mode 1)
 
-(load-theme 'dracula t)
+;;Idle Highlight
+(use-package idle-highlight-mode
+  :ensure t
+  :config (idle-highlight-mode 1)
+  :init
+  (dolist (hook '(prog-mode-hook conf-mode-hook))
+    (add-hook hook #'idle-highlight-mode)))
 
 ;; Fringe
 (use-package fringe
@@ -33,7 +42,12 @@
 ;; Smart Line Mode
 (use-package smart-mode-line
   :ensure t
-  :init (add-hook 'after-init-hook 'sml/setup))
+  :init (add-hook 'after-init-hook 'sml/setup)
+  :config (setq sml/theme 'respectful))
+
+(use-package minions
+  :config (minions-mode 1)
+  (setq minions-mode-line-lighter "~"))
 
 ;; Fira Code and Ligatures
 (when (window-system)

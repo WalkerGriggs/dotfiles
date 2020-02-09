@@ -1,48 +1,36 @@
-(defvar start-time (current-time))
+(defvar init-start-time (current-time))
 
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-(require 'no-littering nil :noerror)
 
-(setq user-full-name "Walker Griggs")
-(setq package-defer-time 3)
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/"))
+(package-initialize)
 
-(setq inhibit-startup-screen t)
-(setq inhibit-startup-message t)
+(defvar base-dir (file-name-directory load-file-name)
+  "The base directory for configuration files.")
 
-;; The default value is 0.8MB, which is just too small.
-(setq gc-cons-threshold 50000000)
+(defvar startup-dir (expand-file-name "startup/" base-dir)
+  "The directory to store elisp scripts that runs at the very beginning.")
 
-(defconst toc:emacs-config-dir "~/.emacs.d/configs/" "")
+(defvar config-dir (expand-file-name "configs/" base-dir)
+  "The directory to place configurations.")
 
-;; Set the file for custom set variables
-(setq custom-file (expand-file-name "custom.el" "~/.emacs.d/"))
+;; Load custom-set-variable file
+(setq custom-file (expand-file-name "custom.el" base-dir))
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;; Load all configs
-(defun toc:load-config-file (filelist)
-  (dolist (file filelist)
-    (load (expand-file-name
-           (concat toc:emacs-config-dir file)))
-    (message "Loaded config file:%s" file)))
-
-(toc:load-config-file '("packages" ;; always bootsrap packages first
-                        "general"
-                        "appearance"
-                        "navigation"
-                        "evil"
-                        "git"
-                        "terminals"
-                        "whitespace"
-                        "languages/ruby"
-                        "languages/go"
-                        "languages/python"
-                        "languages/rust"
-                        "lsp")) ;; load the heaviest (and defered) package last
+;; Init sequence
+(add-to-list 'load-path startup-dir)
+(require '01-globals)
+(require '02-defuns)
+(require '03-packages)
 
 (defvar init-duration (float-time
                        (time-since
-                        start-time)))
+                        init-start-time)))
 
 ;; Welcome message
 (setq initial-scratch-message

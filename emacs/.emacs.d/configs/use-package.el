@@ -1,13 +1,3 @@
-;; Melpa
-;; Make sure to use httpS archives.
-(require 'package)
-(customize-set-variable
- 'package-archives
- '(("melpa" . "https://melpa.org/packages/")
-   ("elpa" . "https://elpa.gnu.org/packages/")))
-
-(package-initialize)
-
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
