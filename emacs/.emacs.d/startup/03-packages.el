@@ -6,10 +6,7 @@
                     "git"
                     "terminals"
                     "whitespace"
-                    "languages/ruby"
-                    "languages/go"
-                    "languages/python"
-                    "languages/rust"
+                    "languages"
                     "lsp")) ;; load the heaviest (and defered) package last
 
 (provide '03-packages)
