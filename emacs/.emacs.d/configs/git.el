@@ -4,10 +4,10 @@
   :bind (("C-c s" . magit-status)
          ("C-c d" . magit-diff)))
 
-;; Git Gutter
-(use-package git-gutter-fringe+
+(use-package diff-hl
   :ensure t
-  :init (global-git-gutter+-mode))
+  :init (global-diff-hl-mode)
+  :config (setq diff-hl-side 'right))
 
 ;; Git Modes
 (use-package gitattributes-mode
