@@ -2,19 +2,20 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
-;; Theme
-(use-package gruvbox-theme
-  :init
-  (load-theme 'gruvbox-light-medium t))
+(load-theme 'dracula t)
 
 ;; Fringe
 (use-package fringe
   :ensure nil
   :config
-  (setq-default left-fringe-width  20
-                right-fringe-width  10))
+  (setq-default left-fringe-width  0
+                right-fringe-width  5))
 
-;; Scroll Bar
+(use-package hlinum
+  :ensure t
+  :init (hlinum-activate))
+
+;; Scrall Bar
 (use-package scroll-bar
   :ensure nil
   :config
@@ -26,14 +27,13 @@
 (use-package linum
   :config
   (global-linum-mode t)
-  (setq linum-format "%d"
+  (setq linum-format "%d "
         column-number-mode t))
 
 ;; Smart Line Mode
 (use-package smart-mode-line
   :ensure t
   :init (add-hook 'after-init-hook 'sml/setup))
-
 
 ;; Fira Code and Ligatures
 (when (window-system)
