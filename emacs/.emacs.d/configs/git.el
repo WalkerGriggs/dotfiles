@@ -1,3 +1,10 @@
+;;; configs/git.el -*- lexical-binding: t; -*-
+;;
+;; Keywords: convenience, configs
+;; This file is not part of GNU Emacs.
+
+;;; Code
+
 ;; Magit
 (use-package magit
   :ensure t
@@ -27,3 +34,4 @@
   :mode ("/\\.gitignore\\'"
          "/info/exclude\\'"
          "/git/ignore\\'"))
+;;; git.el ends here

@@ -1,4 +1,10 @@
-;;(load-theme 'dracula t)
+;;; configs/appearance.el -*- lexical-binding: t; -*-
+;;
+;; Keywords: convenience, configs
+;; This file is not part of GNU Emacs.
+
+;;; Code
+
 (use-package dracula-theme)
 
 (tool-bar-mode -1)
@@ -82,3 +88,4 @@
   (dolist (char-regexp alist)
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
+;;; appearance.el ends here

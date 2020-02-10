@@ -1,3 +1,10 @@
+;;; configs/lsp.el -*- lexical-binding: t; -*-
+;;
+;; Keywords: convenience, configs
+;; This file is not part of GNU Emacs.
+
+;;; Code
+
 (use-package lsp-mode
   :ensure t
   :defer package-defer-time ;; kick the load-time can
@@ -24,3 +31,4 @@
         company-transformers nil
         company-lsp-async t
         company-lsp-cache-candidates nil))
+;;; lsp.el ends here

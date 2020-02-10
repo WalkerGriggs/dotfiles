@@ -1,3 +1,10 @@
+;;; configs/general.el -*- lexical-binding: t; -*-
+;;
+;; Keywords: convenience, configs
+;; This file is not part of GNU Emacs.
+
+;;; Code
+
 ;; Tabs
 (setq-default indent-tabs-mode nil) ;; Always spaces
 
@@ -22,3 +29,4 @@
   :config
   (dolist (hook '(prog-mode-hook conf-mode-hook))
     (add-hook hook #'autopair-mode)))
+;;; general.el ends here

@@ -1,3 +1,10 @@
+;;; configs/evil.el -*- lexical-binding: t; -*-
+;;
+;; Keywords: convenience, configs
+;; This file is not part of GNU Emacs.
+
+;;; Code
+
 (use-package evil-leader
   :ensure t
   :defer t
@@ -34,3 +41,4 @@
     "t" 'ansi-term
     "w" 'save-buffer
     ))
+;;; evil.el ends here

@@ -1,3 +1,10 @@
+;;; configs/languages.el -*- lexical-binding: t; -*-
+;;
+;; Keywords: convenience, configs
+;; This file is not part of GNU Emacs.
+
+;;; Code
+
 ;; Go
 (use-package go-mode
   :ensure t
@@ -54,3 +61,4 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+;;; languages.el ends here

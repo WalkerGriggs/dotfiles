@@ -1,3 +1,10 @@
+;;; startup/01-globals.el -*- lexical-binding: t; -*-
+;;
+;; Keywords: convenience, startup
+;; This file is not part of GNU Emacs.
+
+;;; Code
+
 (require 'no-littering nil :noerror)
 
 (setq user-full-name "Walker Griggs")
@@ -16,3 +23,4 @@
 (setq visible-bell nil)
 
 (provide '01-globals)
+;;; 01-globals.el ends here

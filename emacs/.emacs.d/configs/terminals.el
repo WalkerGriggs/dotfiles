@@ -1,3 +1,10 @@
+;;; configs/terminals.el -*- lexical-binding: t; -*-
+;;
+;; Keywords: convenience, configs
+;; This file is not part of GNU Emacs.
+
+;;; Code
+
 (use-package bash-completion
   :ensure t
   :config (bash-completion-setup))
@@ -59,3 +66,4 @@
       (set-process-query-on-exit-flag proc nil))))
 
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+;;; terminals.el ends here

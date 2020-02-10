@@ -1,3 +1,10 @@
+;;; configs/navigation.el -*- lexical-binding: t; -*-
+;;
+;; Keywords: convenience, configs
+;; This file is not part of GNU Emacs.
+
+;;; Code
+
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 
@@ -48,3 +55,4 @@
   :config (setq dumb-jump-selector 'ivy
                 dumb-jump-aggressive t
                 dumb-jump-confirm-jump-to-modified-file t))
+;;; navigation.el ends here
