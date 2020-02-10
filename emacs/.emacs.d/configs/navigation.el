@@ -14,7 +14,6 @@
 (global-set-key (kbd "C-x l") 'windmove-right)
 
 (use-package ivy
-  :ensure t
   :demand
   ;; :diminish (ivy-mode . "")
   :bind
@@ -31,13 +30,11 @@
           (t . ivy--regex-fuzzy))))
 
 (use-package counsel-projectile
-  :ensure t
   :bind
   (:map ivy-mode-map
         ("C-c f" . counsel-projectile-find-file)))
 
 (use-package vimish-fold
-  :ensure t
   :commands (vimish-fold-toggle
              vimish-fold)
   :bind
@@ -47,7 +44,6 @@
      ("C-c C-r" . vimish-fold-delete)))
 
 (use-package dumb-jump
-  :ensure t
   :bind (("C-c j g" . dumb-jump-go)
          ("C-c j b" . dumb-jump-back)
          ("C-c j q" . dumb-jump-quick-look)

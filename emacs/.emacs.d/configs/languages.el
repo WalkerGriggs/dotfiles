@@ -7,7 +7,6 @@
 
 ;; Go
 (use-package go-mode
-  :ensure t
   :defer package-defer-time ;; kick the load-time can.
   :config
   (add-hook 'before-save-hook #'gofmt-before-save)
@@ -19,7 +18,6 @@
 
 ;;; Ruby
 (use-package ruby-mode
-  :ensure t
   :mode "\\.rb\\'"
   :mode "Rakefile\\'"
   :mode "Gemfile\\'"
@@ -37,15 +35,13 @@
    ([(meta up)]   . ruby-backward-sexp)))
 
 ;; Rust
-(use-package rust-mode
-  :ensure t)
+(use-package rust-mode)
 
 (use-package cargo
   :hook (rust-mode . cargo-minor-mode))
 
 ;; Python
 (use-package python-mode
-  :ensure t
   :config
   (add-hook 'python-mode-hook
             (lambda ()
@@ -55,7 +51,6 @@
 
 ;; Markdown
 (use-package markdown-mode
-  :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)

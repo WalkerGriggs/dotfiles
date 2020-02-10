@@ -7,12 +7,10 @@
 
 ;; Magit
 (use-package magit
-  :ensure t
   :bind (("C-c s" . magit-status)
          ("C-c d" . magit-diff)))
 
 (use-package diff-hl
-  :ensure t
   :init (global-diff-hl-mode)
   :config (setq diff-hl-side 'right))
 

@@ -6,7 +6,6 @@
 ;;; Code
 
 (use-package lsp-mode
-  :ensure t
   :defer package-defer-time ;; kick the load-time can
   :config
   ;;(add-hook 'python-mode-hook #'lsp)
@@ -15,7 +14,6 @@
   (add-hook 'go-mode-hook #'lsp))
 
 (use-package company
-  :ensure t
   :defer package-defer-time
   :config
   (global-company-mode 1)

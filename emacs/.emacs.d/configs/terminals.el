@@ -6,12 +6,10 @@
 ;;; Code
 
 (use-package bash-completion
-  :ensure t
   :config (bash-completion-setup))
 
 (use-package ansi-color
-  :ensure t
-  :init
+  :config
   (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
   (add-hook 'term-mode-hook 'ansi-color-for-comint-mode-on)
   (add-hook 'comint-mode-hook 'ansi-color-for-comint-mode-on)

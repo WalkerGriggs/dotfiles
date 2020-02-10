@@ -13,7 +13,6 @@
 
 ;;Idle Highlight
 (use-package idle-highlight-mode
-  :ensure t
   :config (idle-highlight-mode 1)
   :init
   (dolist (hook '(prog-mode-hook conf-mode-hook))
@@ -21,18 +20,15 @@
 
 ;; Fringe
 (use-package fringe
-  :ensure nil
   :config
   (setq-default left-fringe-width  0
                 right-fringe-width  5))
 
 (use-package hlinum
-  :ensure t
   :init (hlinum-activate))
 
 ;; Scrall Bar
 (use-package scroll-bar
-  :ensure nil
   :config
   (scroll-bar-mode -1)
   (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))
@@ -47,7 +43,6 @@
 
 ;; Smart Line Mode
 (use-package smart-mode-line
-  :ensure t
   :init (add-hook 'after-init-hook 'sml/setup)
   :config (setq sml/theme 'respectful))
 
