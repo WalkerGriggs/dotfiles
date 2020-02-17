@@ -43,6 +43,19 @@
      ("C-c C-t" . vimish-fold-toggle)
      ("C-c C-r" . vimish-fold-delete)))
 
+;; hl-region
+;; github.com/walkergriggs/hl-region
+(use-package hl-region
+  :load-path "hl-region" ;; or wherever it's cloned
+  :commands (hl-region
+             hl-region-remove)
+  :bind
+  (("C-c h h" . hl-region)
+   ("C-c h r" . hl-region-remove)
+   ("C-c h R" . hl-region-remove-all)
+   ("C-c h n" . hl-region-next-highlight)
+   ("C-c h p" . hl-region-prev-highlight)))
+
 (use-package dumb-jump
   :bind (("C-c j g" . dumb-jump-go)
          ("C-c j b" . dumb-jump-back)
