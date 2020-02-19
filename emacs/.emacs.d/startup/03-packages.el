@@ -14,6 +14,7 @@
                     "terminals"
                     "whitespace"
                     "languages"
+                    "erc"
                     "lsp")) ;; load the heaviest (and defered) package last
 
 (provide '03-packages)
