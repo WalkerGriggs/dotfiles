@@ -16,3 +16,6 @@
 [submodule "vim/.vim/bundle/vim-json"]
 	path = vim/.vim/bundle/vim-json
 	url = https://github.com/elzr/vim-json
+[submodule "emacs"]
+	path = emacs
+	url = https://github.com/walkergriggs/dot-emacs
