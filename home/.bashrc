@@ -21,23 +21,16 @@ alias XMM_WKL='setxkbmap us && xmodmap ~/.Xmodmap_wkl'
 
 export FONTCONFIG_PATH=/etc/fonts
 
-# Docker ----------------------
-alias dps='docker ps -a'
-alias drm_stopped='docker ps -aq --no-trunc | xargs docker rm'
-alias drmi_untagged='docker images -q --filter dangling=true | xargs docker rmi'
-alias dbuild='docker build --rm -t'
-
 # Golang ----------------------
 export GOPATH=$HOME/go
-export GIT_TERMINAL_PROMPT=1
 
-# AWS -------------------------
-export AWS_PROFILE=wgriggs
+# Git -------------------------
+export GPG_TTY=$(tty)
+export GIT_TERMINAL_PROMPT=1
 
 # General Utils ---------------
 alias reload='xrdb $HOME/.Xresources & source $HOME/.bashrc & i3-msg restart'
 alias wifi='nmtui'
-alias news='newsbeuter -r -C $HOME/.config/newsbeuter/config -u $HOME/.config/newsbeuter/urls'
 alias date='date "+%F %T"'
 alias cal='ncal'
 alias modes='stat -c "%a %n" *'
@@ -53,7 +46,6 @@ alias ..='cd ../'
 # System ----------------------
 alias reboot="sudo shutdown -r now"
 alias shutdown="sudo shutdown -h now"
-
 
 # Path ---------------------------------------------------------
 
@@ -125,7 +117,8 @@ fi
 # Command Prompt -----------------------------------------------
 
 function _update_ps1() {
-    PS1=$(powerline-shell $?)
+    GIT_PS1_SHOWDIRTYSTATE=1
+    PS1='\w$(__git_ps1 " (%s)") ∴ '
 }
 
 case "$TERM" in
