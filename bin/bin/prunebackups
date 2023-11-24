@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+# Delete all records but keep
+#   ... 3 at a minimum
+#   ... daily for the last week
+#   ... weekly for the last month
+#   ... monthly for the last year
+#   ... yearly for the last 100 years
+
+restic forget                    \
+	--verbose                \
+	--prune                  \
+	--repack-small           \
+	--repack-uncompressed    \
+	--path "$HOME"           \
+	--host "$HOSTNAME"       \
+	--keep-last 3            \
+	--keep-within-daily 7d   \
+	--keep-within-weekly 1m  \
+	--keep-within-monthly 1y \
+	--keep-within-yearly 100y
+
+restic check --read-data

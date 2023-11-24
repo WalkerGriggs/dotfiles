@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -euxo pipefail
+
+restic backup "$HOME"                  \
+       --tag $USER                     \
+       --verbose                       \
+       --no-scan                       \
+       --pack-size=64                  \
+       --exclude="$HOME/.cache"        \
+       --exclude="$HOME/.npm"          \
+       --exclude="$HOME/.mozilla"      \
+       --exclude="$HOME/.rustup"       \
+       --exclude="$HOME/build"         \
+       --exclude="$HOME/.bash_history" \
+       --exclude="$HOME/.irb_history"

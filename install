@@ -5,7 +5,7 @@
 install() {
     for dir in */; do
         child=("$dir"*); root=
-        [[ "$child" =~ $dir(bin|etc|var|usr|opt) ]] && root="root required"
+        [[ "$child" =~ $dir(etc|var|usr|opt) ]] && root="root required"
 
         if [[ $verbose -eq 1 ]] ; then
             printf "%s tree: \n" "$dir"

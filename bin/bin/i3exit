@@ -1,0 +1,27 @@
+#!/bin/bash
+
+[ "$(cat /proc/1/comm)" = "systemd" ] && logind=systemctl || logind=loginctl
+
+case "$1" in 
+	logout)
+		i3-msg exit
+		;;
+	suspend)
+		$logind suspend
+		;;
+	hibernate)
+		$logind hibernate
+		;;
+	reboot)
+		$logind reboot
+		;;
+	shutdown)
+		$logind poweroff
+		;;
+	*)
+		echo "== ! i3exit: missing or invalid argument ! =="
+		echo "Try again with logout | suspend | hibernate | reboot | shutdown"
+		exit 2
+esac
+
+exit 0
