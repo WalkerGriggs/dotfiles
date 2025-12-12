@@ -1,7 +1,7 @@
 <p align="center">
   <b style="font-size: 58px;"> Dotfiles V2 </b>
   <br><br>
-  <img align="center" src="https://github.com/WalkerGriggs/DotFiles/blob/v2/.assets/batman-alter.png" width="250" />
+  <img align="center" src="https://github.com/WalkerGriggs/DotFiles/blob/main/.assets/batman-alter.png" width="250" />
 </p>
 
 I have a confession.
