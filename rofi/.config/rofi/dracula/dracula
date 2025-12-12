@@ -1,5 +1,0 @@
-rofi.theme: ~/.config/rofi/dracula/dracula.rasi
-
-rofi.modi: run,drun,ssh,window
-rofi.lines: 10
-rofi.case-sensitive: false
